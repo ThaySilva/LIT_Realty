@@ -348,7 +348,7 @@ input[type="search"]::-webkit-search-decoration {
     transition: border-color 0.15s ease-in-out 0s, box-shadow 0.15s ease-in-out 0s;
 }
 .form-inline input[type=submit]{
-    background: #FDC600;
+    background: #EE2D20;
     color: #fff;
     height: 40px;
     width: 90px;
@@ -1124,7 +1124,7 @@ page-header
     text-align: right;
 }
 .search-widget fieldset .largesearch-btn{
-    background-color: #FDC600;
+    background-color: #EE2D20;
     font-size: 16px;
     border: 1px solid #EAE9E9;
     width: 100%;
@@ -1134,7 +1134,8 @@ page-header
     margin-top: 15px;
 }
 .form-inline input[type="submit"]:hover {
-    background: rgb(126, 126, 126) none repeat scroll 0% 0%;
+    background-color: #EE2D20;
+    color: rgb(8, 0, 0);
 }
 fieldset { 
     padding-bottom: 10px;
@@ -1179,7 +1180,7 @@ Asside widgets CSS
 .panel.sidebar-menu .panel-heading h4,
 .panel.sidebar-menu .panel-heading h5 {
     display: inline-block;
-    border-bottom: solid 3px #FDC600;
+    border-bottom: solid 3px #EE2D20;
     line-height: 1.1;
     margin-bottom: 0;
     padding-bottom: 10px;

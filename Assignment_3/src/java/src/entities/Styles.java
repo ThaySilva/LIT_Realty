@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Styles.findAll", query = "SELECT s FROM Styles s")
     , @NamedQuery(name = "Styles.findByStyleId", query = "SELECT s FROM Styles s WHERE s.styleId = :styleId")
-    , @NamedQuery(name = "Styles.findByPStyle", query = "SELECT s FROM Styles s WHERE s.pStyle = :pStyle")})
+    , @NamedQuery(name = "Styles.findByStyleName", query = "SELECT s FROM Styles s WHERE s.styleName = :styleName")})
 public class Styles implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,8 +36,8 @@ public class Styles implements Serializable {
     @Basic(optional = false)
     @Column(name = "styleId")
     private Integer styleId;
-    @Column(name = "pStyle")
-    private String pStyle;
+    @Column(name = "styleName")
+    private String styleName;
 
     public Styles() {
     }
@@ -54,12 +54,12 @@ public class Styles implements Serializable {
         this.styleId = styleId;
     }
 
-    public String getPStyle() {
-        return pStyle;
+    public String getStyleName() {
+        return styleName;
     }
 
-    public void setPStyle(String pStyle) {
-        this.pStyle = pStyle;
+    public void setStyleName(String styleName) {
+        this.styleName = styleName;
     }
 
     @Override

@@ -81,4 +81,40 @@ public class PropertiesDB {
         
         return propertyList;
     }
+    
+    public static List<Properties> getMostPopular() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findMostPopular", Properties.class);
+            propertyList = query.setMaxResults(5).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
+    
+    public static List<Properties> getAllProperties() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findAll", Properties.class);
+            propertyList = query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
 }

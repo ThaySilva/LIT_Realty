@@ -13,20 +13,16 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import src.db.AgentsDB;
 import src.db.PropertiesDB;
-import src.db.PropertytypesDB;
 import src.db.StylesDB;
-import src.entities.Agents;
 import src.entities.Properties;
-import src.entities.Propertytypes;
 import src.entities.Styles;
 
 /**
  *
  * @author Thaynara Silva
  */
-public class LoadIndexPage extends HttpServlet {
+public class LoadGalleryPage extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -43,24 +39,23 @@ public class LoadIndexPage extends HttpServlet {
         
         String address;
         
-        try{
+        try {
             List<String> cityList = PropertiesDB.getAllCities();
-            List<Styles> styleList = StylesDB.getAllStyles();
-            List<Properties> recentList = PropertiesDB.getNewestAdded();
-            List<Properties> propertyList = PropertiesDB.getRandomSeven();
-            List<Agents> agentsList = AgentsDB.getAll();
+            List<Styles> propertyStyles = StylesDB.getAllStyles();
+            List<Properties> mostPopular = PropertiesDB.getMostPopular();
+            List<Properties> propertyList = PropertiesDB.getAllProperties();
             
-            address = "/index.jsp";
+            address = "/gallery.jsp";
             request.setAttribute("cityList", cityList);
-            request.setAttribute("styleList", styleList);
-            request.setAttribute("recentProperties", recentList);
+            request.setAttribute("propertyStyles", propertyStyles);
+            request.setAttribute("mostPopular", mostPopular);
             request.setAttribute("propertyList", propertyList);
-            request.setAttribute("agents", agentsList);
         } catch (Exception ex) {
             address = "/error.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
+        dispatcher.forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

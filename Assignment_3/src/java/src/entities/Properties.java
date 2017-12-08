@@ -48,8 +48,13 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findByPrice", query = "SELECT p FROM Properties p WHERE p.price = :price")
     , @NamedQuery(name = "Properties.findByDateAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded = :dateAdded")
     , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")
-    , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")})
+    , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")
+    , @NamedQuery(name = "Properties.findMostPopular", query = "SELECT p FROM Properties p ORDER BY p.views DESC")})
 public class Properties implements Serializable {
+
+    @Basic(optional = false)
+    @Column(name = "views")
+    private int views;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -277,6 +282,14 @@ public class Properties implements Serializable {
     @Override
     public String toString() {
         return "src.entities.Properties[ id=" + id + " ]";
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
     
 }

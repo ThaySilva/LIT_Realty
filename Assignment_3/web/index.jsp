@@ -13,7 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>LIT Realty</title>
-        <meta name="author" content="Thaynara">
+        <meta name="author" content="Thaynara Silva">
         <meta name="keyword" content="html5, css, bootstrap, property, real-estate theme , bootstrap template">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Stylesheet Links -->
@@ -49,11 +49,8 @@
 
                 <div class="collapse navbar-collapse yamm" id="navigation">
                     <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="dropdown ymm-sw">
-                            <a href="index.jsp" class="dropdown-toggle active">Home</a>
-                        </li>
-
-                        <li class="wow"><a href="properties.html">Gallery</a></li>
+                        <li class="wow"><a href="index.jsp" class="dropdown-toggle active">Home</a></li>
+                        <li class="wow"><a href="LoadGalleryPage">Gallery</a></li>
                         <li class="wow"><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -78,10 +75,10 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <select name="type" class="selectpicker">
-                                        <option value="All">All Types</option>
-                                        <c:forEach items="${typeList}" var="type">
-                                            <option value="${type.typeName}">${type.typeName}</option>
+                                    <select name="style" class="selectpicker">
+                                        <option value="All">All Styles</option>
+                                        <c:forEach items="${styleList}" var="type">
+                                            <option value="${style.styleId}">${style.styleName}</option>
                                         </c:forEach>
                                     </select>
                                 </div>
@@ -129,7 +126,8 @@
                                         <div class="item-entry overflow">
                                             <h5><a href="LoadSinglePage?propertyID=${property.id}">${property.city}</a></h5>
                                             <div class="dot-hr"></div>
-                                            <span class="pull-left"><b>Area :</b> ${property.squarefeet}m </span>
+                                            <span class="pull-left"><b>Area :</b> 
+                                                <fmt:formatNumber value="${property.squarefeet}" type="number" maxFractionDigits="0"/>m<sup>2</sup> </span>
                                             <span class="proerty-price pull-right"><fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></span>
                                             <div class="property-icon">
                                                 <i class="fa fa-bed"></i>
@@ -163,7 +161,8 @@
                                     <div class="item-entry overflow">
                                         <h5><a href="LoadSinglePage?propertyID=${property.id}">${property.city}</a></h5>
                                         <div class="dot-hr"></div>
-                                        <span class="pull-left"><b>Area :</b> ${property.squarefeet}m </span>
+                                        <span class="pull-left"><b>Area :</b> 
+                                            <fmt:formatNumber value="${property.squarefeet}" type="number" maxFractionDigits="0"/>m<sup>2</sup> </span>
                                         <span class="proerty-price pull-right"><fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></span>
                                         <div class="property-icon">
                                             <i class="fa fa-bed"></i>
@@ -180,12 +179,12 @@
                         <div class="col-sm-6 col-md-3 p0">
                             <div class="box-tree more-proerty text-center">
                                 <div class="item-tree-icon">
-                                    <i class="fa fa-th"></i>
+                                    <a href="LoadGalleryPage"><i class="fa fa-th"></i></a>
                                 </div>
                                 <div class="more-entry overflow">
-                                    <h5><a href="LoadGallery">CAN'T DECIDE ? </a></h5>
+                                    <h5><a href="LoadGalleryPage">CAN'T DECIDE ? </a></h5>
                                     <h5 class="tree-sub-ttl">Show all properties</h5>
-                                    <a href="LoadGallery"><button class="btn border-btn more-black" value="All properties">All properties</button></a>
+                                    <a href="LoadGalleryPage"><button class="btn border-btn more-black" value="All properties">All properties</button></a>
                                 </div>
                             </div>
                         </div>
@@ -238,7 +237,7 @@
                         <div class="bottom-menu pull-right"> 
                             <ul> 
                                 <li><a class="wow" href="index.jsp">Home</a></li>
-                                <li><a class="wow" href="LoadGallery">Gallery</a></li>
+                                <li><a class="wow" href="LoadGalleryPage">Gallery</a></li>
                                 <li><a class="wow" href="#">Contact Us</a></li>
                             </ul> 
                         </div>
