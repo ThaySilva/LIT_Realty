@@ -47,7 +47,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findByPhoto", query = "SELECT p FROM Properties p WHERE p.photo = :photo")
     , @NamedQuery(name = "Properties.findByPrice", query = "SELECT p FROM Properties p WHERE p.price = :price")
     , @NamedQuery(name = "Properties.findByDateAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded = :dateAdded")
-    , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")})
+    , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")
+    , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")})
 public class Properties implements Serializable {
 
     private static final long serialVersionUID = 1L;

@@ -5,9 +5,14 @@
  */
 package src.db;
 
+import java.time.Duration;
+import java.time.Instant;
+import java.util.Date;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
+import src.entities.Properties;
 
 /**
  *
@@ -31,5 +36,49 @@ public class PropertiesDB {
         }
         
         return cityList;
+    }
+    
+    public static List<Properties> getNewestAdded() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        Instant now = Instant.now();
+        Instant sevenDaysBefore = now.minus(Duration.ofDays(7));
+        Date earliestDate = Date.from(sevenDaysBefore);
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findRecentlyAdded", Properties.class);
+            query.setParameter("dateAdded", earliestDate);
+            propertyList = query.setMaxResults(4).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
+    
+    public static List<Properties> getRandomSeven() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        Random rand = new Random();
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findAll", Properties.class);
+            int size = query.getResultList().size();
+            int n = rand.nextInt(size) + 1;
+            propertyList = query.setFirstResult(n).setMaxResults(7).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
     }
 }

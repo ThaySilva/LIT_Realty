@@ -70,7 +70,7 @@ p {
     margin:0;
 }
 a {
-    color: #d27e04;
+    color: #9B9B9B;
     outline: 0;
     font-weight: bold;
     -webkit-transition: all .8s ease;
@@ -78,7 +78,7 @@ a {
 } 
 a:hover {
     text-decoration: none;
-    color: #1f2222;
+    color: #2e71ec;
     -webkit-transition: all .8s ease;
     transition: all .8s ease;
 }
@@ -306,7 +306,7 @@ input[type="search"]::-webkit-search-decoration {
 }
 .btn-default:hover, .btn-default:focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
     color: #000;
-    background-color: #FDC600;
+    background-color: #EE2D20;
     border-color: #F0F0F0;
     font-weight: 600;
 }
@@ -439,7 +439,7 @@ input[type="search"]::-webkit-search-decoration {
     border-left: 0 none;
 }
 .search-btn ,.toggle-btn{
-    background-color: #FDC600;
+    background-color: #EE2D20;
     color: #333;
     font-size: 16px;
     border: 1px solid #EAE9E9;
@@ -612,7 +612,7 @@ label small{
 .pagination.ct-orange > .active > a, .pagination.ct-orange > .active > span, .pagination.ct-orange > .active > a:hover,
 
 .pagination.ct-orange > .active > span:hover, .pagination.ct-orange > .active > a:focus, .pagination.ct-orange > .active > span:focus{
-    background-color: #FDC600;
+    background-color: #EE2D20;
 }
 .nav-pills.ct-red > li.active > a, .nav-pills.ct-red > li.active > a:hover, .nav-pills.ct-red > li.active > a:focus,
 .pagination.ct-red > .active > a, .pagination.ct-red > .active > span, .pagination.ct-red > .active > a:hover,
@@ -1008,16 +1008,16 @@ label small{
 
 .slider-area{
     position: relative;
-    height: 630px
+    height: 500px
 }
-#bg-slider .item img{
+.slider .item img{
     width: 100%;
-    height: 630px
+    height: 500px
 }
 
 .slider-content{
     position: absolute;
-    top: 60%;
+    top: 80%;
     text-align: center;
     color: #FFF;
     width: 100%;
@@ -1114,10 +1114,10 @@ page-header
     color:#777;
 }
 .layout-switcher a:hover{     
-    color:#FDC600;
+    color:#EE2D20;
 }
 .layout-switcher .active{
-    color:#FDC600;
+    color:#EE2D20;
 }
 .layout-switcher {
     padding: 0px 10px;
@@ -1515,8 +1515,8 @@ Asside widgets CSS
 }
 .testimonial .item .client-face {
     position: absolute;
-    top: 112px;
-    right: 146px;
+    top: 105px;
+    right: 15px;
     text-align: center;
 }
 .client-face > img {
@@ -1524,7 +1524,7 @@ Asside widgets CSS
     border-radius: 50%;
 }
 .testimonial .owl-theme .owl-controls .owl-page span{
-    background: #FDC600
+    background: #EE2D20
 }
 .client-text {
     border-radius: 2px;
@@ -2223,6 +2223,12 @@ single property page
 /*=====================================
 Welcom 
 ======================================*/
+.map iframe{
+	width:100%;
+	min-height:400px;
+	border:none;
+}
+
 .Welcome-area{
     background: #F3F3F3 url("../../assets/img/welcome-bg.png") no-repeat scroll left top;
     position: relative;
@@ -2440,7 +2446,7 @@ count-area
     padding-top:35%; 
 }
 .box-tree .item-tree-icon i:hover{
-    color: #D27E04;  
+    color: #EE2D20;  
 }
 .box-for{
     padding: 10px 0px;
@@ -2468,7 +2474,7 @@ count-area
 
 }
 .border-btn:hover,.border-btn:focus{
-
+    color: #EE2D20;
 }
 .item-entry a {
     color: #000;
@@ -2800,19 +2806,19 @@ padding-bottom: 15px;
 /*FOOOTER*/
 .footer-area{
 border-top: 1px solid #D1D1D1;
-background: #555 url("../../assets/img/bg-footer.jpg") repeat scroll 0% 0%;
+background: #fff;
 color: #535353;
 }
 .footer{
 padding: 0px 0px 60px;
-background: rgba(255, 255, 255, 0.89) none repeat scroll 0% 0%;
+background: #fff;
 }
 .footer ul li i { 
     padding-right: 10px;
     color: #000;
 } 
 .footer-copy{
-    background: rgba(213, 213, 213, 0.9) none repeat scroll 0% 0%;
+    background: #fff;
     border-top: 0.051px solid rgba(162, 162, 162, 0.46);
     padding-bottom: 0px;
     padding-bottom: 7px;
@@ -2880,7 +2886,7 @@ text-transform: uppercase;
 font-size: 13px;
 }
 .footer ul li a:hover{
-    color: #FDC600;
+    color: #EE2D20;
     text-decoration: none;
 }
 .footer-menu li{
@@ -2977,12 +2983,12 @@ ul.footer-blog li {
     padding-bottom: 0.3em;
 }
 .social  ul li a:hover {
-    color: #FDC600;
+    color: #EE2D20;
 order-color: #868686;
 background-color: #868686;
 }
 .social  ul li a:hover i{
-   color: #FDC600;  
+   color: #EE2D20;  
 }
 .social ul li a{
 display: block;
@@ -3013,7 +3019,7 @@ padding: 10px;
     font-weight: 500;
 }
 .bottom-menu ul li a:hover{
-    color: #FFC600;
+    color: #EE2D20;
 }
 /* Preloader */
 

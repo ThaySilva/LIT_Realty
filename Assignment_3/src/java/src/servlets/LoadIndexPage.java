@@ -13,7 +13,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import src.db.AgentsDB;
 import src.db.PropertiesDB;
+import src.db.PropertytypesDB;
+import src.entities.Agents;
+import src.entities.Properties;
+import src.entities.Propertytypes;
 
 /**
  *
@@ -38,9 +43,17 @@ public class LoadIndexPage extends HttpServlet {
         
         try{
             List<String> cityList = PropertiesDB.getAllCities();
+            List<Propertytypes> typeList = PropertytypesDB.getAllTypes();
+            List<Properties> recentList = PropertiesDB.getNewestAdded();
+            List<Properties> propertyList = PropertiesDB.getRandomSeven();
+            List<Agents> agentsList = AgentsDB.getAll();
             
             address = "/index.jsp";
             request.setAttribute("cityList", cityList);
+            request.setAttribute("typeList", typeList);
+            request.setAttribute("recentProperties", recentList);
+            request.setAttribute("propertyList", propertyList);
+            request.setAttribute("agents", agentsList);
         } catch (Exception ex) {
             address = "/error.jsp";
         }
