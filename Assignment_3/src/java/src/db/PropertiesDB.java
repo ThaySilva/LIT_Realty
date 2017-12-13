@@ -7,12 +7,14 @@ package src.db;
 
 import java.time.Duration;
 import java.time.Instant;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import src.entities.Properties;
+import src.entities.Styles;
 
 /**
  *
@@ -109,6 +111,94 @@ public class PropertiesDB {
             em = DBUtil.getEmf().createEntityManager();
             query = em.createNamedQuery("Properties.findAll", Properties.class);
             propertyList = query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
+    
+    public static List<Properties> getPropertiesIndexSearch(String location, String style, String priceRange){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        List<Properties> update = new ArrayList<>();
+        String priceMin = null;
+        String priceMax = null;
+        int styleId = 0;
+        
+        switch(priceRange){
+            case "bellow75000":
+                priceMin = null;
+                priceMax = "75000";
+                break;
+            case "75000To250000":
+                priceMin = "75000";
+                priceMax = "250000";
+                break;
+            case "250000To425000":
+                priceMin = "250000";
+                priceMax = "425000";
+                break;
+            case "425000To600000":
+                priceMin = "425000";
+                priceMax = "600000";
+                break;
+            case "over600000":
+                priceMin = "600000";
+                priceMax = null;
+                break;
+            default:
+                break;
+        }
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            
+            if(location.equals("All")){
+                query = em.createNamedQuery("Properties.findAll", Properties.class);
+                propertyList = query.getResultList();
+            } else {
+                query = em.createNamedQuery("Properties.findByCity", Properties.class);
+                query.setParameter("city", location);
+                propertyList = query.getResultList();
+            }
+            
+            if(!priceRange.equals("All")){
+                if(priceMin == null){
+                    for(Properties p : propertyList){
+                        if(!(p.getPrice() <= Double.parseDouble(priceMax))){
+                            update.add(p);
+                        }
+                    }
+                } else if(priceMax == null) {
+                    for(Properties p : propertyList){
+                        if(!(p.getPrice() >= Double.parseDouble(priceMin))){
+                            update.add(p);
+                        }
+                    }
+                } else {
+                    for(Properties p : propertyList){
+                        if(!(p.getPrice() >= Double.parseDouble(priceMin) && p.getPrice() <= Double.parseDouble(priceMax))){
+                            update.add(p);
+                        }
+                    }
+                }
+                propertyList.removeAll(update);
+            }
+            
+            if(!style.equals("All")){
+                styleId = Integer.parseInt(style);
+                
+                for(Properties p : propertyList){
+                    if(!(p.getStyleId().equals(styleId))){
+                        update.add(p);
+                    }
+                }
+                propertyList.removeAll(update);
+            }
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {

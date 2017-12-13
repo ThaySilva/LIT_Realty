@@ -8,6 +8,10 @@
         <servlet-name>LoadGalleryPage</servlet-name>
         <servlet-class>src.servlets.LoadGalleryPage</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>PropertiesIndexSearch</servlet-name>
+        <servlet-class>src.servlets.PropertiesIndexSearch</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -15,6 +19,10 @@
     <servlet-mapping>
         <servlet-name>LoadGalleryPage</servlet-name>
         <url-pattern>/LoadGalleryPage</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PropertiesIndexSearch</servlet-name>
+        <url-pattern>/PropertiesIndexSearch</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

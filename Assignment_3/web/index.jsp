@@ -77,7 +77,7 @@
                                 <div class="form-group">
                                     <select name="style" class="selectpicker">
                                         <option value="All">All Styles</option>
-                                        <c:forEach items="${styleList}" var="type">
+                                        <c:forEach items="${styleList}" var="style">
                                             <option value="${style.styleId}">${style.styleName}</option>
                                         </c:forEach>
                                     </select>
