@@ -77,7 +77,14 @@
                                                     <select name="city" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select a Location">
                                                         <option value="All">All Locations</option>
                                                         <c:forEach items="${cityList}" var="city">
-                                                            <option value="${city}">${city}</option>
+                                                            <c:choose>
+                                                                <c:when test="${selectedCity.equals(city)}">
+                                                                    <option value="${city}" selected="selected">${city}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${city}">${city}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </c:forEach>
                                                     </select>
                                                 </div>
@@ -89,7 +96,14 @@
                                                     <select name="style" class="selectpicker" title="Select a Style">
                                                         <option value="All">All Styles</option>
                                                         <c:forEach items="${propertyStyles}" var="style">
-                                                            <option value="${style.styleId}">${style.styleName}</option>
+                                                            <c:choose>
+                                                                <c:when test="${selectedStyle.equals(style.styleId)}">
+                                                                    <option value="${style.styleId}" selected="selected">${style.styleName}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${style.styleId}">${style.styleName}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
                                                         </c:forEach>
                                                     </select>
                                                 </div>

@@ -14,7 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import src.db.PropertiesDB;
+import src.db.StylesDB;
 import src.entities.Properties;
+import src.entities.Styles;
 
 /**
  *
@@ -40,6 +42,8 @@ public class PropertiesIndexSearch extends HttpServlet {
         
         try {
             address = "/gallery.jsp";
+            List<String> cityList = PropertiesDB.getAllCities();
+            List<Styles> propertyStyles = StylesDB.getAllStyles();
             
             String location = request.getParameter("city");
             String style = request.getParameter("style");
@@ -52,6 +56,10 @@ public class PropertiesIndexSearch extends HttpServlet {
             }
             
             request.setAttribute("propertyList", propertyList);
+            request.setAttribute("propertyStyles", propertyStyles);
+            request.setAttribute("cityList", cityList);
+            request.setAttribute("selectedCity", location);
+            request.setAttribute("selectedStyle", Integer.parseInt(style));
         } catch (Exception ex) {
             address = "/error.jsp";
         }
