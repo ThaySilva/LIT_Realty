@@ -1697,6 +1697,7 @@ proerty-th
 }
 .proerty-th .proerty-item{
     background-color: #FFF; 
+    height: 380px;
     margin: 10px;
 }
 .proerty-th .proerty-item .item-thumb{
@@ -1714,8 +1715,8 @@ proerty-th
     position: relative;
     width:100%;
     opacity: 0.7;
-    min-height: 225px;
-    max-height: 265px;
+    min-height: 250px;
+    max-height: 250px;
 }
 .proerty-th .proerty-item  .item-entry{
     padding: 8px;
