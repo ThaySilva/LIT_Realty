@@ -70,11 +70,11 @@
                                     <h3 class="panel-title">Refine Search</h3>
                                 </div>
                                 <div class="panel-body search-widget">
-                                    <form action="" class="form-inline"> 
+                                    <form action="RefinedSearch" method="post" class="form-inline"> 
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <select name="city" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select a Location">
+                                                    <select name="city" class="selectpicker" data-live-search="true" data-live-search-style="begins" title="Select Location">
                                                         <option value="All">All Locations</option>
                                                         <c:forEach items="${cityList}" var="city">
                                                             <c:choose>
@@ -93,7 +93,7 @@
                                         <fieldset>
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <select name="style" class="selectpicker" title="Select a Style">
+                                                    <select name="style" class="selectpicker" title="Select Style">
                                                         <option value="All">All Styles</option>
                                                         <c:forEach items="${propertyStyles}" var="style">
                                                             <c:choose>
@@ -109,31 +109,84 @@
                                                 </div>
                                             </div>
                                         </fieldset>
-                                        <fieldset class="padding-5">
+                                        <fieldset>
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <label for="price-range">Price range (&euro;):</label>
-                                                    <input type="text" class="span2" value="" data-slider-min="0" 
-                                                           data-slider-max="10000000" data-slider-step="5" 
-                                                           data-slider-value="[0,10000000]" id="price-range" ><br />
-                                                    <b class="pull-left color">
-                                                        <fmt:formatNumber value="0" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
-                                                    </b> 
-                                                    <b class="pull-right color">
-                                                        <fmt:formatNumber value="10000000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
-                                                    </b>                                                
+                                                    <select name="priceRange" class="selectpicker" title="Select Price Range">
+                                                        <option value="All">All Prices</option>
+                                                        <c:choose>
+                                                            <c:when test="${priceRange.equals('below75000')}">
+                                                                <option value="below75000" selected="selected">Under <fmt:formatNumber value="75000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="below75000">Under <fmt:formatNumber value="75000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <c:choose>
+                                                            <c:when test="${priceRange.equals('75000To250000')}">
+                                                                <option value="75000To250000" selected="selected"><fmt:formatNumber value="75000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="250000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="75000To250000"><fmt:formatNumber value="75000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="250000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <c:choose>
+                                                            <c:when test="${priceRange.equals('250000To425000')}">
+                                                                <option value="250000To425000" selected="selected"><fmt:formatNumber value="250000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="425000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="250000To425000"><fmt:formatNumber value="250000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="425000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <c:choose>
+                                                            <c:when test="${priceRange.equals('425000To600000')}">
+                                                                <option value="425000To600000" selected="selected"><fmt:formatNumber value="425000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="600000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="425000To600000"><fmt:formatNumber value="425000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/> - 
+                                                                    <fmt:formatNumber value="600000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                                </option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                        <c:choose>
+                                                            <c:when test="${priceRange.equals('over600000')}">
+                                                                <option value="over600000" selected="selected">Over <fmt:formatNumber value="600000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></option>
+                                                            </c:when>
+                                                            <c:otherwise>
+                                                                <option value="over600000">Over <fmt:formatNumber value="600000" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></option>
+                                                            </c:otherwise>
+                                                        </c:choose>
+                                                    </select>                                              
                                                 </div>                                           
                                             </div>
                                         </fieldset>                                
-                                        <fieldset class="padding-5">
+                                        <fieldset>
                                             <div class="row">
                                                 <div class="col-xs-12">
-                                                    <label for="price-range">Square Footage :</label>
-                                                    <input type="text" class="span2" value="" data-slider-min="0" 
-                                                           data-slider-max="600" data-slider-step="5" 
-                                                           data-slider-value="[0,10000]" id="min-baths" ><br />
-                                                    <b class="pull-left color">0</b> 
-                                                    <b class="pull-right color">10000</b>                                                
+                                                    <select name="footage" class="selectpicker" title="Select Square Footage">
+                                                        <option value="All">All Sizes</option>
+                                                        <option value="under1000">Under <fmt:formatNumber value="1000" type="number" maxFractionDigits="0"/> sq. ft.</option>
+                                                        <option value="1000To2000"><fmt:formatNumber value="1000" type="number" maxFractionDigits="0"/> - 
+                                                            <fmt:formatNumber value="2000" type="number" maxFractionDigits="0"/> sq. ft.
+                                                        </option>
+                                                        <option value="2000To3000"><fmt:formatNumber value="2000" type="number" maxFractionDigits="0"/> - 
+                                                            <fmt:formatNumber value="3000" type="number" maxFractionDigits="0"/> sq. ft.
+                                                        </option>
+                                                        <option value="3000To5000"><fmt:formatNumber value="3000" type="number" maxFractionDigits="0"/> - 
+                                                            <fmt:formatNumber value="5000" type="number" maxFractionDigits="0"/> sq. ft.
+                                                        </option>
+                                                        <option value="over5000">Over <fmt:formatNumber value="5000" type="number" maxFractionDigits="0"/> sq. ft.</option>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </fieldset>
@@ -141,6 +194,7 @@
                                             <div class="row">
                                                 <div class="col-xs-12">
                                                     <select name="bedrooms" class="selectpicker" title="Select Number of Bedrooms">
+                                                        <option value="All">Any</option>
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -169,9 +223,9 @@
                                         <c:forEach items="${mostPopular}" var="property">
                                             <li>
                                                 <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                    <a href="single.html"><img src="assets/images/properties/thumbs/${property.photo}"></a>
+                                                    <a href="single.html"><img class="image" src="assets/images/properties/thumbs/${property.photo}"></a>
                                                     <span class="property-seeker">
-                                                        <b class="b-1">${property.berRating}</b>
+                                                        <b class="b-1"><img src="assets/images/BER/${property.berRating}.png"></b>
                                                     </span>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
@@ -210,7 +264,7 @@
                                                     <i class="fa fa-bed"></i>
                                                     ${property.bedrooms} | 
                                                     <i class="fa fa-shower"></i>
-                                                    <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="0"/> | 
+                                                    <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="1"/> | 
                                                     <i class="fa fa-car"></i>
                                                     ${property.garagesize}
                                                 </div>

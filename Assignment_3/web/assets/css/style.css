@@ -1548,6 +1548,10 @@ padding: 0 0 0.5em;
 .p0{
     padding: 0px;
 }
+.p0 .image{
+    width: 175px;
+    height: 75px;
+}
 .overflow{
     overflow: hidden;
 }
@@ -1923,8 +1927,7 @@ recent-property-widget
     color: #FFF;
 }
 .recent-property-widget ul li .property-seeker .b-1 {
-    background-color: #D5F500;
-    padding: 0px 6px;
+    padding: -4px 3px;
 }
 .recent-property-widget ul li .property-seeker .b-2 {
     background-color: #FDC600;

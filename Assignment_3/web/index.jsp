@@ -133,7 +133,7 @@
                                                 <i class="fa fa-bed"></i>
                                                 ${property.bedrooms} | 
                                                 <i class="fa fa-shower"></i>
-                                                <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="0"/> | 
+                                                <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="1"/> | 
                                                 <i class="fa fa-car"></i>
                                                 ${property.garagesize}
                                             </div>
@@ -168,7 +168,7 @@
                                             <i class="fa fa-bed"></i>
                                             ${property.bedrooms} | 
                                             <i class="fa fa-shower"></i>
-                                            <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="0"/> | 
+                                            <fmt:formatNumber value="${property.bathrooms}" type="number" maxFractionDigits="1"/> | 
                                             <i class="fa fa-car"></i>
                                             ${property.garagesize}
                                         </div>

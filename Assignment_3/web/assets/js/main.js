@@ -66,7 +66,7 @@ $(document).ready(function () {
 
     $('#price-range').slider();
     $('#property-geo').slider();
-    $('#min-baths').slider();
+    $('#footage-slider').slider();
     $('#min-bed').slider();
 
     var RGBChange = function () {

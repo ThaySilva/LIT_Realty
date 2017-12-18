@@ -22,7 +22,7 @@ import src.entities.Styles;
  *
  * @author Thaynara Silva
  */
-public class PropertiesIndexSearch extends HttpServlet {
+public class RefinedSearch extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,34 +40,33 @@ public class PropertiesIndexSearch extends HttpServlet {
         String address;
         List<Properties> propertyList = null;
         
-        try {
+        try{
             address = "/gallery.jsp";
             List<String> cityList = PropertiesDB.getAllCities();
             List<Styles> propertyStyles = StylesDB.getAllStyles();
             List<Properties> mostPopular = PropertiesDB.getMostPopular();
-            
-            String location = request.getParameter("city");
+            String city = request.getParameter("city");
+            if(city.equals("")){city="All";}
             String style = request.getParameter("style");
-            String priceRange = request.getParameter("price");
+            if(style.equals("")){style="All";}
+            String priceRange = request.getParameter("priceRange");
+            if(priceRange.equals("")){priceRange="All";}
+            String footageRange = request.getParameter("footage");
+            if(footageRange.equals("")){footageRange="All";}
+            String bedrooms = request.getParameter("bedrooms");
+            if(bedrooms.equals("")){bedrooms="All";}
             
-            if(location.equals("All") && style.equals("All") && priceRange.equals("All")){
+            if(city.equals("All") && style.equals("All") && priceRange.equals("All") && footageRange.equals("All") && bedrooms.equals("All")){
                 propertyList = PropertiesDB.getAllProperties();
             } else {
-                propertyList = PropertiesDB.getPropertiesIndexSearch(location, style, priceRange);
+                propertyList = PropertiesDB.getPropertiesRefinedSearch(city, style, priceRange, footageRange, bedrooms);
             }
             
-            request.setAttribute("propertyList", propertyList);
-            request.setAttribute("mostPopular", mostPopular);
-            request.setAttribute("propertyStyles", propertyStyles);
             request.setAttribute("cityList", cityList);
-            request.setAttribute("selectedCity", location);
-            if(!style.equals("All")){
-                request.setAttribute("selectedStyle", Integer.parseInt(style));
-            }
-            if(!priceRange.equals("All")){
-                request.setAttribute("priceRange", priceRange);
-            }
-        } catch (Exception ex) {
+            request.setAttribute("propertyStyles", propertyStyles);
+            request.setAttribute("mostPopular", mostPopular);
+            request.setAttribute("propertyList", propertyList);
+        } catch (Exception ex){
             address = "/error.jsp";
         }
         
