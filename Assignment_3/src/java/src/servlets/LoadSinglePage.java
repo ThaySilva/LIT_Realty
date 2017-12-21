@@ -15,10 +15,12 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import src.db.AgentsDB;
 import src.db.GaragetypesDB;
 import src.db.PropertiesDB;
 import src.db.PropertytypesDB;
 import src.db.StylesDB;
+import src.entities.Agents;
 import src.entities.Garagetypes;
 import src.entities.Properties;
 import src.entities.Propertytypes;
@@ -52,6 +54,15 @@ public class LoadSinglePage extends HttpServlet {
             Styles propertyStyle = StylesDB.getStyleByID(property.getStyleId());
             Propertytypes propertyType = PropertytypesDB.getTypeByID(property.getTypeId());
             Garagetypes propertyGarage = GaragetypesDB.getGarageByID(property.getGarageId());
+            Agents propertyAgent = AgentsDB.getAgentByID(property.getAgentId());
+            List<Properties> similarProperties = PropertiesDB.getSimilarProperties(property.getCity(), id);
+            
+            String propertyAddress = property.getStreet();
+            propertyAddress = propertyAddress.replaceAll(", ", ",");
+            propertyAddress = propertyAddress.replaceAll(" ","+");
+            String city = property.getCity();
+            city = city.replaceAll(" ", "");
+            propertyAddress += "," + city;
             
             String path = "assets/images/properties/large/%s/";
             String filePath = String.format(path, property.getListingNum());
@@ -69,6 +80,9 @@ public class LoadSinglePage extends HttpServlet {
             request.setAttribute("propertyStyle", propertyStyle);
             request.setAttribute("propertyType", propertyType);
             request.setAttribute("propertyGarage", propertyGarage);
+            request.setAttribute("propertyAgent", propertyAgent);
+            request.setAttribute("similarProperties", similarProperties);
+            request.setAttribute("propertyAddress", propertyAddress);
             address = "/single.jsp";
         } catch (Exception ex) {
             address = "/error.jsp";

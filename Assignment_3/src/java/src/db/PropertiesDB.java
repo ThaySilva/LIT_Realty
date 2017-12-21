@@ -386,4 +386,23 @@ public class PropertiesDB {
         return property;
     }
     
+    public static List<Properties> getSimilarProperties(String city, int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findSimilar", Properties.class);
+            query.setParameter("city", city);
+            query.setParameter("id", id);
+            propertyList = query.setMaxResults(4).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
 }

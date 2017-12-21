@@ -172,7 +172,10 @@
                             <div class="section property-video"> 
                                 <h4 class="s-property-title">Property Location</h4> 
                                 <div class="map">
-                                   <script src='https://maps.googleapis.com/maps/api/js?v=3.exp&key= AIzaSyAPh4dt9nl_uYKIkwRsZK1w1PoR9lcR0Gs '></script><div style='overflow:hidden;height:400px;width:520px;'><div id='gmap_canvas' style='height:400px;width:520px;'></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div> <a href='https://acadooghostwriter.com/'>https://acadooghostwriter.com</a> <script type='text/javascript' src='https://embedmaps.com/google-maps-authorization/script.js?id=b6b956fc243ae0b3ca5f91b1973be3ccf255bf81'></script><script type='text/javascript'>function init_map(){var myOptions = {zoom:12,center:new google.maps.LatLng(53.3821915,-6.237797199999932),mapTypeId: google.maps.MapTypeId.ROADMAP};map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);marker = new google.maps.Marker({map: map,position: new google.maps.LatLng(53.3821915,-6.237797199999932)});infowindow = new google.maps.InfoWindow({content:'<strong></strong><br>33 Beaumont Road, Beaumont<br> Dublin 9<br>'});google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});infowindow.open(map,marker);}google.maps.event.addDomListener(window, 'load', init_map);</script>
+                                    <iframe
+                                      src="https://www.google.com/maps/embed/v1/place?key=AIzaSyAPh4dt9nl_uYKIkwRsZK1w1PoR9lcR0Gs
+                                        &q=${propertyAddress}" allowfullscreen>
+                                    </iframe>
                                 </div>
                             </div>
                         </div>
@@ -183,16 +186,15 @@
                             <div class="dealer-widget">
                                 <div class="dealer-content">
                                     <div class="inner-wrapper">
-
                                         <div class="clear">
                                             <div class="col-xs-4 col-sm-4 dealer-face">
                                                 <a href="">
-                                                    <img src="assets/img/client-face1.png" class="img-circle">
+                                                    <img src="assets/images/agents/${propertyAgent.agentId}.jpg" class="img-circle">
                                                 </a>
                                             </div>
                                             <div class="col-xs-8 col-sm-8 ">
                                                 <h3 class="dealer-name">
-                                                    <a href="">Nathan James</a>
+                                                    <a href="">${propertyAgent.name}</a><br>
                                                     <span>Real Estate Agent</span>        
                                                 </h3>
                                                 <div class="dealer-social-media">
@@ -215,84 +217,45 @@
 
                                             </div>
                                         </div>
-
                                         <div class="clear">
                                             <ul class="dealer-contacts">                                       
-                                                <li><i class="pe-7s-map-marker strong"> </i> 9089 your adress her</li>
-                                                <li><i class="pe-7s-mail strong"> </i> email@yourcompany.com</li>
-                                                <li><i class="pe-7s-call strong"> </i> +1 908 967 5906</li>
+                                                <li><i class="fa fa-phone"> </i>${propertyAgent.phone}</li>
+                                                <li><i class="fa fa-fax"> </i> ${propertyAgent.fax}</li>
+                                                <li><i class="fa fa-envelope"> </i><a href="mailto:${propertyAgent.email}"> ${propertyAgent.email}</a></li>
                                             </ul>
-                                            <p>Duis mollis  blandit tempus porttitor curabiturDuis mollis  blandit tempus porttitor curabitur , est non…</p>
                                         </div>
 
                                     </div>
                                 </div>
                             </div>
-
-
-                            <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Similar Properties</h3>
+                            <c:if test="${fn:length(similarProperties) > 0}">
+                                <div class="panel panel-default sidebar-menu similar-property-wdg wow fadeInRight animated">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">Similar Properties</h3>
+                                    </div>
+                                    <div class="panel-body recent-property-widget">
+                                        <ul>
+                                            <c:forEach items="${similarProperties}" var="property">
+                                                <li>
+                                                    <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
+                                                        <a href="LoadSinglePage?propertyId=${property.id}">
+                                                            <img src="assets/images/properties/thumbs/${property.photo}"></a>
+                                                        <span class="property-seeker">
+                                                            <b class="b-1"><img src="assets/images/BER/${property.berRating}.png"></b>
+                                                        </span>
+                                                    </div>
+                                                    <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
+                                                        <h6> <a href="LoadSinglePage?propertyId=${property.id}">${property.city} </a></h6>
+                                                        <span class="property-price">
+                                                            <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
+                                                        </span>
+                                                    </div>
+                                                </li>
+                                            </c:forEach>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="panel-body recent-property-widget">
-                                    <ul>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-1.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-3.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
+                            </c:if>
 
 
 

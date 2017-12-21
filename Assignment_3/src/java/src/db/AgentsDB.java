@@ -33,4 +33,23 @@ public class AgentsDB {
         
         return agentsList;
     }
+    
+    public static Agents getAgentByID(int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        Agents agent = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Agents.findByAgentId", Agents.class);
+            query.setParameter("agentId", id);
+            agent = (Agents) query.getSingleResult();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return agent;
+    }
 }
