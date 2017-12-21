@@ -119,12 +119,12 @@
                                 <div class="col-sm-6 col-md-3 p0">
                                     <div class="box-two proerty-item">
                                         <div class="item-thumb">
-                                            <a href="LoadSinglePage?propertyID=${property.id}">
+                                            <a href="LoadSinglePage?propertyId=${property.id}">
                                                 <img src="assets/images/properties/thumbs/${property.photo}">
                                             </a>
                                         </div>
                                         <div class="item-entry overflow">
-                                            <h5><a href="LoadSinglePage?propertyID=${property.id}">${property.city}</a></h5>
+                                            <h5><a href="LoadSinglePage?propertyId=${property.id}">${property.city}</a></h5>
                                             <div class="dot-hr"></div>
                                             <span class="pull-left"><b>Area :</b> 
                                                 <fmt:formatNumber value="${property.squarefeet}" type="number" maxFractionDigits="0"/>m<sup>2</sup> </span>
@@ -154,12 +154,12 @@
                             <div class="col-sm-6 col-md-3 p0">
                                 <div class="box-two proerty-item">
                                     <div class="item-thumb">
-                                        <a href="LoadSinglePage?propertyID=${property.id}">
+                                        <a href="LoadSinglePage?propertyId=${property.id}">
                                             <img src="assets/images/properties/thumbs/${property.photo}" height="250" width="250">
                                         </a>
                                     </div>
                                     <div class="item-entry overflow">
-                                        <h5><a href="LoadSinglePage?propertyID=${property.id}">${property.city}</a></h5>
+                                        <h5><a href="LoadSinglePage?propertyId=${property.id}">${property.city}</a></h5>
                                         <div class="dot-hr"></div>
                                         <span class="pull-left"><b>Area :</b> 
                                             <fmt:formatNumber value="${property.squarefeet}" type="number" maxFractionDigits="0"/>m<sup>2</sup> </span>

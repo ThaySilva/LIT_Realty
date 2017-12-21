@@ -33,4 +33,23 @@ public class PropertytypesDB {
         
         return typeList;
     }
+    
+    public static Propertytypes getTypeByID(int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        Propertytypes propertyType = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Propertytypes.findByTypeId", Propertytypes.class);
+            query.setParameter("typeId", id);
+            propertyType = (Propertytypes) query.getSingleResult();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyType;
+    }
 }

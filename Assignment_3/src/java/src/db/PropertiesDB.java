@@ -367,4 +367,23 @@ public class PropertiesDB {
         
         return propertyList;
     }
+    
+    public static Properties getPropertyByID(int id){
+        EntityManager em = null;
+        TypedQuery query = null;
+        Properties property = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findById", Properties.class);
+            query.setParameter("id", id);
+            property = (Properties) query.getSingleResult();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        return property;
+    }
+    
 }

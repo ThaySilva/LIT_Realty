@@ -16,6 +16,14 @@
         <servlet-name>RefinedSearch</servlet-name>
         <servlet-class>src.servlets.RefinedSearch</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadSinglePage</servlet-name>
+        <servlet-class>src.servlets.LoadSinglePage</servlet-class>
+        <init-param>
+            <param-name>propertyId</param-name>
+            <param-value>Value</param-value>
+        </init-param>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -31,6 +39,10 @@
     <servlet-mapping>
         <servlet-name>RefinedSearch</servlet-name>
         <url-pattern>/RefinedSearch</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadSinglePage</servlet-name>
+        <url-pattern>/LoadSinglePage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

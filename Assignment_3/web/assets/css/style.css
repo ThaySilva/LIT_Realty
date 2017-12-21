@@ -1979,8 +1979,8 @@ single property page
     padding: 15px;
 }
 .favorite-and-print .add-to-fav {
-    color: #FFF;
-    border: 2px solid #FFF;
+    color: #EE2D20;
+    border: 2px solid #EE2D20;
     border-radius: 50%;
     height: 35px;
     margin-right: 10px;
@@ -1994,8 +1994,8 @@ single property page
     padding: 10px 7px 4px 7px;
 }
 .favorite-and-print .add-to-fav:hover  ,.favorite-and-print  .printer-icon:hover  {
-    color:#FDC600;
-    border-color: #FDC600;
+    color:rgb(20, 20, 20);
+    border-color: rgb(20, 20, 20);
 }
 .favorite-and-print .add-to-fav i ,.favorite-and-print  .printer-icon i  { 
     font-size: 25px;
@@ -2020,7 +2020,7 @@ single property page
     letter-spacing: 3px;
 }
 .single-property-header .property-price{
-    color: #FFA500;
+    color: #EE2D20;
     font-size: 30px;
     letter-spacing: 1.5px;
     right: 0px;
@@ -2032,7 +2032,7 @@ single property page
 }
 .s-property-title {
     margin-bottom: 15px;
-    color: #FFA500;
+    color: #EE2D20;
     font-size: 18px;
 }
 
@@ -2085,9 +2085,6 @@ single property page
     background-color: #A5A5A5;
     margin: 0px;
     color: #FFF;
-}
-.add-d-title:hover {
-    background-color: #727272;
 }
 
 .sidebar-property{

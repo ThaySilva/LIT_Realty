@@ -33,4 +33,23 @@ public class StylesDB {
         
         return propertyStyles;
     }
+    
+    public static Styles getStyleByID(int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        Styles propertyStyle = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Styles.findByStyleId", Styles.class);
+            query.setParameter("styleId", id);
+            propertyStyle = (Styles) query.getSingleResult();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyStyle;
+    }
 }

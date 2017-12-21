@@ -223,13 +223,13 @@
                                         <c:forEach items="${mostPopular}" var="property">
                                             <li>
                                                 <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                    <a href="single.html"><img class="image" src="assets/images/properties/thumbs/${property.photo}"></a>
+                                                    <a href="LoadSinglePage?propertyId=${property.id}"><img class="image" src="assets/images/properties/thumbs/${property.photo}"></a>
                                                     <span class="property-seeker">
                                                         <b class="b-1"><img src="assets/images/BER/${property.berRating}.png"></b>
                                                     </span>
                                                 </div>
                                                 <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                    <h6> <a href="single.html">${property.city} </a></h6>
+                                                    <h6> <a href="LoadSinglePage?propertyId=${property.id}">${property.city} </a></h6>
                                                     <span class="property-price">
                                                         <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
                                                     </span>
@@ -248,11 +248,11 @@
                                     <div class="col-sm-6 col-md-4 p0">
                                         <div class="box-two proerty-item">
                                             <div class="item-thumb">
-                                                <a href="property-1.html" ><img src="assets/images/properties/thumbs/${property.photo}"></a>
+                                                <a href="LoadSinglePage?propertyId=${property.id}" ><img src="assets/images/properties/thumbs/${property.photo}"></a>
                                             </div>
 
                                             <div class="item-entry overflow">
-                                                <h5><a href="property-1.html"> ${property.city}</a></h5>
+                                                <h5><a href="LoadSinglePage?propertyId=${property.id}"> ${property.city}</a></h5>
                                                 <div class="dot-hr"></div>
                                                 <span class="pull-left"><b> Area :</b> 
                                                     <fmt:formatNumber value="${property.squarefeet}" type="number" maxFractionDigits="0"/>m<sup>2</sup> </span>

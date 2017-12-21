@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Garagetypes.findAll", query = "SELECT g FROM Garagetypes g")
     , @NamedQuery(name = "Garagetypes.findByGarageId", query = "SELECT g FROM Garagetypes g WHERE g.garageId = :garageId")
-    , @NamedQuery(name = "Garagetypes.findByGType", query = "SELECT g FROM Garagetypes g WHERE g.gType = :gType")})
+    , @NamedQuery(name = "Garagetypes.findByGarageName", query = "SELECT g FROM Garagetypes g WHERE g.garageName = :garageName")})
 public class Garagetypes implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -36,8 +36,8 @@ public class Garagetypes implements Serializable {
     @Basic(optional = false)
     @Column(name = "garageId")
     private Integer garageId;
-    @Column(name = "gType")
-    private String gType;
+    @Column(name = "garageName")
+    private String garageName;
 
     public Garagetypes() {
     }
@@ -54,12 +54,12 @@ public class Garagetypes implements Serializable {
         this.garageId = garageId;
     }
 
-    public String getGType() {
-        return gType;
+    public String getGarageName() {
+        return garageName;
     }
 
-    public void setGType(String gType) {
-        this.gType = gType;
+    public void setGarageName(String garageName) {
+        this.garageName = garageName;
     }
 
     @Override
