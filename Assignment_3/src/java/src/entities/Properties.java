@@ -50,7 +50,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")
     , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")
     , @NamedQuery(name = "Properties.findMostPopular", query = "SELECT p FROM Properties p ORDER BY p.views DESC")
-    , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")})
+    , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")
+    , @NamedQuery(name = "Properties.updateViews", query = "UPDATE Properties p SET p.views = p.views + 1 WHERE p.id = :id")})
 public class Properties implements Serializable {
 
     @Basic(optional = false)

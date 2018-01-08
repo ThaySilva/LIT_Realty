@@ -51,6 +51,9 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow"><a href="index.jsp" class="dropdown-toggle active">Home</a></li>
                         <li class="wow"><a href="LoadGalleryPage">Gallery</a></li>
+                        <c:if test="${fn:length(cookies) > 0}">
+                            <li class="wow"><a href="favourites.html">Favourites</a></li>
+                        </c:if>
                         <li class="wow"><a href="contact.html">Contact Us</a></li>
                     </ul>
                 </div>

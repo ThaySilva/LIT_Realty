@@ -10,6 +10,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,6 +45,7 @@ public class LoadIndexPage extends HttpServlet {
         String address;
         
         try{
+            Cookie[] cookies = request.getCookies();
             List<String> cityList = PropertiesDB.getAllCities();
             List<Styles> styleList = StylesDB.getAllStyles();
             List<Properties> recentList = PropertiesDB.getNewestAdded();
@@ -51,6 +53,7 @@ public class LoadIndexPage extends HttpServlet {
             List<Agents> agentsList = AgentsDB.getAll();
             
             address = "/index.jsp";
+            request.setAttribute("cookies", cookies);
             request.setAttribute("cityList", cityList);
             request.setAttribute("styleList", styleList);
             request.setAttribute("recentProperties", recentList);

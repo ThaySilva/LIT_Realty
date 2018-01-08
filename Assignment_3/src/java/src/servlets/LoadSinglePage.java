@@ -56,6 +56,7 @@ public class LoadSinglePage extends HttpServlet {
             Garagetypes propertyGarage = GaragetypesDB.getGarageByID(property.getGarageId());
             Agents propertyAgent = AgentsDB.getAgentByID(property.getAgentId());
             List<Properties> similarProperties = PropertiesDB.getSimilarProperties(property.getCity(), id);
+            PropertiesDB.updatePropertiesViews(id);
             
             String propertyAddress = property.getStreet();
             propertyAddress = propertyAddress.replaceAll(", ", ",");

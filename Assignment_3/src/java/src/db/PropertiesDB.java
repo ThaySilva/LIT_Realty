@@ -12,6 +12,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.Properties;
 import src.entities.Styles;
@@ -404,5 +405,30 @@ public class PropertiesDB {
         }
         
         return propertyList;
+    }
+    
+    public static void updatePropertiesViews(int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        EntityTransaction trans = null;
+        Properties property = null;
+        int views = 0;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findById", Properties.class);
+            query.setParameter("id", id);
+            property = (Properties) query.getSingleResult();
+            views = property.getViews() + 1;
+            property.setViews(views);
+            trans = em.getTransaction();
+            trans.begin();
+            em.merge(property);
+            trans.commit();
+        } catch (Exception ex) {
+            System.out.println();
+        } finally {
+            em.close();
+        }
     }
 }
