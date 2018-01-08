@@ -36,7 +36,6 @@
         <link href="assets/fonts/icon-7-stroke/css/pe-icon-7-stroke.css" rel="stylesheet">
         <link href="assets/fonts/icon-7-stroke/css/helper.css" rel="stylesheet">
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
         <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
         <link rel="icon" href="favicon.ico" type="image/x-icon">
     </head>
@@ -64,12 +63,15 @@
         <div class="content-area single-property" style="background-color: #FCFCFC;">
             <div class="container">
                 <div class="clearfix padding-top-40">
+                    <c:if test="${message.equals(true)}">
+                        <h4>This property has been successfully added to your favourites!</h4>
+                    </c:if>
                     <div class="col-md-8 single-property-content ">
                         <div class="row">
                             <div class="light-slide-item">            
                                 <div class="clearfix">
                                     <div class="favorite-and-print">
-                                        <a class="add-to-fav" href="#login-modal" data-toggle="modal">
+                                        <a class="add-to-fav" href="SetFavourites?propertyID=${property.id}" data-toggle="modal">
                                             <i class="fa fa-star"></i>
                                         </a>
                                     </div> 
