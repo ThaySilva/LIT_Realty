@@ -48,7 +48,8 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow"><a href="index.jsp">Home</a></li>
                         <li class="wow"><a href="LoadGalleryPage" class="dropdown-toggle active">Gallery</a></li>
-                        <li class="wow"><a href="contact.html">Contact Us</a></li>
+                        <li class="wow"><a href="LoadFavouritesPage">Favourites</a></li>
+                        <li class="wow"><a href="contactUs.jsp">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -297,11 +298,9 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        
 
-      <script src="assets/js/modernizr-2.6.2.min.js"></script>
+        <script src="assets/js/modernizr-2.6.2.min.js"></script>
         <script src="assets/js/jquery-1.10.2.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="assets/js/bootstrap-select.min.js"></script>

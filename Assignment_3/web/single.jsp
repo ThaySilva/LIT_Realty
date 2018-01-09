@@ -49,7 +49,7 @@
                     <ul class="main-nav nav navbar-nav navbar-right">
                         <li class="wow"><a href="index.jsp">Home</a></li>
                         <li class="wow"><a href="LoadGalleryPage">Gallery</a></li>
-                        <li class="wow"><a href="contact.html">Contact Us</a></li>
+                        <li class="wow"><a href="contactUs.jsp">Contact Us</a></li>
                     </ul>
                 </div>
             </div>
