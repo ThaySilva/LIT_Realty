@@ -5,6 +5,9 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -36,392 +39,102 @@
         
     </head>
     <body>
-        <div class="header-connect">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-5 col-sm-8  col-xs-12">
-                        <div class="header-half header-call">
-                            <p>
-                                <span><i class="pe-7s-call"></i> +1 234 567 7890</span>
-                                <span><i class="pe-7s-mail"></i> your@company.com</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-md-offset-5  col-sm-3 col-sm-offset-1  col-xs-12">
-                        <div class="header-half header-social">
-                            <ul class="list-inline">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-vine"></i></a></li>
-                                <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>           
-        <!--End top header -->
-
         <nav class="navbar navbar-default ">
             <div class="container">
-                <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navigation">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="index.html"><img src="assets/img/logo.png" alt=""></a>
+                    <a class="navbar-brand" href="index.jsp"><img src="assets/images/logo.gif" alt=""></a>
                 </div>
-
-                <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse yamm" id="navigation">
-                    <div class="button navbar-right">
-                        <button class="navbar-btn nav-button wow bounceInRight login" onclick=" window.open('register.html')" data-wow-delay="0.4s">Login</button>
-                        <button class="navbar-btn nav-button wow fadeInRight" onclick=" window.open('submit-property.html')" data-wow-delay="0.5s">Submit</button>
-                    </div>
                     <ul class="main-nav nav navbar-nav navbar-right">
-                        <li class="dropdown ymm-sw " data-wow-delay="0.1s">
-                            <a href="index.html" class="dropdown-toggle active" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Home <b class="caret"></b></a>
-                            <ul class="dropdown-menu navbar-nav">
-                                <li>
-                                    <a href="index-2.html">Home Style 2</a>
-                                </li>
-                                <li>
-                                    <a href="index-3.html">Home Style 3</a>
-                                </li>
-                                <li>
-                                    <a href="index-4.html">Home Style 4</a>
-                                </li>
-                                <li>
-                                    <a href="index-5.html">Home Style 5</a>
-                                </li>
-
-                            </ul>
-                        </li>
-
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="properties.html">Properties</a></li>
-                        <li class="wow fadeInDown" data-wow-delay="0.1s"><a class="" href="property.html">Property</a></li>
-                        <li class="dropdown yamm-fw" data-wow-delay="0.1s">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Template <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <div class="yamm-content">
-                                        <div class="row">
-                                            <div class="col-sm-3">
-                                                <h5>Home pages</h5>
-                                                <ul>
-                                                    <li>
-                                                        <a href="index.html">Home Style 1</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-2.html">Home Style 2</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-3.html">Home Style 3</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-4.html">Home Style 4</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-5.html">Home Style 5</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5>Pages and blog</h5>
-                                                <ul>
-                                                    <li><a href="blog.html">Blog listing</a>  </li>
-                                                    <li><a href="single.html">Blog Post (full)</a>  </li>
-                                                    <li><a href="single-right.html">Blog Post (Right)</a>  </li>
-                                                    <li><a href="single-left.html">Blog Post (left)</a>  </li>
-                                                    <li><a href="contact.html">Contact style (1)</a> </li>
-                                                    <li><a href="contact-3.html">Contact style (2)</a> </li>
-                                                    <li><a href="contact_3.html">Contact style (3)</a> </li>
-                                                    <li><a href="faq.html">FAQ page</a> </li> 
-                                                    <li><a href="404.html">404 page</a>  </li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5>Property</h5>
-                                                <ul>
-                                                    <li><a href="property-1.html">Property pages style (1)</a> </li>
-                                                    <li><a href="property-2.html">Property pages style (2)</a> </li>
-                                                    <li><a href="property-3.html">Property pages style (3)</a> </li>
-                                                </ul>
-
-                                                <h5>Properties list</h5>
-                                                <ul>
-                                                    <li><a href="properties.html">Properties list style (1)</a> </li> 
-                                                    <li><a href="properties-2.html">Properties list style (2)</a> </li> 
-                                                    <li><a href="properties-3.html">Properties list style (3)</a> </li> 
-                                                </ul>                                               
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <h5>Property process</h5>
-                                                <ul> 
-                                                    <li><a href="submit-property.html">Submit - step 1</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 2</a> </li>
-                                                    <li><a href="submit-property.html">Submit - step 3</a> </li> 
-                                                </ul>
-                                                <h5>User account</h5>
-                                                <ul>
-                                                    <li><a href="register.html">Register / login</a>   </li>
-                                                    <li><a href="user-properties.html">Your properties</a>  </li>
-                                                    <li><a href="submit-property.html">Submit property</a>  </li>
-                                                    <li><a href="change-password.html">Change password</a> </li>
-                                                    <li><a href="user-profile.html">Your profile</a>  </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.yamm-content -->
-                                </li>
-                            </ul>
-                        </li>
-
-                        <li class="wow fadeInDown" data-wow-delay="0.4s"><a href="contact.html">Contact</a></li>
+                        <li class="wow"><a href="index.jsp">Home</a></li>
+                        <li class="wow"><a href="LoadGalleryPage">Gallery</a></li>
+                        <li class="wow"><a href="LoadFavouritesPage" class="dropdown-toggle active">Favourites</a></li>
+                        <li class="wow"><a href="contact.html">Contact Us</a></li>
                     </ul>
-                </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
+                </div>
+            </div>
         </nav>
-        <!-- End of nav bar -->
-
         <div class="page-head"> 
             <div class="container">
                 <div class="row">
                     <div class="page-head-content">
-                        <h1 class="page-title">FAQ PAge</h1>               
+                        <h1 class="page-title">Favourites</h1>               
                     </div>
                 </div>
             </div>
         </div>
-        <!-- End page header -->
-
         <div class="content-area blog-page padding-top-40" style="background-color: #FCFCFC; padding-bottom: 55px;">
             <div class="container">   
-                <div class="row">
-                    
+                <div class="row">    
                     <div class="blog-asside-right col-md-3">
-                        <div class="panel panel-default sidebar-menu wow fadeInRight animated" >
+                        <div class="panel panel-default sidebar-menu wow">
                             <div class="panel-heading">
-                                <h3 class="panel-title">Text widget</h3>
+                                <h3 class="panel-title">Most Popular</h3>
                             </div>
-                            <div class="panel-body text-widget">
-                                <p>Improved own provided blessing may peculiar domestic. Sight house has sex never. No visited raising gravity outward subject my cottage mr be. Hold do at tore in park feet near my case.
-                                </p>
-
-                            </div>
-                        </div>
-
-                        <div class="panel panel-default sidebar-menu wow  fadeInRight animated">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Search</h3>
-                            </div>
-                            <div class="panel-body">
-                                <form role="search">
-                                    <div class="input-group">
-                                        <input class="form-control" placeholder="Search" type="text">
-                                        <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-smal">
-                                                <i class="fa fa-search"></i>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-
-                        
-                            <div class="panel panel-default sidebar-menu wow fadeInRight animated">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">Recommended</h3>
-                                </div>
-                                <div class="panel-body recent-property-widget">
-                                          <ul>
+                            <div class="panel-body recent-property-widget">
+                                <ul>
+                                    <c:forEach items="${mostPopular}" var="property">
                                         <li>
                                             <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
+                                                <a href="LoadSinglePage?propertyId=${property.id}"><img class="image" src="assets/images/properties/thumbs/${property.photo}"></a>
                                                 <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
+                                                    <b class="b-1"><img src="assets/images/BER/${property.berRating}.png"></b>
                                                 </span>
                                             </div>
                                             <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3  col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-1.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
+                                                <h6> <a href="LoadSinglePage?propertyId=${property.id}">${property.city} </a></h6>
+                                                <span class="property-price">
+                                                    <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/>
                                                 </span>
                                             </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
                                         </li>
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-3.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="col-md-3 col-sm-3 col-xs-3 blg-thumb p0">
-                                                <a href="single.html"><img src="assets/img/demo/small-property-2.jpg"></a>
-                                                <span class="property-seeker">
-                                                    <b class="b-1">A</b>
-                                                    <b class="b-2">S</b>
-                                                </span>
-                                            </div>
-                                            <div class="col-md-8 col-sm-8 col-xs-8 blg-entry">
-                                                <h6> <a href="single.html">Super nice villa </a></h6>
-                                                <span class="property-price">3000000$</span>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </div>
-                            </div>
-                            
-
-                        <div class="panel sidebar-menu wow  fadeInRight animated">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">Tags</h3>
-                            </div>
-                            <div class="panel-body">
-                                <ul class="tag-cloud">
-                                    <li><a href="#"><i class="fa fa-tags"></i> html5</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> css3</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> jquery</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> ajax</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> php</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> responsive</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> visio</a> 
-                                    </li>
-                                    <li><a href="#"><i class="fa fa-tags"></i> bootstrap</a> 
-                                    </li>
+                                    </c:forEach>
                                 </ul>
                             </div>
                         </div>
                     </div>
-                    
                     <div class="blog-lst col-md-9">
-                        <section class="post">
+                        <c:if test="${message.equals(true)}">
                             <div class="text-center padding-b-50">
-                                <h2 class="wow fadeInLeft animated">FASHIN NOW 2015</h2>
-                                <div class="title-line wow fadeInRight animated"></div>
+                                <h2 class="wow">You currently have no favourite properties. Please visit our gallery!</h2>
+                                <div class="title-line wow"></div>
                             </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="author-category">
-                                        By <a href="#">John Snow</a>
-                                        in <a href="blog.html">Webdesign</a>
-                                    </p>
+                        </c:if>
+                        <c:forEach items="${properties}" var="property">
+                            <section class="post">
+                                <div class="text-center padding-b-50">
+                                    <h2 class="wow">${property.city}</h2>
+                                    <div class="title-line wow"></div>
                                 </div>
-                                <div class="col-sm-6 right" >
-                                    <p class="date-comments">
-                                        <a href="single.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a>
-                                        <a href="single.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                                    </p>
+                                <c:forEach items="${agents}" var="agent">
+                                    <c:if test="${property.agentId == agent.agentId}">
+                                        <div class="row">
+                                            <div class="col-sm-6">
+                                                <p class="author-category">
+                                                    Agent ${agent.name}
+                                                </p>
+                                            </div>
+                                            <div class="col-sm-6 right" >
+                                                <p class="date-comments">
+                                                    <i class="fa fa-phone"></i> ${agent.phone}
+                                                    <a href="mailto:${agent.email}"> <i class="fa fa-envelope"></i> ${agent.email}</a>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
+                                <div class="image wow">
+                                    <a href="LoadSinglePage?propertyId=${property.id}">
+                                        <img src="assets/images/properties/large/${property.listingNum}/${property.listingNum}.JPG" class="img-responsive" alt="Example blog post alt">
+                                    </a>
                                 </div>
-                            </div>
-                            <div class="image wow fadeInLeft animated">
-                                <a href="single.html">
-                                    <img src="assets/img/blog2.jpg" class="img-responsive" alt="Example blog post alt">
-                                </a>
-                            </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more">
-                                <a href="single.html" class="btn btn-default btn-border">Continue reading</a>
-                            </p>
-                        </section>   
-
-                        <section class="post">
-                            <div class="text-center padding-b-50">
-                                <h2  class="wow fadeInLeft animated">FASHIN NOW 2015</h2>
-                                <div class="title-line wow fadeInRight animated"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="author-category">
-                                        By <a href="#">John Snow</a>
-                                        in <a href="blog.html">Webdesign</a>
-                                    </p>
-                                </div>
-                                <div class="col-sm-6 right" >
-                                    <p class="date-comments">
-                                        <a href="single.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a>
-                                        <a href="single.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="image wow fadeInLeft animated">
-                                <a href="single.html">
-                                    <img src="assets/img/blog2.jpg" class="img-responsive" alt="Example blog post alt">
-                                </a>
-                            </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more">
-                                <a href="single.html" class="btn btn-default btn-border">Continue reading</a>
-                            </p>
-                        </section>  
-
-                        <section class="post">
-                            <div class="text-center padding-b-50">
-                                <h2  class="wow fadeInLeft animated">FASHIN NOW 2015</h2>
-                                <div  class="title-line wow fadeInRight animated"></div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-sm-6">
-                                    <p class="author-category">
-                                        By <a href="#">John Snow</a>
-                                        in <a href="blog.html">Webdesign</a>
-                                    </p>
-                                </div>
-                                <div class="col-sm-6 right" >
-                                    <p class="date-comments">
-                                        <a href="single.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a>
-                                        <a href="single.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="image wow fadeInLeft animated">
-                                <a href="single.html">
-                                    <img src="assets/img/blog1.jpg" class="img-responsive" alt="Example blog post alt">
-                                </a>
-                            </div>
-                            <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
-                            <p class="read-more">
-                                <a href="single.html" class="btn btn-default btn-border">Continue reading</a>
-                            </p>
-                        </section>  
-
+                                <p class="intro">${property.description}</p>
+                                <p class="read-more">
+                                    <a href="DeleteFavourite?propertyID=${property.listingNum}" class="btn btn-default btn-border">Delete From Favourites</a>
+                                    <a href="LoadSinglePage?propertyId=${property.id}" class="btn btn-default btn-border">See More</a>
+                                </p>
+                            </section>
+                        </c:forEach>
                     </div> 
 
                 </div>

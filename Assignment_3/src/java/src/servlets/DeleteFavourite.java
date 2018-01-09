@@ -13,14 +13,12 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import src.db.PropertiesDB;
-import src.entities.Properties;
 
 /**
  *
  * @author Thaynara Silva
  */
-public class SetFavourites extends HttpServlet {
+public class DeleteFavourite extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -34,18 +32,20 @@ public class SetFavourites extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
- 
-        String address;
         
+        String address;
         try {
-            int id = Integer.parseInt(request.getParameter("propertyID"));
-            Properties property = PropertiesDB.getPropertyByID(id);
-            Cookie c = new Cookie("FavouriteProperty"+String.valueOf(property.getListingNum()), String.valueOf(id));
-            c.setMaxAge(60 * 60 * 24 * 365 * 2);
-            response.addCookie(c);
-
-            address = "LoadSinglePage?propertyId="+id;
-            request.setAttribute("message", true);
+            Cookie[] cookies = request.getCookies();
+            String cookieName = "FavouriteProperty"+request.getParameter("propertyID");
+            for(int i = 0; i < cookies.length; i++) {
+                Cookie c = cookies[i];
+                if(cookieName.equals(c.getName())) {
+                    c.setMaxAge(0);
+                    response.addCookie(c);
+                }
+            }
+            
+            address = "LoadFavouritesPage";
         } catch (Exception ex) {
             address = "/error.jsp";
         }
