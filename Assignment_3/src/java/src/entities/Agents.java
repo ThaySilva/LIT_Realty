@@ -12,7 +12,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -31,8 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Agents.findByName", query = "SELECT a FROM Agents a WHERE a.name = :name")
     , @NamedQuery(name = "Agents.findByPhone", query = "SELECT a FROM Agents a WHERE a.phone = :phone")
     , @NamedQuery(name = "Agents.findByFax", query = "SELECT a FROM Agents a WHERE a.fax = :fax")
-    , @NamedQuery(name = "Agents.findByEmail", query = "SELECT a FROM Agents a WHERE a.email = :email")
-    , @NamedQuery(name = "Agents.findByUsername", query = "SELECT a FROM Agents a WHERE a.username = :username")})
+    , @NamedQuery(name = "Agents.findByEmail", query = "SELECT a FROM Agents a WHERE a.email = :email")})
 public class Agents implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,25 +47,12 @@ public class Agents implements Serializable {
     private String fax;
     @Column(name = "email")
     private String email;
-    @Basic(optional = false)
-    @Column(name = "username")
-    private String username;
-    @Basic(optional = false)
-    @Lob
-    @Column(name = "password")
-    private String password;
 
     public Agents() {
     }
 
     public Agents(Integer agentId) {
         this.agentId = agentId;
-    }
-
-    public Agents(Integer agentId, String username, String password) {
-        this.agentId = agentId;
-        this.username = username;
-        this.password = password;
     }
 
     public Integer getAgentId() {
@@ -108,22 +93,6 @@ public class Agents implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     @Override

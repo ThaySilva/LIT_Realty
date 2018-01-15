@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="3.0" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">
+    <listener>
+        <listener-class>org.apache.shiro.web.env.EnvironmentLoaderListener</listener-class>
+    </listener>
+    <filter>
+        <filter-name>ShiroFilter</filter-name>
+        <filter-class>org.apache.shiro.web.servlet.ShiroFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>ShiroFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+        <dispatcher>INCLUDE</dispatcher>
+        <dispatcher>ERROR</dispatcher>
+    </filter-mapping>
     <servlet>
         <servlet-name>LoadIndexPage</servlet-name>
         <servlet-class>src.servlets.LoadIndexPage</servlet-class>
@@ -48,6 +63,10 @@
         <servlet-name>SendEmail</servlet-name>
         <servlet-class>src.servlets.SendEmail</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadAdminIndex</servlet-name>
+        <servlet-class>src.servlets.LoadAdminIndex</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -83,6 +102,10 @@
     <servlet-mapping>
         <servlet-name>SendEmail</servlet-name>
         <url-pattern>/SendEmail</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadAdminIndex</servlet-name>
+        <url-pattern>/LoadAdminIndex</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,16 +30,16 @@
       <div class="login_wrapper">
         <div class="animate form login_form">
           <section class="login_content">
-            <form>
+            <form name="loginform" method="post">
               <h1>Login Form</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Username" id="username" name="username" required="" />
               </div>
               <div>
-                <input type="password" class="form-control" placeholder="Password" required="" />
+                <input type="password" class="form-control" placeholder="Password" id="password" name="password" required="" />
               </div>
               <div>
-                  <button class="btn-submit submit">Log in</button>
+                  <input type="submit" value="Login" class="btn-submit"/>
                 <!-- <a class="reset_pass" href="#">Lost your password?</a> -->
               </div>
 
@@ -51,7 +52,6 @@
 
                 <div class="clearfix"></div>
                 <br />
-
                 <div>
                   <img src="assets/images/logo.gif" alt=""/>
                 </div>
@@ -65,7 +65,7 @@
             <form>
               <h1>Create Account</h1>
               <div>
-                <input type="text" class="form-control" placeholder="Username" required="" />
+                <input type="text" class="form-control" placeholder="Username" id="username" name="username" required="" />
               </div>
               <div>
                 <input type="email" class="form-control" placeholder="Email" required="" />
