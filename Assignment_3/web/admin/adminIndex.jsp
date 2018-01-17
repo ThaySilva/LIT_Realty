@@ -68,18 +68,19 @@
                     <div class="nav_menu">
                         <nav>
                             <div class="nav toggle"></div>
-                            <div class="nav navbar-nav navbar-right">
-                                <li class="">
-                                    <a class="user-profile dropdown-toggle" href="javascript:;" data-toggle="dropdown" aria-expanded="">
-                                        <img src="assets/images/agents/${agent.agentId}" alt="">
-                                        ${agent.name}
-                                        <span class="fa fa-angle-down"></span>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li>
+                                    <br>
+                                    <a href="#"><i class="fa fa-sign-out pull-right"></i>
+                                        Log Out
                                     </a>
-                                    <ul class="dropdown-menu dropdown-usermenu pull-right">
-                                        <a href="javascript:;">Profile</a>
-                                    </ul>
                                 </li>
-                            </div>
+                                <li>
+                                    <a href="#"><img src="assets/images/agents/${agent.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
+                                        ${agent.name}
+                                    </a>
+                                </li>
+                            </ul>
                         </nav>
                     </div>
                 </div>
