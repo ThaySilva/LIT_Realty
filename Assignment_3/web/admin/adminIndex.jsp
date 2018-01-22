@@ -43,11 +43,16 @@
                         <div class="clearfix"></div>
                         <div class="profile clearfix">
                             <div class="profile_pic">
-                                <img src="assets/images/agents/${agent.agentId}.jpg" alt="" class="img-circle profile_img">
+                                <shiro:hasRole name="admin">
+                                    <img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img">
+                                </shiro:hasRole>
+                                <shiro:hasRole name="agent">
+                                    <img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img">
+                                </shiro:hasRole>
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <h2>${agent.name}</h2>
+                                <h2>${user.name}</h2>
                             </div>
                         </div>
                         <br>
@@ -76,9 +81,18 @@
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="#"><img src="assets/images/agents/${agent.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
-                                        ${agent.name}
-                                    </a>
+                                    <shiro:hasRole name="admin">
+                                        <a href="#">
+                                            <img src="assets/images/admins/${user.adminID}.jpg" alt="" style="width: 40px; height: 40px;">
+                                            ${user.name}
+                                        </a>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="agent">
+                                        <a href="#">
+                                            <img src="assets/images/agents/${user.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
+                                            ${user.name}
+                                        </a>
+                                    </shiro:hasRole>
                                 </li>
                             </ul>
                         </nav>

@@ -14,8 +14,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
+import src.db.AdministratorsDB;
 import src.db.AgentsDB;
 import src.db.UsersDB;
+import src.entities.Administrators;
 import src.entities.Agents;
 import src.entities.Users;
 
@@ -39,17 +41,23 @@ public class LoadAdminIndex extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         String address;
-        Users user = null;
+        Users thisUser = null;
         Agents agent = null;
+        Administrators admin = null;
 
         try{
             Subject currentUser = SecurityUtils.getSubject();
             String username = currentUser.getPrincipal().toString();
-            user = UsersDB.getUserByUsername(username);
-            agent = AgentsDB.getAgentByID(user.getUserID());
+            thisUser = UsersDB.getUserByUsername(username);
+            if(currentUser.hasRole("agent")) {
+                agent = AgentsDB.getAgentByID(thisUser.getUserID());
+                request.setAttribute("user", agent);
+            } else {
+                admin = AdministratorsDB.getAdminByID(thisUser.getUserID());
+                request.setAttribute("user", admin);
+            }
             
             address = "/admin/adminIndex.jsp";
-            request.setAttribute("agent", agent);
         } catch (Exception ex) {
             address = "error.jsp";
         }

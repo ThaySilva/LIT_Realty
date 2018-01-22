@@ -6,6 +6,7 @@
     <class>src.entities.Userroles</class>
     <class>src.entities.Users</class>
     <class>src.entities.Agents</class>
+    <class>src.entities.Administrators</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/litrealty?zeroDateTimeBehavior=convertToNull"/>
