@@ -7,6 +7,7 @@ package src.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -16,10 +17,14 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
+import src.db.PropertiesDB;
 import src.db.UsersDB;
+import src.db.VendorsDB;
 import src.entities.Administrators;
 import src.entities.Agents;
+import src.entities.Properties;
 import src.entities.Users;
+import src.entities.Vendors;
 
 /**
  *
@@ -44,6 +49,8 @@ public class LoadAdminIndex extends HttpServlet {
         Users thisUser = null;
         Agents agent = null;
         Administrators admin = null;
+        List<Properties> properties = null;
+        List<Vendors> vendors = null;
 
         try{
             Subject currentUser = SecurityUtils.getSubject();
@@ -51,7 +58,11 @@ public class LoadAdminIndex extends HttpServlet {
             thisUser = UsersDB.getUserByUsername(username);
             if(currentUser.hasRole("agent")) {
                 agent = AgentsDB.getAgentByID(thisUser.getUserID());
+                properties = PropertiesDB.getFiveProperties(agent.getAgentId());
+                vendors = VendorsDB.getFiveVendors(agent.getAgentId());
                 request.setAttribute("user", agent);
+                request.setAttribute("properties", properties);
+                request.setAttribute("vendors", vendors);
             } else {
                 admin = AdministratorsDB.getAdminByID(thisUser.getUserID());
                 request.setAttribute("user", admin);

@@ -6,6 +6,9 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://shiro.apache.org/tags" prefix="shiro" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -96,6 +99,75 @@
                                 </li>
                             </ul>
                         </nav>
+                    </div>
+                </div>
+                <div class="right_col" role="main">
+                    <div class="">
+                        <div class="row top_tiles"></div>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Properties</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <c:forEach items="${properties}" var="property">
+                                            <article class="media event">
+                                                <a class="pull-left date">
+                                                    <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
+                                                </a>
+                                                <div class="media-body">
+                                                    <a class="title" href="#">${property.city}</a>
+                                                    <p><i class="fa fa-user"></i> Vendor Name<br>
+                                                    <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></p>
+                                                </div>
+                                            </article>
+                                            <br>
+                                        </c:forEach>
+                                    </div>
+                                    <a href="#"><p align="right">See All Properties...</p></a>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="x_panel">
+                                    <div class="x_title">
+                                        <h2>Vendors</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li class="dropdown">
+                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+                                                    <i class="fa fa-wrench"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
+                                        <div class="clearfix"></div>
+                                    </div>
+                                    <div class="x_content">
+                                        <c:forEach items="${vendors}" var="vendor">
+                                            <article class="media event">
+                                                <a class="pull-left date">
+                                                    <img src="assets/images/vendors/${vendor.vendorID}.jpg" style="width: 70px; height: 70px;">
+                                                </a>
+                                                <div class="media-body">
+                                                    <a class="title" href="#">${vendor.name}</a>
+                                                    <p><i class="fa fa-phone"></i> ${vendor.phone}<br>
+                                                    <i class="fa fa-envelope"></i> ${vendor.email}</p>
+                                                </div>
+                                            </article>
+                                            <br>
+                                        </c:forEach>
+                                    </div>
+                                    <a href="#"><p align="right">See All Vendors...</p></a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

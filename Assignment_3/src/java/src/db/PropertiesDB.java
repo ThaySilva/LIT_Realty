@@ -15,7 +15,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.Properties;
-import src.entities.Styles;
 
 /**
  *
@@ -430,5 +429,24 @@ public class PropertiesDB {
         } finally {
             em.close();
         }
+    }
+    
+    public static List<Properties> getFiveProperties(int id) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findByAgentId", Properties.class);
+            query.setParameter("agentId", id);
+            propertyList = query.setMaxResults(5).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
     }
 }

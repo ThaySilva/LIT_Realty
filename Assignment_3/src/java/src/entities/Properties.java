@@ -44,19 +44,17 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findByGaragesize", query = "SELECT p FROM Properties p WHERE p.garagesize = :garagesize")
     , @NamedQuery(name = "Properties.findByGarageId", query = "SELECT p FROM Properties p WHERE p.garageId = :garageId")
     , @NamedQuery(name = "Properties.findByAgentId", query = "SELECT p FROM Properties p WHERE p.agentId = :agentId")
+    , @NamedQuery(name = "Properties.findByVendorId", query = "SELECT p FROM Properties p WHERE p.vendorId = :vendorId")
     , @NamedQuery(name = "Properties.findByPhoto", query = "SELECT p FROM Properties p WHERE p.photo = :photo")
     , @NamedQuery(name = "Properties.findByPrice", query = "SELECT p FROM Properties p WHERE p.price = :price")
     , @NamedQuery(name = "Properties.findByDateAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded = :dateAdded")
+    , @NamedQuery(name = "Properties.findByViews", query = "SELECT p FROM Properties p WHERE p.views = :views")
     , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")
     , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")
     , @NamedQuery(name = "Properties.findMostPopular", query = "SELECT p FROM Properties p ORDER BY p.views DESC")
     , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")
     , @NamedQuery(name = "Properties.updateViews", query = "UPDATE Properties p SET p.views = p.views + 1 WHERE p.id = :id")})
 public class Properties implements Serializable {
-
-    @Basic(optional = false)
-    @Column(name = "views")
-    private int views;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -95,6 +93,9 @@ public class Properties implements Serializable {
     private Integer garageId;
     @Column(name = "agentId")
     private Integer agentId;
+    @Basic(optional = false)
+    @Column(name = "vendorId")
+    private int vendorId;
     @Column(name = "photo")
     private String photo;
     @Column(name = "price")
@@ -103,6 +104,9 @@ public class Properties implements Serializable {
     @Column(name = "dateAdded")
     @Temporal(TemporalType.DATE)
     private Date dateAdded;
+    @Basic(optional = false)
+    @Column(name = "views")
+    private int views;
 
     public Properties() {
     }
@@ -111,10 +115,12 @@ public class Properties implements Serializable {
         this.id = id;
     }
 
-    public Properties(Integer id, String berRating, Date dateAdded) {
+    public Properties(Integer id, String berRating, int vendorId, Date dateAdded, int views) {
         this.id = id;
         this.berRating = berRating;
+        this.vendorId = vendorId;
         this.dateAdded = dateAdded;
+        this.views = views;
     }
 
     public Integer getId() {
@@ -237,6 +243,14 @@ public class Properties implements Serializable {
         this.agentId = agentId;
     }
 
+    public int getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
+    }
+
     public String getPhoto() {
         return photo;
     }
@@ -259,6 +273,14 @@ public class Properties implements Serializable {
 
     public void setDateAdded(Date dateAdded) {
         this.dateAdded = dateAdded;
+    }
+
+    public int getViews() {
+        return views;
+    }
+
+    public void setViews(int views) {
+        this.views = views;
     }
 
     @Override
@@ -284,14 +306,6 @@ public class Properties implements Serializable {
     @Override
     public String toString() {
         return "src.entities.Properties[ id=" + id + " ]";
-    }
-
-    public int getViews() {
-        return views;
-    }
-
-    public void setViews(int views) {
-        this.views = views;
     }
     
 }
