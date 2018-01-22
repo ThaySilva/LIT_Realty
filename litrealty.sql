@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 18, 2018 at 11:38 AM
+-- Generation Time: Jan 22, 2018 at 01:46 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -25,22 +25,43 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `administrators`
+--
+
+CREATE TABLE `administrators` (
+  `adminID` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `fax` varchar(45) NOT NULL,
+  `email` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `administrators`
+--
+
+INSERT INTO `administrators` (`adminID`, `name`, `phone`, `fax`, `email`) VALUES
+(1, 'Thaynara Silva', '555-1345', '555-9255', 'thay@homesellers.com');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `agents`
 --
 
 CREATE TABLE `agents` (
-  `agentId` int(11) NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `phone` varchar(12) DEFAULT NULL,
-  `fax` varchar(12) DEFAULT NULL,
-  `email` varchar(50) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+  `agentID` int(11) NOT NULL,
+  `name` varchar(45) NOT NULL,
+  `phone` varchar(45) NOT NULL,
+  `fax` varchar(45) NOT NULL,
+  `email` varchar(60) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `agents`
 --
 
-INSERT INTO `agents` (`agentId`, `name`, `phone`, `fax`, `email`) VALUES
+INSERT INTO `agents` (`agentID`, `name`, `phone`, `fax`, `email`) VALUES
 (1, 'Sue Roberts', '555-1234', '555-9876', 'sue@homesellers.com'),
 (2, 'Natasha Watkins', '555-1357', '555-9876', 'tasha@homesellers.com'),
 (3, 'Chris Clarkson', '555-2468', '555-6767', 'chris@homesellers.com'),
@@ -100,14 +121,14 @@ CREATE TABLE `properties` (
 --
 
 INSERT INTO `properties` (`id`, `street`, `city`, `listingNum`, `styleId`, `typeId`, `bedrooms`, `bathrooms`, `squarefeet`, `berRating`, `description`, `lotsize`, `garagesize`, `garageId`, `agentId`, `photo`, `price`, `dateAdded`, `views`) VALUES
-(9, '34 Ferndale, Ennis Road', 'Limerick', 443499, 2, 2, 4, 1.5, 1100, 'A3', 'Located in a popular and mature residential estate. No 34 is a four bed family home that has been beautifully maintained by its current owners, who have achieved a desirable and modern finish throughout the home. Ferndale is an excellent location with various amenities both social & essential at your doorstep!! Limerick City is less than a 10 minute drive. There is also easy access to the Motorway with links to Dublin, Cork, Galway and Shannon airport. Viewing is highly recommended as soon as possible. The property itself is beautifully presented from start to finish. On entering the property you are welcomed by a spacious and bright entrance hall that has been tiled throughout and contains a downstairs bathroom. To the Left is the family room / playroom. The living room is to the right, with double doors leading through to the kitchen/dining room at the end of the hall. The living room is presented beautifully overlooking the front of the property, featuring an attractive open fireplace and wood floors. Through French doors from the living room is the kitchen/dining room, tiled throughout with a fully fitted kitchen. Sliding doors provide plenty of extra light, in addition to access to the garden. Off the kitchen is a spacious utility with access to the rear garden.', '20x45', 1, 1, 3, '443499.JPG', 82000, '2016-08-19', 5),
+(9, '34 Ferndale, Ennis Road', 'Limerick', 443499, 2, 2, 4, 1.5, 1100, 'A3', 'Located in a popular and mature residential estate. No 34 is a four bed family home that has been beautifully maintained by its current owners, who have achieved a desirable and modern finish throughout the home. Ferndale is an excellent location with various amenities both social & essential at your doorstep!! Limerick City is less than a 10 minute drive. There is also easy access to the Motorway with links to Dublin, Cork, Galway and Shannon airport. Viewing is highly recommended as soon as possible. The property itself is beautifully presented from start to finish. On entering the property you are welcomed by a spacious and bright entrance hall that has been tiled throughout and contains a downstairs bathroom. To the Left is the family room / playroom. The living room is to the right, with double doors leading through to the kitchen/dining room at the end of the hall. The living room is presented beautifully overlooking the front of the property, featuring an attractive open fireplace and wood floors. Through French doors from the living room is the kitchen/dining room, tiled throughout with a fully fitted kitchen. Sliding doors provide plenty of extra light, in addition to access to the garden. Off the kitchen is a spacious utility with access to the rear garden.', '20x45', 1, 1, 3, '443499.JPG', 82000, '2016-08-19', 6),
 (10, '35 Na Cluainte ', 'Portarlington', 141136, 2, 2, 3, 2, 1700, 'B2', 'Ideal for first time buyer/investor.This three bedroom semi detached property is located in quiet Na Cluainte estate which is off the Tullamore Road, close to GAA pitch, schools, church & walking distance to town centre. Viewing Highly Recommended.', '70x250', 2, 1, 1, '141136.JPG', 203500, '2016-09-12', 7),
 (11, '1 Kimberley Villas, St Lukes', 'Cork', 598495, 5, 1, 4, 4, 1800, 'F', 'The property is nestled away half way up Military Hill on a south facing site that extends onto a rear access point off Alexandra road. Here you will find a double garage entrance and workshop providing independent access. The property was extended c. 2008 to provide a spacious kitchen/dining area with utility and guest WC.1 Kimberley Villas is ideally located within 10 minutes walk of Cork city and has all of St Luke\' s amenities on its doorstep. Don\'t delay, contact us today about this exciting market offering.', '60x120', 2, 2, 4, '598495.JPG', 249900, '2016-09-19', 2),
 (12, '8 Ashwood, Seacrest, Knocknacarra', 'Galway', 128365, 1, 1, 2, 1, 1200, 'C1', 'A wonderful 2 bedroom semi detached bungalow located family in one of Knocknacarra\'s most sought after residential addresses. The property is ideally located in the premier residential development of Ashwwood, Seacrest and is accessed off the Shangort Road in Knocknacarra. No 8 Ashwood is situated in a quite traffic free cul de sac within the development. The property is maintained in excellent condition throughout and presented in turn key condition. The property comprises of a small entrance porch, an entrance hall, lounge room with feature fireplace, a main bathroom, open plan kitchen & dining room adn 2 double bedrooms with master en suite. Oil fired central heating, double glazing and a wonderful private rear garden with side entrance are but a mere sample of the features on offer throughout this wonderful home. The property is also found on an excellent road, bus & transport network system bringing all of Galways amenities within easy reach. Located within moments of Joyces Supermarket, local schools, Knocknacarra church, Salthill Village, Barna Village and a host sports & recreational facilities. This home comes highly recommended for viewing and is guaranteed not to disappoint.', '60x90', 1, 1, 4, '128365.JPG', 93900, '2016-08-11', 2),
-(13, '31 Cnoc An Oir, Letteragh Road, Rahoon', 'Galway', 941895, 3, 1, 2, 1.5, 1300, 'C1', 'This three bed semi detached home was built in 1998 and is in good decorative order throughout. Conveniently located, Cnoc an Oir is within striking distance of Knocknacarra, Salthill & Newcastle with easy access to all the services and amenities that each area has to offer. The city centre is approximately 1.5 miles away.\n\nNo. 31 offers bright spacious accommodation throughout. On the ground floor there is a large living room to the front with kitchen/dining room and utility to the back, the accommodation is complete on this level with a guest toilet. Upstairs benefits from having three bedrooms, one en suite and a main bathroom. There is off street parking to the front, a side entrance and a west facing rear garden.\n\nThis property is likely to create good interest due to its location, style and price. Ideal for a first time buyer looking to get on the property ladder or an investor due to its convenient location and good rental potential. ', '60x120', 0, 4, 2, '941895.JPG', 89900, '2016-08-15', 5),
+(13, '31 Cnoc An Oir, Letteragh Road, Rahoon', 'Galway', 941895, 3, 1, 2, 1.5, 1300, 'C1', 'This three bed semi detached home was built in 1998 and is in good decorative order throughout. Conveniently located, Cnoc an Oir is within striking distance of Knocknacarra, Salthill & Newcastle with easy access to all the services and amenities that each area has to offer. The city centre is approximately 1.5 miles away.\n\nNo. 31 offers bright spacious accommodation throughout. On the ground floor there is a large living room to the front with kitchen/dining room and utility to the back, the accommodation is complete on this level with a guest toilet. Upstairs benefits from having three bedrooms, one en suite and a main bathroom. There is off street parking to the front, a side entrance and a west facing rear garden.\n\nThis property is likely to create good interest due to its location, style and price. Ideal for a first time buyer looking to get on the property ladder or an investor due to its convenient location and good rental potential. ', '60x120', 0, 4, 2, '941895.JPG', 89900, '2016-08-15', 7),
 (14, '165 Ivy Exchange, Parnell Street', 'Dublin 1', 387190, 10, 1, 3, 2, 1800, 'B2', 'No 165 Ivy Exchange is a bright and spacious three bedroom work/live unit located in this secure, Cosgrave-built development. The complex is arranged in three blocks overlooking mature and landscaped communal courtyard gardens. The attractive communal area is complete with water feature and seating, providing a tranquil setting within an urban environment.\n', '70x200', 2, 2, 1, '387190.JPG', 178900, '2016-09-12', 6),
-(15, '51 Seville Lawns, Margaretsfields, Callan Road', 'Kilkenny', 727218, 1, 1, 5, 2.5, 2100, 'G', 'Property Partners Buggy are delighted to bring to the market this three bedroom duplex property. The property is located just one mile from Kilkenny City Centre in an area known as Margaretsfields. This residence is in excellent condition for sale and would ideally suit an owner occupier or investor alike. Viewing is strongly recommended.', '70x140', 2, 2, 5, '727218.JPG', 159900, '2016-08-22', 4),
-(16, '11 Thomas Street', 'Waterford', 727213, 5, 1, 3, 2, 1800, 'D2', 'Thomas Street is located off Merchants Quay which has a number of shops, bars and restaurants. The property is five minutes walk from Waterford city centre, Plunkett Station, Bus Áras and Aldi Supermarket.\n\nThe property is currently occupied and has a good rental yield with further potential. ', '70x110', 1, 2, 4, '727213.JPG', 99900, '2016-08-09', 5),
+(15, '51 Seville Lawns, Margaretsfields, Callan Road', 'Kilkenny', 727218, 1, 1, 5, 2.5, 2100, 'G', 'Property Partners Buggy are delighted to bring to the market this three bedroom duplex property. The property is located just one mile from Kilkenny City Centre in an area known as Margaretsfields. This residence is in excellent condition for sale and would ideally suit an owner occupier or investor alike. Viewing is strongly recommended.', '70x140', 2, 2, 5, '727218.JPG', 159900, '2016-08-22', 5),
+(16, '11 Thomas Street', 'Waterford', 727213, 5, 1, 3, 2, 1800, 'D2', 'Thomas Street is located off Merchants Quay which has a number of shops, bars and restaurants. The property is five minutes walk from Waterford city centre, Plunkett Station, Bus Áras and Aldi Supermarket.\n\nThe property is currently occupied and has a good rental yield with further potential. ', '70x110', 1, 2, 4, '727213.JPG', 99900, '2016-08-09', 6),
 (17, 'St Annes Road, Gurranabraher', 'Cork', 197681, 5, 1, 3, 1.5, 1650, 'F', 'This two bedroom mid terrace extended property is ideally located at 29 St. Annes Road, just off McSwiney Villas, close to City Centre It is within a few minutes walking distance of Blarney St., Shandon St., and the North Main st. Ideal starter home or investment property.The property stands on an elevated site which commands fantastic views of the City.\nThis property is priced to sell. Early viewing is recommended.', '100x110', 2, 1, 1, '197681.JPG', 159500, '2016-09-07', 4),
 (18, '29 Riverbank Hall, Addison Park, Glasnevin', 'Dublin 11', 523986, 10, 1, 1700, 1, 1000, 'A1', 'A winning combination of a superb address and perfectly positioned beautiful one bedroom 1st floor apartment set amidst impressive landscaped gardens. Tremendous thought and superb design were the key elements in creating the aesthetically pleasing mix of luxurious apartments. No. 29 Riverbank Hall is a spacious and well appointed first floor apartment that will not disappoint. Enjoying an enviable sunny orientation, flooded with natural light throughout the day. The accommodation briefly consists of entrance hall with storage cupboard, spacious lounge with double glazed French door leading to sunny balcony, fully fitted kitchen, bathroom & w.c. combined. Gas fired radiator central heating. Designated car space. Built in wardrobe in bedroom with double glazed French door to balcony. Conveniently located in the heart of Glasnevin. The commuting distance to city centre is short, close to shops, restaurants, Deli\'s, Creche and a wealth of local amenities. Easy access to M50, M1, Dublin Airport, DCU Campus. A perfect purchase for first time buyers and an ideal investment opportunity with high annual rental yield', '70x100', 1, 2, 1, '523986.JPG', 116900, '2016-09-19', 8),
 (19, '10 Marian Place, Bennettsbridge', 'Kilkenny', 778954, 5, 1, 2, 1, 950, 'A3', 'The house is at the end of the street offering a stunning front and rear garden. Marian Place is just a minutes\' walk to the village of Bennetsbridge.\n\nThe House has 3 good sized bedrooms, Kitchen/Living Room, Utility and Bathroom.\n\nThe garden is surprisingly large that extends from the front to the very end of the site. As you enter the back garden there is patio area. the remaining garden is lawned with mature trees at the end. There is an archway that leads into a private area in the garden.\nThere is a built in dog run and shed.', '80x100', 1, 1, 3, '778954.JPG', 106900, '2017-12-07', 4),
@@ -231,11 +252,16 @@ INSERT INTO `users` (`userID`, `username`, `password`) VALUES
 --
 
 --
+-- Indexes for table `administrators`
+--
+ALTER TABLE `administrators`
+  ADD PRIMARY KEY (`adminID`);
+
+--
 -- Indexes for table `agents`
 --
 ALTER TABLE `agents`
-  ADD PRIMARY KEY (`agentId`),
-  ADD KEY `agentId` (`agentId`);
+  ADD PRIMARY KEY (`agentID`);
 
 --
 -- Indexes for table `garagetypes`
@@ -287,10 +313,16 @@ ALTER TABLE `users`
 --
 
 --
+-- AUTO_INCREMENT for table `administrators`
+--
+ALTER TABLE `administrators`
+  MODIFY `adminID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `agents`
 --
 ALTER TABLE `agents`
-  MODIFY `agentId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `agentID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `garagetypes`

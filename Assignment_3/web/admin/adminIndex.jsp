@@ -71,7 +71,7 @@
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
                                     <br>
-                                    <a href="#"><i class="fa fa-sign-out pull-right"></i>
+                                    <a href="/Assignment_3/logout"><i class="fa fa-sign-out pull-right"></i>
                                         Log Out
                                     </a>
                                 </li>
