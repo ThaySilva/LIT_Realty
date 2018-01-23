@@ -47,15 +47,15 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <shiro:hasRole name="admin">
-                                    <img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img">
+                                    <a href="admin/profile.jsp"><img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="agent">
-                                    <img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img">
+                                    <a href="admin/profile.jsp"><img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <h2>${user.name}</h2>
+                                <a href="admin/profile.jsp"><h2>${user.name}</h2></a>
                             </div>
                         </div>
                         <br>
@@ -63,9 +63,9 @@
                             <div class="menu_section">
                                 <ul class="nav side-menu">
                                     <li><a href="LoadAdminIndex"><i class="fa fa-home"></i> Home</a></li>
-                                    <li><a><i class="fa fa-user"></i> Profile</a></li>
-                                    <li><a><i class="fa fa-building"></i> Properties</a></li>
-                                    <li><a><i class="fa fa-users"></i> Vendors</a></li>
+                                    <li><a href="admin/profile.jsp"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li><a href="admin/allProperties.jsp"><i class="fa fa-building"></i> Properties</a></li>
+                                    <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>
                             </div>
@@ -85,13 +85,13 @@
                                 </li>
                                 <li>
                                     <shiro:hasRole name="admin">
-                                        <a href="#">
+                                        <a href="admin/profile.jsp">
                                             <img src="assets/images/admins/${user.adminID}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>
                                     </shiro:hasRole>
                                     <shiro:hasRole name="agent">
-                                        <a href="#">
+                                        <a href="admin/profile.jsp">
                                             <img src="assets/images/agents/${user.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>
@@ -110,8 +110,13 @@
                                     <div class="x_title">
                                         <h2>Properties</h2>
                                         <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a href="admin/addProperty.jsp">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </li>
                                             <li class="dropdown">
-                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+                                                <a class="dropdown-toggle" href="admin/allProperties.jsp" data-toggle="dropdown" role="button">
                                                     <i class="fa fa-wrench"></i>
                                                 </a>
                                             </li>
@@ -121,19 +126,19 @@
                                     <div class="x_content">
                                         <c:forEach items="${properties}" var="property">
                                             <article class="media event">
-                                                <a class="pull-left date">
+                                                <a href="admin/singleProperty.jsp" class="pull-left date">
                                                     <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
                                                 </a>
                                                 <div class="media-body">
-                                                    <a class="title" href="#">${property.city}</a>
-                                                    <p><i class="fa fa-user"></i> Vendor Name<br>
+                                                    <a class="title" href="admin/singleProperty.jsp">${property.city}</a>
+                                                    <p><i class="fa fa-list"></i> ${property.listingNum}<br>
                                                     <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></p>
                                                 </div>
                                             </article>
                                             <br>
                                         </c:forEach>
                                     </div>
-                                    <a href="#"><p align="right">See All Properties...</p></a>
+                                    <a href="admin/allProperties.jsp"><p align="right">See All Properties...</p></a>
                                 </div>
                             </div>
                             <div class="col-md-4">
@@ -141,8 +146,13 @@
                                     <div class="x_title">
                                         <h2>Vendors</h2>
                                         <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a href="admin/addVendor.jsp">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </li>
                                             <li class="dropdown">
-                                                <a class="dropdown-toggle" href="#" data-toggle="dropdown" role="button">
+                                                <a class="dropdown-toggle" href="admin/vendors.jsp" data-toggle="dropdown" role="button">
                                                     <i class="fa fa-wrench"></i>
                                                 </a>
                                             </li>
@@ -152,11 +162,11 @@
                                     <div class="x_content">
                                         <c:forEach items="${vendors}" var="vendor">
                                             <article class="media event">
-                                                <a class="pull-left date">
+                                                <a href="admin/vendorsProfile.jsp" class="pull-left date">
                                                     <img src="assets/images/vendors/${vendor.vendorID}.jpg" style="width: 70px; height: 70px;">
                                                 </a>
                                                 <div class="media-body">
-                                                    <a class="title" href="#">${vendor.name}</a>
+                                                    <a class="title" href="admin/vendorsProfile.jsp">${vendor.name}</a>
                                                     <p><i class="fa fa-phone"></i> ${vendor.phone}<br>
                                                     <i class="fa fa-envelope"></i> ${vendor.email}</p>
                                                 </div>
@@ -164,7 +174,7 @@
                                             <br>
                                         </c:forEach>
                                     </div>
-                                    <a href="#"><p align="right">See All Vendors...</p></a>
+                                    <a href="admin/vendors.jsp"><p align="right">See All Vendors...</p></a>
                                 </div>
                             </div>
                         </div>

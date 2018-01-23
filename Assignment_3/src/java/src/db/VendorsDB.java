@@ -41,5 +41,22 @@ public class VendorsDB {
         
         return vendorList;
     }
-            
+    
+    public static List<Vendors> getAllVendors(){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Vendors> vendorList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Vendors.findAll", Vendors.class);
+            vendorList = query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return vendorList;
+    }
 }
