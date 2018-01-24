@@ -88,4 +88,23 @@ public class VendorsDB {
         
         return vendorsList;
     }
+    
+    public static Vendors getVendorByID(int id){
+        EntityManager em = null;
+        TypedQuery query = null;
+        Vendors vendor = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Vendors.findByVendorID", Vendors.class);
+            query.setParameter("vendorID", id);
+            vendor = (Vendors) query.getSingleResult();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return vendor;
+    }
 }

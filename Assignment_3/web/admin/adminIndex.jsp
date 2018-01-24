@@ -150,11 +150,23 @@
                                     <div class="x_content">
                                         <c:forEach items="${properties}" var="property">
                                             <article class="media event">
-                                                <a href="admin/singleProperty.jsp" class="pull-left date">
-                                                    <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
-                                                </a>
+                                                <shiro:hasRole name="admin">
+                                                    <a href="LoadSingleProperty?userId=${user.adminID}&propertyId=${property.id}" class="pull-left date">
+                                                        <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
+                                                    </a>
+                                                </shiro:hasRole>
+                                                <shiro:hasRole name="agent">
+                                                    <a href="LoadSingleProperty?userId=${user.agentId}&propertyId=${property.id}" class="pull-left date">
+                                                        <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
+                                                    </a>
+                                                </shiro:hasRole>
                                                 <div class="media-body">
-                                                    <a class="title" href="admin/singleProperty.jsp">${property.city}</a>
+                                                    <shiro:hasRole name="admin">
+                                                        <a class="title" href="LoadSingleProperty?userId=${user.adminID}&propertyId=${property.id}">${property.city}</a>
+                                                    </shiro:hasRole>
+                                                    <shiro:hasRole name="agent">
+                                                        <a class="title" href="LoadSingleProperty?userId=${user.agentId}&propertyId=${property.id}">${property.city}</a>
+                                                    </shiro:hasRole>
                                                     <p><i class="fa fa-list"></i> ${property.listingNum}<br>
                                                     <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></p>
                                                 </div>

@@ -134,8 +134,7 @@
                                 </p>
                             </section>
                         </c:forEach>
-                    </div> 
-
+                    </div>
                 </div>
 
             </div>

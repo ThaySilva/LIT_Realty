@@ -135,9 +135,16 @@
                                                             <div class="mask">
                                                                 <p>${property.city}</p>
                                                                 <div class="tools tools-bottom">
-                                                                    <a href="#">
-                                                                        <i class="fa fa-eye"></i>
-                                                                    </a>
+                                                                    <shiro:hasRole name="admin">
+                                                                        <a href="LoadSingleProperty?userId=${user.adminID}&propertyId=${property.id}">
+                                                                            <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                                    </shiro:hasRole>
+                                                                    <shiro:hasRole name="agent">
+                                                                        <a href="LoadSingleProperty?userId=${user.agentId}&propertyId=${property.id}">
+                                                                            <i class="fa fa-eye"></i>
+                                                                        </a>
+                                                                    </shiro:hasRole>
                                                                     <a href="#">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </a>
