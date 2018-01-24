@@ -76,7 +76,12 @@
                                     <shiro:hasRole name="agent">
                                         <li><a href="LoadProfile?userId=${user.agentId}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
                                     </shiro:hasRole>
-                                    <li><a href="admin/allProperties.jsp"><i class="fa fa-building"></i> Properties</a></li>
+                                    <shiro:hasRole name="admin">
+                                        <li><a href="LoadAdminProperties?userId=${user.adminID}"><i class="fa fa-building"></i> Properties</a></li>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="agent">
+                                        <li><a href="LoadAdminProperties?userId=${user.agentId}"><i class="fa fa-building"></i> Properties</a></li>
+                                    </shiro:hasRole>
                                     <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>
@@ -128,9 +133,16 @@
                                                 </a>
                                             </li>
                                             <li class="dropdown">
-                                                <a class="dropdown-toggle" href="admin/allProperties.jsp" data-toggle="dropdown" role="button">
-                                                    <i class="fa fa-wrench"></i>
-                                                </a>
+                                                <shiro:hasRole name="admin">
+                                                    <a class="dropdown-toggle" href="LoadAdminProperties?userId=${user.adminID}" data-toggle="dropdown" role="button">
+                                                        <i class="fa fa-wrench"></i>
+                                                    </a>
+                                                </shiro:hasRole>
+                                                <shiro:hasRole name="agent">
+                                                    <a class="dropdown-toggle" href="LoadAdminProperties?userId=${user.agentId}" data-toggle="dropdown" role="button">
+                                                        <i class="fa fa-wrench"></i>
+                                                    </a>
+                                                </shiro:hasRole>
                                             </li>
                                         </ul>
                                         <div class="clearfix"></div>
@@ -150,7 +162,12 @@
                                             <br>
                                         </c:forEach>
                                     </div>
-                                    <a href="admin/allProperties.jsp"><p align="right">See All Properties...</p></a>
+                                    <shiro:hasRole name="admin">
+                                        <a href="LoadAdminProperties?userId=${user.adminID}"><p align="right">See All Properties...</p></a>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="agent">
+                                        <a href="LoadAdminProperties?userId=${user.agentId}"><p align="right">See All Properties...</p></a>
+                                    </shiro:hasRole>
                                 </div>
                             </div>
                             <div class="col-md-4">

@@ -74,6 +74,13 @@ public class PropertiesDB {
             query = em.createNamedQuery("Properties.findAll", Properties.class);
             int size = query.getResultList().size();
             int n = rand.nextInt(size) + 1;
+            if(size==n){
+                n=n-7;
+            }
+            if(size-n<7){
+                int sub = size-n;
+                n=n-sub;
+            }
             propertyList = query.setFirstResult(n).setMaxResults(7).getResultList();
         } catch (Exception ex) {
             System.out.println(ex);
@@ -442,6 +449,53 @@ public class PropertiesDB {
             query.setParameter("agentId", id);
             propertyList = query.setMaxResults(5).getResultList();
         } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
+    
+    public static List<Properties> getRandomFive(){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        Random rand = new Random();
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findAll", Properties.class);
+            int size = query.getResultList().size();
+            int n = rand.nextInt(size) + 1;
+            if(size==n){
+                n=n-5;
+            }
+            if(size-n<5){
+                int sub = size-n;
+                n=n-sub;
+            }
+            propertyList = query.setFirstResult(n).setMaxResults(5).getResultList();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
+    
+    public static List<Properties> getPropertiesByAgent(int id){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findByAgentId", Properties.class);
+            query.setParameter("agentId", id);
+            propertyList = query.getResultList();
+        } catch (Exception ex){
             System.out.println(ex);
         } finally {
             em.close();

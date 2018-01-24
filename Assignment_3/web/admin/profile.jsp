@@ -75,7 +75,12 @@
                                     <shiro:hasRole name="agent">
                                         <li><a href="LoadProfile?userId=${user.agentId}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
                                     </shiro:hasRole>
-                                    <li><a href="admin/allProperties.jsp"><i class="fa fa-building"></i> Properties</a></li>
+                                    <shiro:hasRole name="admin">
+                                        <li><a href="LoadAdminProperties?userId=${user.adminID}"><i class="fa fa-building"></i> Properties</a></li>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="agent">
+                                        <li><a href="LoadAdminProperties?userId=${user.agentId}"><i class="fa fa-building"></i> Properties</a></li>
+                                    </shiro:hasRole>
                                     <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>

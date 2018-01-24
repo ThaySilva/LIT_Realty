@@ -13,24 +13,20 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import org.apache.shiro.SecurityUtils;
-import org.apache.shiro.subject.Subject;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
 import src.db.PropertiesDB;
-import src.db.UsersDB;
-import src.db.VendorsDB;
+import src.db.UserrolesDB;
 import src.entities.Administrators;
 import src.entities.Agents;
 import src.entities.Properties;
-import src.entities.Users;
-import src.entities.Vendors;
+import src.entities.Userroles;
 
 /**
  *
  * @author Thaynara Silva
  */
-public class LoadAdminIndex extends HttpServlet {
+public class LoadAdminProperties extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -44,33 +40,31 @@ public class LoadAdminIndex extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
+       
         String address;
-        Users thisUser = null;
-        Agents agent = null;
-        Administrators admin = null;
-        List<Properties> properties = null;
-        List<Vendors> vendors = null;
-
-        try{
-            Subject currentUser = SecurityUtils.getSubject();
-            String username = currentUser.getPrincipal().toString();
-            thisUser = UsersDB.getUserByUsername(username);
-            if(currentUser.hasRole("agent")) {
-                agent = AgentsDB.getAgentByID(thisUser.getUserID());
-                properties = PropertiesDB.getFiveProperties(agent.getAgentId());
-                vendors = VendorsDB.getFiveVendors(agent.getAgentId());
-                request.setAttribute("user", agent);
-            } else {
-                admin = AdministratorsDB.getAdminByID(thisUser.getUserID());
-                properties = PropertiesDB.getRandomFive();
-                vendors = VendorsDB.getRandomFive();
-                request.setAttribute("user", admin);
+        Userroles role = null;
+        List<Properties> propertiesList = null;
+        
+        try {
+            int id = Integer.parseInt(request.getParameter("userId"));
+            role = UserrolesDB.getUserRoleByID(id);
+            switch(role.getRole()){
+                case "admin":
+                    Administrators admin = AdministratorsDB.getAdminByID(id);
+                    propertiesList = PropertiesDB.getAllProperties();
+                    request.setAttribute("user", admin);
+                    break;
+                case "agent":
+                    Agents agent = AgentsDB.getAgentByID(id);
+                    propertiesList = PropertiesDB.getPropertiesByAgent(id);
+                    request.setAttribute("user", agent);
+                    break;
+                default:
+                    break;
             }
             
-            address = "/admin/adminIndex.jsp";
-            request.setAttribute("properties", properties);
-            request.setAttribute("vendors", vendors);
+            address = "admin/allProperties.jsp";
+            request.setAttribute("propertyList", propertiesList);
         } catch (Exception ex) {
             address = "error.jsp";
         }

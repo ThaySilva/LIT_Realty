@@ -7,6 +7,7 @@ package src.db;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import src.entities.Vendors;
@@ -58,5 +59,33 @@ public class VendorsDB {
         }
         
         return vendorList;
+    }
+    
+    public static List<Vendors> getRandomFive() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Vendors> vendorsList = null;
+        Random rand = new Random();
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Vendors.findAll", Vendors.class);
+            int size = query.getResultList().size();
+            int n = rand.nextInt(size) + 1;
+            if(size==n){
+                n=n-5;
+            }
+            if(size-n<5){
+                int sub = size-n;
+                n=n-sub;
+            }
+            vendorsList = query.setFirstResult(n).setMaxResults(5).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return vendorsList;
     }
 }
