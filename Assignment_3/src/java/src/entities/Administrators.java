@@ -30,7 +30,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Administrators.findByName", query = "SELECT a FROM Administrators a WHERE a.name = :name")
     , @NamedQuery(name = "Administrators.findByPhone", query = "SELECT a FROM Administrators a WHERE a.phone = :phone")
     , @NamedQuery(name = "Administrators.findByFax", query = "SELECT a FROM Administrators a WHERE a.fax = :fax")
-    , @NamedQuery(name = "Administrators.findByEmail", query = "SELECT a FROM Administrators a WHERE a.email = :email")})
+    , @NamedQuery(name = "Administrators.findByEmail", query = "SELECT a FROM Administrators a WHERE a.email = :email")
+    , @NamedQuery(name = "Administrators.updateByID", query = "UPDATE Administrators a SET a.name = :name, a.phone = :phone, a.fax = :fax, a.email = :email WHERE a.adminID = :adminID")})
 public class Administrators implements Serializable {
 
     private static final long serialVersionUID = 1L;

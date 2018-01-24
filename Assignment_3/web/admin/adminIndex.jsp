@@ -36,7 +36,7 @@
     <body class="nav-md">
         <div class="container body">
             <div class="main_container">
-                <div class="col-md-3 left_col">
+                <div class="col-md-3 left_col menu_fixed mCustomScrollbar _mCS_1 mCS-autoHide">
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title">
                             <a href="index.jsp" class="site_title">
@@ -47,15 +47,22 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <shiro:hasRole name="admin">
-                                    <a href="admin/profile.jsp"><img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img"></a>
+                                    <a href="LoadProfile?userId=${user.adminID}&edit=false"><img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="agent">
-                                    <a href="admin/profile.jsp"><img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img"></a>
+                                    <a href="LoadProfile?userId=${user.agentId}&edit=false"><img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <a href="admin/profile.jsp"><h2>${user.name}</h2></a>
+                                <shiro:hasRole name="admin">
+                                    <a href="LoadProfile?userId=${user.adminID}&edit=false">
+                                        <h2>${user.name}</h2></a>
+                                </shiro:hasRole>
+                                <shiro:hasRole name="agent">
+                                    <a href="LoadProfile?userId=${user.agentId}&edit=false">
+                                        <h2>${user.name}</h2></a>
+                                </shiro:hasRole>
                             </div>
                         </div>
                         <br>
@@ -63,7 +70,12 @@
                             <div class="menu_section">
                                 <ul class="nav side-menu">
                                     <li><a href="LoadAdminIndex"><i class="fa fa-home"></i> Home</a></li>
-                                    <li><a href="admin/profile.jsp"><i class="fa fa-user"></i> Profile</a></li>
+                                    <shiro:hasRole name="admin">
+                                        <li><a href="LoadProfile?userId=${user.adminID}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
+                                    </shiro:hasRole>
+                                    <shiro:hasRole name="agent">
+                                        <li><a href="LoadProfile?userId=${user.agentId}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
+                                    </shiro:hasRole>
                                     <li><a href="admin/allProperties.jsp"><i class="fa fa-building"></i> Properties</a></li>
                                     <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
@@ -85,13 +97,13 @@
                                 </li>
                                 <li>
                                     <shiro:hasRole name="admin">
-                                        <a href="admin/profile.jsp">
+                                        <a href="LoadProfile?userId=${user.adminID}&edit=false">
                                             <img src="assets/images/admins/${user.adminID}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>
                                     </shiro:hasRole>
                                     <shiro:hasRole name="agent">
-                                        <a href="admin/profile.jsp">
+                                        <a href="LoadProfile?userId=${user.agentId}&edit=false">
                                             <img src="assets/images/agents/${user.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>

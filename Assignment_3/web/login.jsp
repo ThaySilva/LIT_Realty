@@ -57,7 +57,7 @@
                         <div class="clearfix"></div>
                         <br />
                         <div>
-                          <img src="assets/images/logo.gif" alt=""/>
+                            <a href="index.jsp"><img src="assets/images/logo.gif" alt=""/></a>
                         </div>
                       </div>
                     </form>

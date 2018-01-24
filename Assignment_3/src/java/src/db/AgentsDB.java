@@ -7,6 +7,7 @@ package src.db;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.Agents;
 
@@ -51,5 +52,23 @@ public class AgentsDB {
         }
         
         return agent;
+    }
+    
+    public static void updateAgentDetails(Agents agent) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        EntityTransaction trans = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.merge(agent);
+            trans.commit();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
     }
 }

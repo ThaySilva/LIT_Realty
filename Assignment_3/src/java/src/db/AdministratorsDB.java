@@ -6,6 +6,7 @@
 package src.db;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.Administrators;
 
@@ -32,5 +33,23 @@ public class AdministratorsDB {
         }
         
         return admin;
+    }
+    
+    public static void updateAdminDetails(Administrators admin) {
+        EntityManager em = null;
+        TypedQuery query = null;
+        EntityTransaction trans = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.merge(admin);
+            trans.commit();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
     }
 }
