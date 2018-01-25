@@ -115,18 +115,169 @@
                                         <form class="form-horizontal form-label-left">
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12" for="street">
-                                                    Street <span class="required">*</span>
+                                                    Street
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="street" class="big-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input id="street" class="big-control col-md-7 col-xs-12" placeholder="${p.street}" value="${p.street}" onfocus="if(this.value === '${p.street}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.street}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12" for="city">
-                                                    City <span class="required">*</span>
+                                                    City
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="city" class="big-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input id="city" class="big-control col-md-7 col-xs-12" placeholder="${p.city}" value="${p.city}" onfocus="if(this.value==='${p.city}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.city}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="big-label col-md-3 col-sm-3 col-xs-12" for="price">
+                                                    Price
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="price" class="big-control col-md-7 col-xs-12" placeholder="${p.price}" value="${p.price}" onfocus="if(this.value==='${p.price}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.price}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="big-label col-md-3 col-sm-3 col-xs-12" for="description">
+                                                    Description
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <textarea id="description" class="textarea" placeholder="${p.description}" value="${p.description}" onfocus="if(this.value==='${p.description}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.description}'}"></textarea>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="left-control-label col-md-3 col-sm-3 col-xs-12" for="style">
+                                                    Style
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="style" class="left-form-control">
+                                                        <c:forEach items="${stylesList}" var="style">
+                                                            <c:choose>
+                                                                <c:when test="${p.styleId.equals(style.styleId)}">
+                                                                    <option value="${style.styleId}" selected="selected">${style.styleName}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${style.styleId}">${style.styleName}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="type">
+                                                    Type
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="type" class="right-form-control">
+                                                        <c:forEach items="${typesList}" var="type">
+                                                            <c:choose>
+                                                                <c:when test="${p.typeId.equals(type.typeId)}">
+                                                                    <option value="${type.typeId}" selected="selected">${type.typeName}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${type.typeId}">${type.typeName}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="left-control-label col-md-3 col-sm-3 col-xs-12" for="beds">
+                                                    Bedrooms
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="beds" class="left-form-control col-md-7 col-xs-12" placeholder="${p.bedrooms}" value="${p.bedrooms}" onfocus="if(this.value==='${p.bedrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bedrooms}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="baths">
+                                                    Bathrooms
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="baths" class="right-form-control col-md-7 col-xs-12" placeholder="${p.bathrooms}" value="${p.bathrooms}" onfocus="if(this.value==='${p.bathrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bathrooms}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="left-control-label col-md-3 col-sm-3 col-xs-12" for="garageStyle">
+                                                    Garage
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="garageStyle" class="right-form-control">
+                                                        <c:forEach items="${garageList}" var="garage">
+                                                            <c:choose>
+                                                                <c:when test="${p.garageId.equals(garage.garageId)}">
+                                                                    <option value="${garage.garageId}" selected="selected">${garage.garageName}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${garage.garageId}">${garage.garageName}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="garageSize">
+                                                    Garage Size
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="garageSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.garagesize}" value="${p.garagesize}" onfocus="if(this.value==='${p.garagesize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.garagesize}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="left-control-label col-md-3 col-sm-3 col-xs-12" for="squareFeet">
+                                                    Square Feet
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="squareFeet" class="left-form-control col-md-7 col-xs-12" placeholder="${p.squarefeet}" value="${p.squarefeet}" onfocus="if(this.value==='${p.squarefeet}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.squarefeet}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="lotSize">
+                                                    Lot Size
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="lotSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.lotsize}" value="${p.lotsize}" onfocus="if(this.value==='${p.lotsize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.lotsize}'}" required="required" type="text">
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="left-control-label col-md-3 col-sm-3 col-xs-12" for="vendor">
+                                                    Vendor
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="vendor" class="left-form-control">
+                                                        <c:forEach items="${vendorsList}" var="vendor">
+                                                            <c:choose>
+                                                                <c:when test="${p.vendorId.equals(vendor.vendorID)}">
+                                                                    <option value="${vendor.vendorID}" selected="selected">${vendor.name}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${vendor.vendorID}">${vendor.name}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="ber">
+                                                    BER Rating
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <select id="ber" class="right-form-control">
+                                                        <c:forEach items="${berRatings}" var="ber">
+                                                            <c:choose>
+                                                                <c:when test="${p.berRating.equals(ber)}">
+                                                                    <option value="${ber}" selected="selected">${ber}</option>
+                                                                </c:when>
+                                                                <c:otherwise>
+                                                                    <option value="${ber}">${ber}</option>
+                                                                </c:otherwise>
+                                                            </c:choose>
+                                                        </c:forEach>
+                                                    </select>
                                                 </div>
                                             </div>
                                         </form>

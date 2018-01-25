@@ -7,6 +7,9 @@ package src.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -15,10 +18,20 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
+import src.db.GaragetypesDB;
+import src.db.PropertiesDB;
+import src.db.PropertytypesDB;
+import src.db.StylesDB;
 import src.db.UserrolesDB;
+import src.db.VendorsDB;
 import src.entities.Administrators;
 import src.entities.Agents;
+import src.entities.Garagetypes;
+import src.entities.Properties;
+import src.entities.Propertytypes;
+import src.entities.Styles;
 import src.entities.Userroles;
+import src.entities.Vendors;
 
 /**
  *
@@ -42,8 +55,20 @@ public class EditProperty extends HttpServlet {
         HttpSession session = request.getSession();
         String address;
         Userroles role = null;
+        Properties property = null;
+        List<Styles> stylesList = null;
+        List<Propertytypes> typesList = null;
+        List<Garagetypes> garageList = null;
+        List<Vendors> vendorsList = null;
+        List<String> berRatings = Arrays.asList("A1","A2","A3","B1","B2","B3","C1","C2","C3","D1","D2","E1","E2","F","G","Exempt"); 
         
         try {
+            int propertyId = Integer.parseInt(request.getParameter("propertyId"));
+            property = PropertiesDB.getPropertyByID(propertyId);
+            stylesList = StylesDB.getAllStyles();
+            typesList = PropertytypesDB.getAllTypes();
+            garageList = GaragetypesDB.getAllGarageTypes();
+            vendorsList = VendorsDB.getAllVendors();
             int id = (int) session.getAttribute("userId");
             role = UserrolesDB.getUserRoleByID(id);
             switch(role.getRole()){
@@ -60,6 +85,12 @@ public class EditProperty extends HttpServlet {
             }
             
             address = "admin/editProperty.jsp";
+            request.setAttribute("p", property);
+            request.setAttribute("stylesList", stylesList);
+            request.setAttribute("typesList", typesList);
+            request.setAttribute("garageList", garageList);
+            request.setAttribute("vendorsList", vendorsList);
+            request.setAttribute("berRatings", berRatings);
         } catch (Exception ex) {
             address = "error.jsp";
         }

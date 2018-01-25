@@ -5,6 +5,7 @@
  */
 package src.db;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import src.entities.Garagetypes;
@@ -32,5 +33,23 @@ public class GaragetypesDB {
         }
         
         return propertyGarage;
+    }
+    
+    public static List<Garagetypes> getAllGarageTypes(){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Garagetypes> typeList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Garagetypes.findAll", Garagetypes.class);
+            typeList = query.getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return typeList;
     }
 }
