@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
 import src.db.UserrolesDB;
@@ -40,6 +41,7 @@ public class LoadProfile extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        HttpSession session = request.getSession();
         String address;
         Userroles role = null;
         Boolean edit = false;
@@ -47,7 +49,7 @@ public class LoadProfile extends HttpServlet {
             if(request.getParameter("edit").equals("true")) {
                 edit = true;
             }
-            int id = Integer.parseInt(request.getParameter("userId"));
+            int id = (int) session.getAttribute("userId");
             role = UserrolesDB.getUserRoleByID(id);
             switch(role.getRole()){
                 case "admin":

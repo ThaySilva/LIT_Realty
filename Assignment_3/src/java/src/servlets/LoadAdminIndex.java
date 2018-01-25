@@ -13,6 +13,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import src.db.AdministratorsDB;
@@ -45,6 +46,7 @@ public class LoadAdminIndex extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
+        HttpSession session = request.getSession();
         String address;
         Users thisUser = null;
         Agents agent = null;
@@ -60,11 +62,13 @@ public class LoadAdminIndex extends HttpServlet {
                 agent = AgentsDB.getAgentByID(thisUser.getUserID());
                 properties = PropertiesDB.getFiveProperties(agent.getAgentId());
                 vendors = VendorsDB.getFiveVendors(agent.getAgentId());
+                session.setAttribute("userId", agent.getAgentId());
                 request.setAttribute("user", agent);
             } else {
                 admin = AdministratorsDB.getAdminByID(thisUser.getUserID());
                 properties = PropertiesDB.getRandomFive();
                 vendors = VendorsDB.getRandomFive();
+                session.setAttribute("userId", admin.getAdminID());
                 request.setAttribute("user", admin);
             }
             

@@ -1,6 +1,6 @@
 <%-- 
-    Document   : adminIndex
-    Created on : 15-Jan-2018, 12:04:19
+    Document   : editProperty
+    Created on : 24-Jan-2018, 21:35:49
     Author     : Thaynara Silva
 --%>
 
@@ -40,8 +40,8 @@
                     <div class="left_col scroll-view">
                         <div class="navbar nav_title">
                             <a href="index.jsp" class="site_title">
-                                <img src="assets/images/logo.gif" style="width: 200px; height:75px;" alt=""/>
-                            </a> 
+                                <img src="assets/images/logo.gif" style="width: 200px; height: 75px;" alt=""/>
+                            </a>
                         </div>
                         <div class="clearfix"></div>
                         <div class="profile clearfix">
@@ -50,13 +50,12 @@
                                     <a href="LoadProfile?edit=false"><img src="assets/images/admins/${sessionScope.userId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="agent">
-                                    <a href="LoadProfile?edit=false"><img src="assets/images/agents/${sessionScope.userId}.jpg" alt="" class="img-circle profile_img"></a>
+                                    <a href="LoadProfile?&edit=false"><img src="assets/images/agents/${sessionScope.userId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <a href="LoadProfile?edit=false">
-                                <h2>${user.name}</h2></a>
+                                <a href="LoadProfile?edit=false"><h2>${user.name}</h2></a>
                             </div>
                         </div>
                         <br>
@@ -65,7 +64,7 @@
                                 <ul class="nav side-menu">
                                     <li><a href="LoadAdminIndex"><i class="fa fa-home"></i> Home</a></li>
                                     <li><a href="LoadProfile?edit=false"><i class="fa fa-user"></i> Profile</a></li>
-                                    <li><a href="LoadAdminProperties"><i class="fa fa-building"></i> Properties</a></li>
+                                    <li><a href="LoadAdminProperties?"><i class="fa fa-building"></i> Properties</a></li>
                                     <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>
@@ -86,8 +85,8 @@
                                 </li>
                                 <li>
                                     <shiro:hasRole name="admin">
-                                        <a href="LoadProfile?edit=false">
-                                            <img src="assets/images/admins/${sessionScope.userId}.jpg" alt="" style="width: 40px; height: 40px;">
+                                        <a href="LoadProfile?uedit=false">
+                                            <img src="assets/images/admins/${sessionScope.userId}.jpg" alt="" style="width: 40x; height: 40px;">
                                             ${user.name}
                                         </a>
                                     </shiro:hasRole>
@@ -104,78 +103,34 @@
                 </div>
                 <div class="right_col" role="main">
                     <div class="">
-                        <div class="row top_tiles"></div>
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-12 col-sm-12 col-xs-12">
                                 <div class="x_panel">
                                     <div class="x_title">
-                                        <h2>Properties</h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li>
-                                                <a href="admin/addProperty.jsp">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle" href="LoadAdminProperties" data-toggle="dropdown" role="button">
-                                                    <i class="fa fa-wrench"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
+                                        <h2>Edit Property</h2>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content">
-                                        <c:forEach items="${properties}" var="property">
-                                            <article class="media event">
-                                                <a href="LoadSingleProperty?propertyId=${property.id}" class="pull-left date">
-                                                    <img src="assets/images/properties/thumbs/${property.photo}" style="width: 70px; height: 70px;">
-                                                </a>
-                                                <div class="media-body">
-                                                    <a class="title" href="LoadSingleProperty?propertyId=${property.id}">${property.city}</a>
-                                                    <p><i class="fa fa-list"></i> ${property.listingNum}<br>
-                                                    <fmt:formatNumber value="${property.price}" type="currency" currencySymbol="&euro;" maxFractionDigits="0"/></p>
+                                        <br>
+                                        <form class="form-horizontal form-label-left">
+                                            <div class="form-group">
+                                                <label class="big-label col-md-3 col-sm-3 col-xs-12" for="street">
+                                                    Street <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="street" class="big-control col-md-7 col-xs-12" required="required" type="text">
                                                 </div>
-                                            </article>
-                                            <br>
-                                        </c:forEach>
-                                    </div>
-                                    <a href="LoadAdminProperties"><p align="right">See All Properties...</p></a>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="x_panel">
-                                    <div class="x_title">
-                                        <h2>Vendors</h2>
-                                        <ul class="nav navbar-right panel_toolbox">
-                                            <li>
-                                                <a href="admin/addVendor.jsp">
-                                                    <i class="fa fa-plus"></i>
-                                                </a>
-                                            </li>
-                                            <li class="dropdown">
-                                                <a class="dropdown-toggle" href="admin/vendors.jsp" data-toggle="dropdown" role="button">
-                                                    <i class="fa fa-wrench"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                        <div class="clearfix"></div>
-                                    </div>
-                                    <div class="x_content">
-                                        <c:forEach items="${vendors}" var="vendor">
-                                            <article class="media event">
-                                                <a href="admin/vendorsProfile.jsp" class="pull-left date">
-                                                    <img src="assets/images/vendors/${vendor.vendorID}.jpg" style="width: 70px; height: 70px;">
-                                                </a>
-                                                <div class="media-body">
-                                                    <a class="title" href="admin/vendorsProfile.jsp">${vendor.name}</a>
-                                                    <p><i class="fa fa-phone"></i> ${vendor.phone}<br>
-                                                    <i class="fa fa-envelope"></i> ${vendor.email}</p>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="big-label col-md-3 col-sm-3 col-xs-12" for="city">
+                                                    City <span class="required">*</span>
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input id="city" class="big-control col-md-7 col-xs-12" required="required" type="text">
                                                 </div>
-                                            </article>
-                                            <br>
-                                        </c:forEach>
+                                            </div>
+                                        </form>
                                     </div>
-                                    <a href="admin/vendors.jsp"><p align="right">See All Vendors...</p></a>
                                 </div>
                             </div>
                         </div>
@@ -183,8 +138,5 @@
                 </div>
             </div>
         </div>
-        <!-- Scripts -->
-        <script src="assets/js/custom.min.js" type="text/javascript"></script>
-        <script src="assets/bootstrap/dist/js/bootstrap.min.js" type="text/javascript"></script>
-  </body>
+    </body>
 </html>

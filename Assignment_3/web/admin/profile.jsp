@@ -48,20 +48,15 @@
                         <div class="profile clearfix">
                             <div class="profile_pic">
                                 <shiro:hasRole name="admin">
-                                    <a href="LoadProfile?userId=${user.adminID}&edit=false"><img src="assets/images/admins/${user.adminID}.jpg" alt="" class="img-circle profile_img"></a>
+                                    <a href="LoadProfile?edit=false"><img src="assets/images/admins/${sessionScope.userId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                                 <shiro:hasRole name="agent">
-                                    <a href="LoadProfile?userId=${user.agentId}&edit=false"><img src="assets/images/agents/${user.agentId}.jpg" alt="" class="img-circle profile_img"></a>
+                                    <a href="LoadProfile?edit=false"><img src="assets/images/agents/${sessionScope.userId}.jpg" alt="" class="img-circle profile_img"></a>
                                 </shiro:hasRole>
                             </div>
                             <div class="profile_info">
                                 <span>Welcome,</span>
-                                <shiro:hasRole name="admin">
-                                    <a href="LoadProfile?userId=${user.adminID}&edit=false"><h2>${user.name}</h2></a>
-                                </shiro:hasRole>
-                                <shiro:hasRole name="agent">
-                                    <a href="LoadProfile?userId=${user.agentId}&edit=false"><h2>${user.name}</h2></a>
-                                </shiro:hasRole>
+                                <a href="LoadProfile?edit=false"><h2>${user.name}</h2></a>
                             </div>
                         </div>
                         <br>
@@ -69,18 +64,8 @@
                             <div class="menu_section">
                                 <ul class="nav side-menu">
                                     <li><a href="LoadAdminIndex"><i class="fa fa-home"></i> Home</a></li>
-                                    <shiro:hasRole name="admin">
-                                        <li><a href="LoadProfile?userId=${user.adminID}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="agent">
-                                        <li><a href="LoadProfile?userId=${user.agentId}&edit=false"><i class="fa fa-user"></i> Profile</a></li>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="admin">
-                                        <li><a href="LoadAdminProperties?userId=${user.adminID}"><i class="fa fa-building"></i> Properties</a></li>
-                                    </shiro:hasRole>
-                                    <shiro:hasRole name="agent">
-                                        <li><a href="LoadAdminProperties?userId=${user.agentId}"><i class="fa fa-building"></i> Properties</a></li>
-                                    </shiro:hasRole>
+                                    <li><a href="LoadProfile?edit=false"><i class="fa fa-user"></i> Profile</a></li>
+                                    <li><a href="LoadAdminProperties"><i class="fa fa-building"></i> Properties</a></li>
                                     <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>
@@ -101,14 +86,14 @@
                                 </li>
                                 <li>
                                     <shiro:hasRole name="admin">
-                                        <a href="LoadProfile?userId=${user.adminID}&edit=false">
-                                            <img src="assets/images/admins/${user.adminID}.jpg" alt="" style="width: 40px; height: 40px;">
+                                        <a href="LoadProfile?edit=false">
+                                            <img src="assets/images/admins/${sessionScope.userId}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>
                                     </shiro:hasRole>
                                     <shiro:hasRole name="agent">
-                                        <a href="LoadProfile?userId=${user.agentId}&edit=false">
-                                            <img src="assets/images/agents/${user.agentId}.jpg" alt="" style="width: 40px; height: 40px;">
+                                        <a href="LoadProfile?edit=false">
+                                            <img src="assets/images/agents/${sessionScope.userId}.jpg" alt="" style="width: 40px; height: 40px;">
                                             ${user.name}
                                         </a>
                                     </shiro:hasRole>
@@ -128,16 +113,9 @@
                                                 <h2>Profile</h2>
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <li class="dropdown">
-                                                        <shiro:hasRole name="admin">
-                                                            <a class="dropdown-toggle" href="LoadProfile?userId=${user.adminID}&edit=true" data-toggle="dropdown" role="button">
-                                                                <i class="fa fa-wrench"></i>
-                                                            </a>
-                                                        </shiro:hasRole>
-                                                        <shiro:hasRole name="agent">
-                                                            <a class="dropdown-toggle" href="LoadProfile?userId=${user.agentId}&edit=true" data-toggle="dropdown" role="button">
-                                                                <i class="fa fa-wrench"></i>
-                                                            </a>
-                                                        </shiro:hasRole>
+                                                        <a class="dropdown-toggle" href="LoadProfile?edit=true" data-toggle="dropdown" role="button">
+                                                            <i class="fa fa-wrench"></i>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                                 <div class="clearfix"></div>
@@ -147,10 +125,10 @@
                                                     <div class="profile_img">
                                                         <div id="crop-avatar">
                                                             <shiro:hasRole name="admin">
-                                                                <img class="img-responsive avatar-view" src="assets/images/admins/${user.adminID}.jpg" style="width: 200px; height: 200px;" alt="Avatar">
+                                                                <img class="img-responsive avatar-view" src="assets/images/admins/${sessionScope.userId}.jpg" style="width: 200px; height: 200px;" alt="Avatar">
                                                             </shiro:hasRole>
                                                             <shiro:hasRole name="agent">
-                                                                <img class="img-responsive avatar-view" src="assets/images/agents/${user.agentId}.jpg" style="width: 200px; height: 200px;" alt="Avatar">
+                                                                <img class="img-responsive avatar-view" src="assets/images/agents/${sessionScope.userId}.jpg" style="width: 200px; height: 200px;" alt="Avatar">
                                                             </shiro:hasRole>
                                                         </div>
                                                     </div>
@@ -166,18 +144,10 @@
                                                             <i class="fa fa-envelope"></i> ${user.email}
                                                         </li>
                                                     </ul>
-                                                    <shiro:hasRole name="admin">
-                                                        <a href="LoadProfile?userId=${user.adminID}&edit=true" class="btn btn-success">
-                                                            <i class="fa fa-edit m-right-xs"></i>
-                                                            Edit Profile
-                                                        </a>
-                                                    </shiro:hasRole>
-                                                    <shiro:hasRole name="agent">
-                                                        <a href="LoadProfile?userId=${user.agentId}&edit=true" class="btn btn-success">
-                                                            <i class="fa fa-edit m-right-xs"></i>
-                                                            Edit Profile
-                                                        </a>
-                                                    </shiro:hasRole>
+                                                    <a href="LoadProfile?edit=true" class="btn btn-success">
+                                                        <i class="fa fa-edit m-right-xs"></i>
+                                                        Edit Profile
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
@@ -188,16 +158,9 @@
                                                 <h2>Edit Personal Details</h2>
                                                 <ul class="nav navbar-right panel_toolbox">
                                                     <li>
-                                                        <shiro:hasRole name="admin">
-                                                            <a href="LoadProfile?userId=${user.adminID}&edit=false" class="close-link">
-                                                                <i class="fa fa-close"></i>
-                                                            </a>
-                                                        </shiro:hasRole>
-                                                        <shiro:hasRole name="agent">
-                                                            <a href="LoadProfile?userId=${user.agentId}&edit=false" class="close-link">
-                                                                <i class="fa fa-close"></i>
-                                                            </a>
-                                                        </shiro:hasRole>
+                                                        <a href="LoadProfile?edit=false" class="close-link">
+                                                            <i class="fa fa-close"></i>
+                                                        </a>
                                                     </li>
                                                 </ul>
                                                 <div class="clearfix"></div>
@@ -227,26 +190,14 @@
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Fax</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
                                                             <input id="fax" name="fax" class="form-control" placeholder="${user.fax}" value="${user.fax}" onfocus="if(this.value === '${user.fax}'){this.value=''}" onblur="if(this.value === ''){this.value='${user.fax}'}" type="text">
-                                                            <shiro:hasRole name="admin">
-                                                                <input type="hidden" name="id" value="${user.adminID}">
-                                                            </shiro:hasRole>
-                                                            <shiro:hasRole name="agent">
-                                                                <input type="hidden" name="id" value="${user.agentId}">
-                                                            </shiro:hasRole>
+                                                            <input type="hidden" name="id" value="${sessionScope.userId}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
                                                         <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
-                                                            <shiro:hasRole name="admin">
-                                                                <a href="LoadProfile?userId=${user.adminID}&edit=false">
-                                                                    <button class="btn btn-reset" type="button">Cancel</button>
-                                                                </a>
-                                                            </shiro:hasRole>
-                                                            <shiro:hasRole name="agent">
-                                                                <a href="LoadProfile?userId=${user.agentId}&edit=false">
-                                                                    <button class="btn btn-reset" type="button">Cancel</button>
-                                                                </a>
-                                                            </shiro:hasRole>
+                                                            <a href="LoadProfile?edit=false">
+                                                                <button class="btn btn-reset" type="button">Cancel</button>
+                                                            </a>
                                                             <button class="btn btn-reset" type="reset">Reset</button>
                                                             <button onclick="confirmEdit()" class="btn btn-submit" type="button">Submit</button>
                                                         </div>

@@ -5,11 +5,8 @@
  */
 package src.servlets;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -18,26 +15,16 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
-import src.db.GaragetypesDB;
-import src.db.PropertiesDB;
-import src.db.PropertytypesDB;
-import src.db.StylesDB;
 import src.db.UserrolesDB;
-import src.db.VendorsDB;
 import src.entities.Administrators;
 import src.entities.Agents;
-import src.entities.Garagetypes;
-import src.entities.Properties;
-import src.entities.Propertytypes;
-import src.entities.Styles;
 import src.entities.Userroles;
-import src.entities.Vendors;
 
 /**
  *
  * @author Thaynara Silva
  */
-public class LoadSingleProperty extends HttpServlet {
+public class EditProperty extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -55,28 +42,9 @@ public class LoadSingleProperty extends HttpServlet {
         HttpSession session = request.getSession();
         String address;
         Userroles role = null;
-        List<String> imgNames = new ArrayList<String>();
         
         try {
             int id = (int) session.getAttribute("userId");
-            int propertyId = Integer.parseInt(request.getParameter("propertyId"));
-            Properties property = PropertiesDB.getPropertyByID(propertyId);
-            Styles propertyStyle = StylesDB.getStyleByID(property.getStyleId());
-            Propertytypes propertyType = PropertytypesDB.getTypeByID(property.getTypeId());
-            Garagetypes propertyGarage = GaragetypesDB.getGarageByID(property.getGarageId());
-            Vendors propertyVendor = VendorsDB.getVendorByID(property.getVendorId());
-            
-            String path = "assets/images/properties/large/%s/";
-            String filePath = String.format(path, property.getListingNum());
-            String realPath = this.getServletContext().getRealPath(filePath);
-            File[] files = new File(realPath).listFiles();
-            
-            for(File f : files){
-                if(f.isFile()){
-                    imgNames.add(f.getName());
-                }
-            }
-            
             role = UserrolesDB.getUserRoleByID(id);
             switch(role.getRole()){
                 case "admin":
@@ -91,13 +59,7 @@ public class LoadSingleProperty extends HttpServlet {
                     break;
             }
             
-            address = "admin/singleProperty.jsp";
-            request.setAttribute("imageList", imgNames);
-            request.setAttribute("property", property);
-            request.setAttribute("propertyStyle", propertyStyle);
-            request.setAttribute("propertyType", propertyType);
-            request.setAttribute("propertyGarage", propertyGarage);
-            request.setAttribute("propertyVendor", propertyVendor);
+            address = "admin/editProperty.jsp";
         } catch (Exception ex) {
             address = "error.jsp";
         }
