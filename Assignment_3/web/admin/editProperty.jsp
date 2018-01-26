@@ -112,7 +112,7 @@
                                     </div>
                                     <div class="x_content">
                                         <br>
-                                        <form class="form-horizontal form-label-left">
+                                        <form method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12" for="street">
                                                     Street
@@ -278,6 +278,14 @@
                                                             </c:choose>
                                                         </c:forEach>
                                                     </select>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="upload-label col-md-3 col-sm-3 col-xs-12" for="file">
+                                                    Select photos to upload
+                                                </label>
+                                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                                    <input class="upload" type="file" name="uploadFile" multiple="multiple"/>
                                                 </div>
                                             </div>
                                         </form>
