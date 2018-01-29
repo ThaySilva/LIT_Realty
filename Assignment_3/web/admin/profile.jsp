@@ -66,7 +66,7 @@
                                     <li><a href="LoadAdminIndex"><i class="fa fa-home"></i> Home</a></li>
                                     <li><a href="LoadProfile?edit=false"><i class="fa fa-user"></i> Profile</a></li>
                                     <li><a href="LoadAdminProperties"><i class="fa fa-building"></i> Properties</a></li>
-                                    <li><a href="admin/vendors.jsp"><i class="fa fa-users"></i> Vendors</a></li>
+                                    <li><a href="LoadVendors"><i class="fa fa-users"></i> Vendors</a></li>
                                     <li><a><i class="fa fa-bar-chart-o"></i> Statistics</a></li>
                                 </ul>
                             </div>

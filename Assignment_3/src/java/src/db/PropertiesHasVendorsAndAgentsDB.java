@@ -40,4 +40,8 @@ public class PropertiesHasVendorsAndAgentsDB {
         
         return idList;
     }
+    
+    public static List<Integer> getAllRelevantAgents(int id) {
+        EntityManager em = null;
+    }
 }

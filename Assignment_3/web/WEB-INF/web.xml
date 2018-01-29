@@ -107,6 +107,10 @@
         <servlet-name>LoadAdminIndex</servlet-name>
         <servlet-class>src.servlets.LoadAdminIndex</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadVendors</servlet-name>
+        <servlet-class>src.servlets.LoadVendors</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -166,6 +170,10 @@
     <servlet-mapping>
         <servlet-name>LoadAdminIndex</servlet-name>
         <url-pattern>/LoadAdminIndex</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadVendors</servlet-name>
+        <url-pattern>/LoadVendors</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
