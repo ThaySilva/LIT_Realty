@@ -12,6 +12,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import src.db.AdministratorsDB;
 import src.db.AgentsDB;
 import src.db.UserrolesDB;
@@ -39,12 +40,13 @@ public class EditProfile extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         String address;
+        HttpSession session = request.getSession();
         Userroles role = null;
         Administrators admin = null;
         Agents agent = null;
         
         try{
-            int id = Integer.parseInt(request.getParameter("id"));
+            int id = (int) session.getAttribute("userId");
             String name = request.getParameter("name");
             String phone = request.getParameter("phone");
             String email = request.getParameter("email");
@@ -73,7 +75,7 @@ public class EditProfile extends HttpServlet {
             }
             
             
-            address = "LoadProfile?userId=" + id + "&edit=false";
+            address = "LoadProfile?edit=false";
         } catch (Exception ex) {
             address = "error.jsp";
         }

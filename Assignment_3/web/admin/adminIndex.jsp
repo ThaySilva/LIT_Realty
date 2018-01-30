@@ -148,7 +148,7 @@
                                         <h2>Vendors</h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li>
-                                                <a href="admin/addVendor.jsp">
+                                                <a href="LoadAddVendors">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </li>

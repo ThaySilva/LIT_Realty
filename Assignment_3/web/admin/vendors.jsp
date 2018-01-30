@@ -106,14 +106,74 @@
                     <div class="">
                         <div class="row">
                             <div class="col-md-12 col-sm-12 col-xs-12">
+                                <c:if test="${message.equals(true)}">
+                                    <h3>The vendor ${vendorName} can't be deleted as, he/she is currently selling a property!</h3>
+                                </c:if>
+                                <c:if test="${deleteMessage.equals(true)}">
+                                    <h3>The vendor ${vendorName} has been successfully deleted!</h3>
+                                </c:if>
                                 <div class="x_panel">
                                     <div class="x_title">
                                         <h2>Vendors</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a href="LoadAddVendors">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content">
                                         <div class="row">
-                                            
+                                            <c:forEach items="${vendorsList}" var="vendor">
+                                                <div class="col-md-4 col-sm-4 col-xs-12 profile_details">
+                                                    <div class="well profile_view">
+                                                        <div class="col-sm-12">
+                                                            <div class="left col-xs-7">
+                                                                <h2>${vendor.name}</h2>
+                                                                <ul class="list-unstyled" style="list-style: none;">
+                                                                    <li>
+                                                                        <i class="fa fa-envelope"></i>
+                                                                        ${vendor.email}
+                                                                    </li>
+                                                                    <li>
+                                                                        <i class="fa fa-phone"></i>
+                                                                        ${vendor.phone}
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                            <div class="right col-xs-5 text-center">
+                                                                <img class="img-circle img-responsive" style="width: 100px; height: 100px;" src="assets/images/vendors/${vendor.vendorID}.jpg" alt="">
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-xs-12 col-sm-6 emphasis">
+                                                            <form class="side" action="LoadVendorsProfile?edit=false" method="post">
+                                                                <input type="hidden" value="${vendor.vendorID}" name="vendorId">
+                                                                <button class="btn btn-success btn-xs" type="submit">
+                                                                    <i class="fa fa-user"></i>
+                                                                    View Profile
+                                                                </button>
+                                                            </form>
+                                                            <form class="side" action="LoadVendorsProfile?edit=true" method="post">
+                                                                <input type="hidden" value="${vendor.vendorID}" name="vendorId">
+                                                                <button class="btn btn-success btn-xs" type="submit">
+                                                                    <i class="fa fa-edit"></i>
+                                                                    Edit Profile
+                                                                </button>
+                                                            </form>
+                                                            <form class="middle" action="EditVendorProfile" method="post">
+                                                                <input type="hidden" value="${vendor.vendorID}" name="vendorId">
+                                                                <input type="hidden" value="delete" name="function">
+                                                                <button class="btn btn-success btn-xs" type="submit">
+                                                                    <i class="fa fa-trash"></i>
+                                                                    Delete
+                                                                </button>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </c:forEach>
                                         </div>
                                     </div>
                                 </div>

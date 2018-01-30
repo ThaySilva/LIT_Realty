@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 25, 2018 at 03:19 PM
+-- Generation Time: Jan 30, 2018 at 09:17 PM
 -- Server version: 10.1.28-MariaDB
 -- PHP Version: 7.1.11
 
@@ -41,7 +41,7 @@ CREATE TABLE `administrators` (
 --
 
 INSERT INTO `administrators` (`adminID`, `name`, `phone`, `fax`, `email`) VALUES
-(6, 'Thaynara Silva', '555-1234', '555-9798', 'thay@homesellers.com');
+(6, 'Thaynara Silva', '555-1234', '555-7665', 'thay@homesellers.com');
 
 -- --------------------------------------------------------
 
@@ -65,7 +65,7 @@ INSERT INTO `agents` (`agentId`, `name`, `phone`, `fax`, `email`) VALUES
 (1, 'Sue Roberts', '555-1234', '555-9876', 'sue@homesellers.com'),
 (2, 'Natasha Watkins', '555-1357', '555-9876', 'tasha@homesellers.com'),
 (3, 'Chris Clarkson', '555-2468', '888-9898', 'chris@homesellers.com'),
-(4, 'Laura Blain', '555-9898', '555-6767', 'laura@homesellers.com'),
+(4, 'Laura Blain', '555-9898', '555-6788', 'laura@homesellers.com'),
 (5, 'Dave Lindale', '555-8833', '555-9876', 'dave@homesellers.com');
 
 -- --------------------------------------------------------
@@ -150,7 +150,7 @@ INSERT INTO `properties` (`id`, `street`, `city`, `listingNum`, `styleId`, `type
 (4, '18 Nicholas Street', 'Limerick', 503986, 2, 1, 4, 1.5, 1900, 'B3', 'This property comes to the market in turn key condition. It has been decorated to a very high standard with magnificent views over the River Shannon and the Curraghgower falls. This property would make an ideal home and boasts many design features with a balcony off the main open plan kit/din/livingroom area and another off the upstairs bedroom giving commanding views. It located in the historic area of the city and within a five minute walk to the centre of Limerick City and all its amenities. The ground floor also works as a self-contained apartment on the ground floor having its own door access. Private secure gated parking to rear. GFCH, mains water and sewage and double glazed windows. Private rear garden with rear access and stairs up to overhead patio and balcony. Carpets, curtains, blinds, light fittings & appliances included. Viewing of this super home is highly recommended.', '70x125', 0, 4, 1, 9, '503986.JPG', 109900, '2017-11-02', 1),
 (5, '79 Hollybrook Grove, Clontarf', 'Dublin 3', 498495, 5, 1, 3, 1, 1900, 'A3', '79 Hollybrook Grove is a mature and deceptively spacious three bedroom family home located within minutes of the seafront just off Clontarf Road. While in need of some modernisation this superb home offers an astute purchaser an ideal canvas to create their dream home. The house has a large sunny rear garden and also the added bonus of side access. Internally the accommodation comprises a hallway with under stairs storage there is a wonderful living room with feature bay window and fireplace with gas inset fire. The kitchen/breakfast room is fitted with wall and floor units and provides ample dining space, there is access to covered passage that leads to the rear garden. Upstairs there are three bedrooms, two double bedrooms and a generous single bedroom. A family bathroom completes the accommodation. There is oil fired central heating, but gas is connected to the house and the majority of windows are double glazed. Outside the front garden is bordered with mature hedging and a driveway provides off street parking. Shared pedestrian access leads to the rear garden. The sunny, mature and private rear garden is bigger than one would expect and is laid in lawn. There is a large block built shed and it is one of the very few houses with a garage with access to a laneway to the rear, which ensures easy access onto the Howth Road. The location of Hollybrook Grove is second to none, close to the coast road and promenade which is ideal for those who enjoy walking or cycling. It is a quiet cul de sac located behind Clontarf Garda station. There are a host of local shops, excellent schools and numerous sporting and recreational amenities in the immediate vicinity. The very frequent 130 Bus route is 2 minutes\' walk on the seafront and Clontarf DART station is within a 5 minute walk. Westwood Sports club and Fairview park are two noteworthy amenities very close to this fine family home.', '120x130', 2, 2, 1, 2, '498495.JPG', 123900, '2016-06-02', 1),
 (3, '12 Killard, Kilteragh, Dooradoyle', 'Limerick', 182625, 2, 2, 6, 4, 2500, 'C2', 'We are delighted to bring this spacious semi-detached family home to the market. No 12 Killard is beautifully presented family home and benefits from a delightful landscaped back garden. It is very well-proportioned and comes to the market in turn-key condition. It is an ideal purchase for any first time buyer or family. Alternatively, the property could be a lucrative investment. Viewing of this well presented family home is recommended without delay. Kilteragh is so well located off the main Dooradoyle Road within walking distance of Crescent Shopping Centre, Crescent Comprehensive school and many sports and leisure facilities. The Regional Hospital is also within easy striking distance. Limerick city with its many facilities is also only approx. 4kms away with regular bus routes. ', '80x120', 1, 2, 4, 7, '182625.JPG', 149000, '2016-09-07', 1),
-(32, '12 Mount Rochfort Close', 'Co. Dublin', 854605, 8, 1, 4, 1.5, 2000, 'B2', 'Hardwood trim throughout. This is a real gem. Three-seasons back porch, large yard, finished basement, and third-floor office make this a winner!', '80x120', 1, 2, 2, 7, '854605.JPG', 279900, '0000-00-00', 1),
+(32, '12 Mount Rochfort Close', 'Co. Dublin', 854605, 8, 1, 4, 1.5, 2000, 'B2', 'Hardwood trim throughout. This is a real gem. Three-seasons back porch, large yard, finished basement, and third-floor office make this a winner!', '80x120', 1, 2, 2, 7, '854605.JPG', 279900, '0000-00-00', 2),
 (2, '26 Lawrence Hill', 'Derry', 598795, 5, 1, 7, 4, 2500, '0', 'This elegant red-brick terrace house, dating from the early 20th century, has many original period features including floorings, decorative plasterwork, staircases, woodwork and fireplaces. While the property is currently equipped and licensed for multiple occupation, and provides an excellent opportunity for an investor in the rental market, it would take only a nominal amount of work to turn it back into a beautiful and stylish family home. Lawrence Hill is a much sought-after quiet residential area within easy walking distance of the city centre, and adjacent to the University of Ulster\'s Magee College campus.', '80x120', 2, 2, 2, 6, '598795.JPG', 129900, '2016-10-05', 4),
 (1, '88 Lagmore Glen', 'Belfast', 784571, 1, 2, 3, 2, 1900, '', 'Lovely home in a great neighborhood. Plenty of space. Private back yard. With your design flair, this could be your showpiece home.', '80x110', 1, 1, 2, 2, '784571.JPG', 200800, '2016-11-01', 3),
 (28, '46 Newtown Mews, Annacotty', 'Limerick', 874524, 1, 2, 3, 2, 780, 'A3', 'No. 46 Newtown Park is a stunning three bed duplex townhouse offering style and light throughout. The space on offer in this property is exceptional and is replicated throughout both floors. Enjoying an unbeatable cul de sac location situated within a small exclusive enclave of mature residential properties, which offers a wonderful peaceful setting, yet is within striking distance of a wealth of amenities. Newtown Park is a particularly well maintained development and creates a wonderful first impression as the grounds and complex are beautifully presented throughout. The property further benefits from off street allocated parking.Newtown Park is nestled in the surroundings of beautifully landscaped gardens and large open green areas. The development comprises a mix of superbly designed and exceptionally spacious family homes, with duplex and ground level apartments to the rear. Newtown Shopping Centre, which includes a Mace, a hairdresser, bar, restaurants and a pharmacy is just around the corner as is the Crescent College (secondary). The University of Limerick and access to M7 is a short drive away.All in all, No 46 is sure to appeal to many a discerning buyer from first time buyers, professionals, to astute investors seeking a strong rental income, with a minimal undertaking of time and effort.', '85x80', 3, 2, 2, 5, '874524.JPG', 180000, '0000-00-00', 6);
@@ -296,7 +296,7 @@ INSERT INTO `users` (`userID`, `username`, `password`) VALUES
 (3, 'Chris.Clarkson', 'chrispass'),
 (4, 'Laura.Blain', 'laurapass'),
 (5, 'Dave.Lindale', 'davepass'),
-(6, 'Thaynara.Silva', 'thaynarapass');
+(6, 'Thaynara.Silva', 'pass');
 
 -- --------------------------------------------------------
 
@@ -318,9 +318,9 @@ CREATE TABLE `vendors` (
 --
 
 INSERT INTO `vendors` (`vendorID`, `name`, `phone`, `address`, `county`, `email`) VALUES
-(1, 'Meredith Grey', '083-9546013', 'Main st Ballivor, Ballivor', 'Meath', 'meredith@vendors.com'),
-(2, 'Derek Shepherd (RIP)', '087-9882344', 'Garrinch, Fethard', 'Tipperary', 'derek@vendors.com'),
-(3, 'Mark Sloan (RIP)', '086-4652098', 'Pulla Ring Dungarvan, Dungarvan', 'Waterford', 'mark@vendors.com'),
+(1, 'Meredith Grey', '083-5567788', 'Main st Ballivor, Ballivor', 'Meath', 'meredith@vendors.com'),
+(2, 'Derek Shepherd (RIP)', '087-9882344', 'Garrinch, Fethard', 'Tipperary', 'dereks@vendors.com'),
+(3, 'Mark Sloan (RIP)', '086-4652098', 'Pulla Ring Dungarvan, Dungarvan', 'Waterford', 'sloan@vendors.com'),
 (4, 'Owen Hunt', '085-8864444', 'Blanchardstown, Dublin 15', 'Dublin', 'owen@vendors.com'),
 (5, 'Lexie Grey (RIP)', '083-9143721', 'The Mall Sligo, Sligo', 'Sligo', 'lexie@vendors.com'),
 (6, 'Cristina Yang', '087-6635574', 'Knockmanagh, Killarney', 'Kerry', 'cristina@vendors.com'),
@@ -447,12 +447,6 @@ ALTER TABLE `styles`
 --
 ALTER TABLE `users`
   MODIFY `userID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT for table `vendors`
---
-ALTER TABLE `vendors`
-  MODIFY `vendorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

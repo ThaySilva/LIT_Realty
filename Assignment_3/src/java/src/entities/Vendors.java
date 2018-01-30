@@ -9,8 +9,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,12 +29,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Vendors.findByPhone", query = "SELECT v FROM Vendors v WHERE v.phone = :phone")
     , @NamedQuery(name = "Vendors.findByAddress", query = "SELECT v FROM Vendors v WHERE v.address = :address")
     , @NamedQuery(name = "Vendors.findByCounty", query = "SELECT v FROM Vendors v WHERE v.county = :county")
-    , @NamedQuery(name = "Vendors.findByEmail", query = "SELECT v FROM Vendors v WHERE v.email = :email")})
+    , @NamedQuery(name = "Vendors.findByEmail", query = "SELECT v FROM Vendors v WHERE v.email = :email")
+    , @NamedQuery(name = "Vendors.findLastID", query = "SELECT v FROM Vendors v ORDER BY v.vendorID DESC")})
 public class Vendors implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "vendorID")
     private Integer vendorID;

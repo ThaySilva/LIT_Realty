@@ -66,14 +66,14 @@
     <servlet>
         <servlet-name>LoadProfile</servlet-name>
         <servlet-class>src.servlets.LoadProfile</servlet-class>
-        <init-param>
-            <param-name>edit</param-name>
-            <param-value>Value</param-value>
-        </init-param>
     </servlet>
     <servlet>
         <servlet-name>EditProfile</servlet-name>
         <servlet-class>src.servlets.EditProfile</servlet-class>
+        <init-param>
+            <param-name>edit</param-name>
+            <param-value>Value</param-value>
+        </init-param>
     </servlet>
     <servlet>
         <servlet-name>LoadAdminProperties</servlet-name>
@@ -110,6 +110,30 @@
     <servlet>
         <servlet-name>LoadVendors</servlet-name>
         <servlet-class>src.servlets.LoadVendors</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadVendorsProfile</servlet-name>
+        <servlet-class>src.servlets.LoadVendorsProfile</servlet-class>
+        <init-param>
+            <param-name>edit</param-name>
+            <param-value>Value</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>EditVendorProfile</servlet-name>
+        <servlet-class>src.servlets.EditVendorProfile</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadAddVendors</servlet-name>
+        <servlet-class>src.servlets.LoadAddVendors</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddVendor</servlet-name>
+        <servlet-class>src.servlets.AddVendor</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddVendors</servlet-name>
+        <servlet-class>src.servlets.AddVendors</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
@@ -175,9 +199,25 @@
         <servlet-name>LoadVendors</servlet-name>
         <url-pattern>/LoadVendors</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadVendorsProfile</servlet-name>
+        <url-pattern>/LoadVendorsProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditVendorProfile</servlet-name>
+        <url-pattern>/EditVendorProfile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadAddVendors</servlet-name>
+        <url-pattern>/LoadAddVendors</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddVendors</servlet-name>
+        <url-pattern>/AddVendors</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            60
         </session-timeout>
     </session-config>
 </web-app>

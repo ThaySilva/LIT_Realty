@@ -59,6 +59,7 @@ public class LoadVendors extends HttpServlet {
                 case "agent":
                     Agents agent = AgentsDB.getAgentByID(id);
                     request.setAttribute("user", agent);
+                    vendorsList = VendorsDB.getAllRelevantVendors(id);
                     break;
                 default:
                     break;
