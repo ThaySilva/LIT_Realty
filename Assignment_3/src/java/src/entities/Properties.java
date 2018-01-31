@@ -10,8 +10,6 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.persistence.NamedQueries;
@@ -52,12 +50,12 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findUniqueCities", query = "SELECT DISTINCT p.city FROM Properties p ORDER BY p.city")
     , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")
     , @NamedQuery(name = "Properties.findMostPopular", query = "SELECT p FROM Properties p ORDER BY p.views DESC")
-    , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")})
+    , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")
+    , @NamedQuery(name = "Properties.findLastID", query = "SELECT p FROM Properties p ORDER BY p.id DESC")})
 public class Properties implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
     private Integer id;

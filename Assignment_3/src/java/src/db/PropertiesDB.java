@@ -503,4 +503,61 @@ public class PropertiesDB {
         
         return propertyList;
     }
+    
+    public static int getPropertyID(){
+        EntityManager em = null;
+        TypedQuery query = null;
+        Properties property = null;
+        int newId = 0;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findLastID", Properties.class);
+            property = (Properties) query.setMaxResults(1).getSingleResult();
+            newId = property.getId() + 1;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally{
+            em.close();
+        }
+        
+        return newId;
+    }
+    
+    public static int getListingNum() {
+        EntityManager em = null;
+        TypedQuery query = null;
+        Properties property = null;
+        int newListing = 0;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findLastID", Properties.class);
+            property = (Properties) query.setMaxResults(1).getSingleResult();
+            newListing = property.getListingNum() + 1;
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return newListing;
+    }
+    
+    public static void addProperty(Properties property) {
+        EntityManager em = null;
+        EntityTransaction trans = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.persist(property);
+            trans.commit();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+    }
 }

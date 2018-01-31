@@ -135,6 +135,14 @@
         <servlet-name>AddVendors</servlet-name>
         <servlet-class>src.servlets.AddVendors</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>LoadAddProperty</servlet-name>
+        <servlet-class>src.servlets.LoadAddProperty</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddProperty</servlet-name>
+        <servlet-class>src.servlets.AddProperty</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -214,6 +222,15 @@
     <servlet-mapping>
         <servlet-name>AddVendors</servlet-name>
         <url-pattern>/AddVendors</url-pattern>
+        <servlet-class>net.codejava.upload.FileUploadServlet</servlet-class>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadAddProperty</servlet-name>
+        <url-pattern>/LoadAddProperty</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddProperty</servlet-name>
+        <url-pattern>/AddProperty</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

@@ -108,6 +108,13 @@
                                 <div class="x_panel">
                                     <div class="x_title">
                                         <h2>All Properties</h2>
+                                        <ul class="nav navbar-right panel_toolbox">
+                                            <li>
+                                                <a href="LoadAddProperty">
+                                                    <i class="fa fa-plus"></i>
+                                                </a>
+                                            </li>
+                                        </ul>
                                         <div class="clearfix"></div>
                                     </div>
                                     <div class="x_content">

@@ -112,7 +112,7 @@
                                         <h2>Properties</h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li>
-                                                <a href="admin/addProperty.jsp">
+                                                <a href="LoadAddProperty">
                                                     <i class="fa fa-plus"></i>
                                                 </a>
                                             </li>
