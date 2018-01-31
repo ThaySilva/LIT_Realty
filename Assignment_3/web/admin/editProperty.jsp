@@ -119,13 +119,13 @@
                                     </div>
                                     <div class="x_content">
                                         <br>
-                                        <form method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                                        <form action="EditProperty?propertyId=${p.id}" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12" for="street">
                                                     Street
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="street" class="big-control col-md-7 col-xs-12" placeholder="${p.street}" value="${p.street}" onfocus="if(this.value === '${p.street}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.street}'}" required="required" type="text">
+                                                    <input name="street" id="street" class="big-control col-md-7 col-xs-12" placeholder="${p.street}" value="${p.street}" onfocus="if(this.value === '${p.street}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.street}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -133,7 +133,7 @@
                                                     City
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="city" class="big-control col-md-7 col-xs-12" placeholder="${p.city}" value="${p.city}" onfocus="if(this.value==='${p.city}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.city}'}" required="required" type="text">
+                                                    <input name="city" id="city" class="big-control col-md-7 col-xs-12" placeholder="${p.city}" value="${p.city}" onfocus="if(this.value==='${p.city}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.city}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -141,7 +141,7 @@
                                                     Price
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="price" class="big-control col-md-7 col-xs-12" placeholder="${p.price}" value="${p.price}" onfocus="if(this.value==='${p.price}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.price}'}" required="required" type="text">
+                                                    <input name="price" id="price" class="big-control col-md-7 col-xs-12" placeholder="${p.price}" value="${p.price}" onfocus="if(this.value==='${p.price}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.price}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -149,7 +149,7 @@
                                                     Description
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <textarea id="description" class="textarea" placeholder="${p.description}" value="${p.description}" onfocus="if(this.value==='${p.description}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.description}'}"></textarea>
+                                                    <input name="description" id="description" class="textarea" placeholder="${p.description}" value="${p.description}" onfocus="if(this.value==='${p.description}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.description}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -157,7 +157,7 @@
                                                     Style
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select id="style" class="left-form-control">
+                                                    <select name="style" id="style" class="left-form-control">
                                                         <c:forEach items="${stylesList}" var="style">
                                                             <c:choose>
                                                                 <c:when test="${p.styleId.equals(style.styleId)}">
@@ -176,7 +176,7 @@
                                                     Type
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select id="type" class="right-form-control">
+                                                    <select name="type" id="type" class="right-form-control">
                                                         <c:forEach items="${typesList}" var="type">
                                                             <c:choose>
                                                                 <c:when test="${p.typeId.equals(type.typeId)}">
@@ -195,7 +195,7 @@
                                                     Bedrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="beds" class="left-form-control col-md-7 col-xs-12" placeholder="${p.bedrooms}" value="${p.bedrooms}" onfocus="if(this.value==='${p.bedrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bedrooms}'}" required="required" type="text">
+                                                    <input name="bedrooms" id="beds" class="left-form-control col-md-7 col-xs-12" placeholder="${p.bedrooms}" value="${p.bedrooms}" onfocus="if(this.value==='${p.bedrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bedrooms}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -203,7 +203,7 @@
                                                     Bathrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="baths" class="right-form-control col-md-7 col-xs-12" placeholder="${p.bathrooms}" value="${p.bathrooms}" onfocus="if(this.value==='${p.bathrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bathrooms}'}" required="required" type="text">
+                                                    <input name="bathrooms" id="baths" class="right-form-control col-md-7 col-xs-12" placeholder="${p.bathrooms}" value="${p.bathrooms}" onfocus="if(this.value==='${p.bathrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bathrooms}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -211,7 +211,7 @@
                                                     Garage
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select id="garageStyle" class="right-form-control">
+                                                    <select name="garageType" id="garageStyle" class="right-form-control">
                                                         <c:forEach items="${garageList}" var="garage">
                                                             <c:choose>
                                                                 <c:when test="${p.garageId.equals(garage.garageId)}">
@@ -230,7 +230,7 @@
                                                     Garage Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="garageSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.garagesize}" value="${p.garagesize}" onfocus="if(this.value==='${p.garagesize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.garagesize}'}" required="required" type="text">
+                                                    <input name="garageSize" id="garageSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.garagesize}" value="${p.garagesize}" onfocus="if(this.value==='${p.garagesize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.garagesize}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -238,7 +238,7 @@
                                                     Square Feet
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="squareFeet" class="left-form-control col-md-7 col-xs-12" placeholder="${p.squarefeet}" value="${p.squarefeet}" onfocus="if(this.value==='${p.squarefeet}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.squarefeet}'}" required="required" type="text">
+                                                    <input name="squareFeet" id="squareFeet" class="left-form-control col-md-7 col-xs-12" placeholder="${p.squarefeet}" value="${p.squarefeet}" onfocus="if(this.value==='${p.squarefeet}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.squarefeet}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -246,7 +246,7 @@
                                                     Lot Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input id="lotSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.lotsize}" value="${p.lotsize}" onfocus="if(this.value==='${p.lotsize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.lotsize}'}" required="required" type="text">
+                                                    <input name="lotSize" id="lotSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.lotsize}" value="${p.lotsize}" onfocus="if(this.value==='${p.lotsize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.lotsize}'}" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -254,7 +254,7 @@
                                                     Vendor
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select id="vendor" class="left-form-control">
+                                                    <select name="vendor" id="vendor" class="left-form-control">
                                                         <c:forEach items="${vendorsList}" var="vendor">
                                                             <c:choose>
                                                                 <c:when test="${p.vendorId.equals(vendor.vendorID)}">
@@ -268,25 +268,58 @@
                                                     </select>
                                                 </div>
                                             </div>
-                                            <div class="form-group">
-                                                <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="ber">
-                                                    BER Rating
-                                                </label>
-                                                <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <select id="ber" class="right-form-control">
-                                                        <c:forEach items="${berRatings}" var="ber">
-                                                            <c:choose>
-                                                                <c:when test="${p.berRating.equals(ber)}">
-                                                                    <option value="${ber}" selected="selected">${ber}</option>
-                                                                </c:when>
-                                                                <c:otherwise>
-                                                                    <option value="${ber}">${ber}</option>
-                                                                </c:otherwise>
-                                                            </c:choose>
-                                                        </c:forEach>
-                                                    </select>
+                                            <shiro:hasRole name="admin">
+                                                <div class="form-group">
+                                                    <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="agent">
+                                                        Agent
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select name="agent" id="agent" class="right-form-control">
+                                                            <c:forEach items="${agentsList}" var="agent">
+                                                                <c:choose>
+                                                                    <c:when test="${p.agentId.equals(agent.agentId)}">
+                                                                        <option value="${agent.agentId}" selected="selected">${agent.name}</option>
+                                                                    </c:when>
+                                                                    <c:otherwise>
+                                                                        <option value="${agent.agentId}">${agent.name}</option>
+                                                                    </c:otherwise>
+                                                                </c:choose>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>
+                                            </shiro:hasRole>
+                                            <shiro:hasRole name="agent">
+                                                <input type="hidden" name="agent" value="${sessionScope.userId}">
+                                            </shiro:hasRole>
+                                            <shiro:hasRole name="admin">
+                                                <div class="form-group">
+                                                    <label class="big-label col-md-3 col-sm-3 col-xs-12" for="ber">
+                                                        BER Rating
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select name="ber" id="ber" class="big-control">
+                                                            <c:forEach items="${berRatings}" var="ber">
+                                                                <option value="${ber}">${ber}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </shiro:hasRole>
+                                            <shiro:hasRole name="agent">
+                                                <div class="form-group">
+                                                    <label class="right-control-label col-md-3 col-sm-3 col-xs-12" for="ber">
+                                                        BER Rating
+                                                    </label>
+                                                    <div class="col-md-6 col-sm-6 col-xs-12">
+                                                        <select name="ber" id="ber" class="right-form-control">
+                                                            <c:forEach items="${berRatings}" var="ber">
+                                                                <option value="${ber}">${ber}</option>
+                                                            </c:forEach>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </shiro:hasRole>
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12">
                                                     Photos
@@ -294,6 +327,7 @@
                                                 <div class="col-md-6 col-sm-6 col-xs-12 edit-gallery">
                                                     <c:forEach items="${imageList}" var="image">
                                                         <img src="assets/images/properties/large/${p.listingNum}/${image}" style="width: 80px; height: 80px;">
+                                                        <input type="checkbox" name="images" value="${image}"  />
                                                     </c:forEach>
                                                 </div>
                                             </div>
@@ -303,6 +337,15 @@
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                                     <input class="upload" type="file" name="uploadFile" multiple="multiple"/>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                                    <a href="LoadAdminProperties">
+                                                        <button class="btn btn-reset" type="button">Cancel</button>
+                                                    </a>
+                                                    <button class="btn btn-reset" type="reset">Reset</button>
+                                                    <button class="btn btn-submit" type="submit">Submit</button>
                                                 </div>
                                             </div>
                                         </form>

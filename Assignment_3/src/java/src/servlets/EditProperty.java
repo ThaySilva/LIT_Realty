@@ -5,6 +5,10 @@
  */
 package src.servlets;
 
+import com.oreilly.servlet.multipart.FilePart;
+import com.oreilly.servlet.multipart.MultipartParser;
+import com.oreilly.servlet.multipart.ParamPart;
+import com.oreilly.servlet.multipart.Part;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -49,69 +53,131 @@ public class EditProperty extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    private String uploadPath;
+    private List<String> images = new ArrayList<>();
+     
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession();
         String address;
-        Userroles role = null;
+        int propertyId = 0;
         Properties property = null;
-        List<Styles> stylesList = null;
-        List<Propertytypes> typesList = null;
-        List<Garagetypes> garageList = null;
-        List<Vendors> vendorsList = null;
-        List<String> berRatings = Arrays.asList("A1","A2","A3","B1","B2","B3","C1","C2","C3","D1","D2","E1","E2","F","G","Exempt");
-        List<String> imgNames = new ArrayList<String>();
+        int fileNameNum = 0;
         
         try {
-            int propertyId = Integer.parseInt(request.getParameter("propertyId"));
+            propertyId = Integer.parseInt(request.getParameter("propertyId"));
             property = PropertiesDB.getPropertyByID(propertyId);
-            stylesList = StylesDB.getAllStyles();
-            typesList = PropertytypesDB.getAllTypes();
-            garageList = GaragetypesDB.getAllGarageTypes();
-            vendorsList = VendorsDB.getAllVendors();
-            int id = (int) session.getAttribute("userId");
-            role = UserrolesDB.getUserRoleByID(id);
             
             String path = "assets/images/properties/large/%s/";
             String filePath = String.format(path, property.getListingNum());
             String realPath = this.getServletContext().getRealPath(filePath);
             File[] files = new File(realPath).listFiles();
+            fileNameNum = files.length;
             
-            for(File f : files){
-                if(f.isFile()){
-                    imgNames.add(f.getName());
+            String dirPath = this.getServletContext().getRealPath("assets/images/properties/large/"+property.getListingNum());
+            uploadPath = dirPath.replace("\\build", "");
+            File dir = new File(uploadPath);
+            
+            try {
+                MultipartParser parser = new MultipartParser(request, 1024 * 1024 * 1024);
+                Part part;
+                
+                while((part = parser.readNextPart()) != null){
+                    if(part.isFile()){
+                        FilePart filePart = (FilePart) part;
+                        String name = filePart.getFileName();
+                        if(name != null){
+                            if(fileNameNum == 0){
+                                long fileSize = filePart.writeTo(new File(uploadPath,String.valueOf(property.getListingNum())+".jpg"));
+                            } else {
+                                long fileSize = filePart.writeTo(new File(uploadPath,String.valueOf(property.getListingNum())+"-"+String.valueOf(fileNameNum)+".jpg"));
+                            }
+                            fileNameNum++;
+                        }
+                    } else if (part.isParam()){
+                        ParamPart paramPart = (ParamPart) part;
+                        String name = paramPart.getName();
+                        String value = paramPart.getStringValue();
+                        
+                        setPropertyDetails(property,name,value);
+                    }
                 }
+                
+                if(images.size() > 0){
+                    for(String name : images){
+                        File file = new File(uploadPath,name);
+                        file.delete();
+                    }
+                }
+                
+                PropertiesDB.updatePropertyDetails(property);
+            } catch (java.io.IOException ioEx) {
+                System.out.println(ioEx);
             }
             
-            switch(role.getRole()){
-                case "admin":
-                    Administrators admin = AdministratorsDB.getAdminByID(id);
-                    request.setAttribute("user", admin);
-                    break;
-                case "agent":
-                    Agents agent = AgentsDB.getAgentByID(id);
-                    request.setAttribute("user", agent);
-                    break;
-                default:
-                    break;
-            }
-            
-            address = "admin/editProperty.jsp";
-            request.setAttribute("p", property);
-            request.setAttribute("stylesList", stylesList);
-            request.setAttribute("typesList", typesList);
-            request.setAttribute("garageList", garageList);
-            request.setAttribute("vendorsList", vendorsList);
-            request.setAttribute("berRatings", berRatings);
-            request.setAttribute("imageList", imgNames);
+            address = "LoadSingleProperty?propertyId="+propertyId;
         } catch (Exception ex) {
             address = "error.jsp";
         }
-        
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+
+        response.sendRedirect(address);
+    }
+    
+    protected Properties setPropertyDetails(Properties property, String name, String value){
+        switch(name){
+            case "street":
+                property.setStreet(value);
+                break;
+            case "city":
+                property.setCity(value);
+                break;
+            case "price":
+                property.setPrice(Double.parseDouble(value));
+                break;
+            case "description":
+                property.setDescription(value);
+                break;
+            case "style":
+                property.setStyleId(Integer.parseInt(value));
+                break;
+            case "type":
+                property.setTypeId(Integer.parseInt(value));
+                break;
+            case "bedrooms":
+                property.setBedrooms(Integer.parseInt(value));
+                break;
+            case "bathrooms":
+                property.setBathrooms(Float.parseFloat(value));
+                break;
+            case "garageType":
+                property.setGarageId(Integer.parseInt(value));
+                break;
+            case "garageSize":
+                property.setGaragesize(Short.parseShort(value));
+                break;
+            case "squareFeet":
+                property.setSquarefeet(Integer.parseInt(value));
+                break;
+            case "lotSize":
+                property.setLotsize(value);
+                break;
+            case "vendor":
+                property.setVendorId(Integer.parseInt(value));
+                break;
+            case "agent":
+                property.setAgentId(Integer.parseInt(value));
+                break;
+            case "ber":
+                property.setBerRating(value);
+                break;
+            case "images":
+                images.add(value);
+                break;
+            default:
+                break;
+        }
+        return property;
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

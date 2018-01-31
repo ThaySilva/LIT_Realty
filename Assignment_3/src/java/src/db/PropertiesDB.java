@@ -560,4 +560,22 @@ public class PropertiesDB {
             em.close();
         }
     }
+    
+    public static void updatePropertyDetails(Properties property){
+        EntityManager em = null;
+        TypedQuery query = null;
+        EntityTransaction trans = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.merge(property);
+            trans.commit();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+    }
 }

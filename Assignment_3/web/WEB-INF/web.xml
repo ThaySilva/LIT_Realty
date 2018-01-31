@@ -94,14 +94,6 @@
     <servlet>
         <servlet-name>EditProperty</servlet-name>
         <servlet-class>src.servlets.EditProperty</servlet-class>
-        <init-param>
-            <param-name>userId</param-name>
-            <param-value>Value</param-value>
-        </init-param>
-        <init-param>
-            <param-name>propertyId</param-name>
-            <param-value>Value</param-value>
-        </init-param>
     </servlet>
     <servlet>
         <servlet-name>LoadAdminIndex</servlet-name>
@@ -142,6 +134,18 @@
     <servlet>
         <servlet-name>AddProperty</servlet-name>
         <servlet-class>src.servlets.AddProperty</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoadEditProperty</servlet-name>
+        <servlet-class>src.servlets.LoadEditProperty</servlet-class>
+        <init-param>
+            <param-name>propertyId</param-name>
+            <param-value>value</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteImage</servlet-name>
+        <servlet-class>src.servlets.DeleteImage</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
@@ -231,6 +235,14 @@
     <servlet-mapping>
         <servlet-name>AddProperty</servlet-name>
         <url-pattern>/AddProperty</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoadEditProperty</servlet-name>
+        <url-pattern>/LoadEditProperty</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteImage</servlet-name>
+        <url-pattern>/DeleteImage</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

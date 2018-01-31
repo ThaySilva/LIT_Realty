@@ -74,7 +74,7 @@ public class EditVendorProfile extends HttpServlet {
                     } else {
                         VendorsDB.deleteVendor(vendor);
                         File file = new File(deletePath,String.valueOf(vendor.getVendorID())+".jpg");
-                        boolean deleted = file.delete();
+                        file.delete();
                         request.setAttribute("deleteMessage", true);
                     }
                     address = "LoadVendors";

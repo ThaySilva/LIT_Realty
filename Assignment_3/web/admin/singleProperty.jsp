@@ -13,6 +13,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <META HTTP-EQUIV="Pragma" CONTENT="no-cache">
+        <META HTTP-EQUIV="Expires" CONTENT="-1">
         <shiro:hasRole name="admin">
             <title>LIT Realty Administration</title>
         </shiro:hasRole>
@@ -32,8 +34,14 @@
         <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css"/>
         <!-- Font Links -->
         <link href="assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+        <script language=" JavaScript" >
+            function LoadOnce() 
+            { 
+            window.location.reload(); 
+            }
+       </script>
     </head>
-    <body class="nav-md">
+    <body onload="LoadOnce()" class="nav-md">
         <div class="container body">
             <div class="main_container">
                 <div class="col-md-3 left_col menu_fixed mCustomScrollbar _mCS_1 mCS-autoHide">
@@ -132,7 +140,7 @@
                                                 </div>
                                             </div>
                                             <div class="">
-                                                <a href="EditProperty?propertyId=${property.id}">
+                                                <a href="LoadEditProperty?propertyId=${property.id}">
                                                     <button class="btn btn-submit" type="button">Edit</button>
                                                 </a>
 
@@ -169,6 +177,13 @@
                                                     Vendor<br>
                                                     ${propertyVendor.name}
                                                 </div>
+                                                <shiro:hasRole name="admin">
+                                                    <div class="icons">
+                                                        <i class="fa fa-user fa-2x"></i><br>
+                                                        Agent<br>
+                                                        ${propertyAgent.name}
+                                                    </div>
+                                                </shiro:hasRole>
                                             </div>
                                             <br>
                                             <div class="">

@@ -9,6 +9,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -37,7 +38,7 @@ import src.entities.Vendors;
  *
  * @author Thaynara Silva
  */
-public class LoadSingleProperty extends HttpServlet {
+public class LoadEditProperty extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -52,20 +53,28 @@ public class LoadSingleProperty extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         
-        HttpSession session = request.getSession();
+       HttpSession session = request.getSession();
         String address;
         Userroles role = null;
+        Properties property = null;
+        List<Styles> stylesList = null;
+        List<Propertytypes> typesList = null;
+        List<Garagetypes> garageList = null;
+        List<Vendors> vendorsList = null;
+        List<Agents> agentsList = null;
+        List<String> berRatings = Arrays.asList("A1","A2","A3","B1","B2","B3","C1","C2","C3","D1","D2","E1","E2","F","G","Exempt");
         List<String> imgNames = new ArrayList<String>();
         
         try {
-            int id = (int) session.getAttribute("userId");
             int propertyId = Integer.parseInt(request.getParameter("propertyId"));
-            Properties property = PropertiesDB.getPropertyByID(propertyId);
-            Styles propertyStyle = StylesDB.getStyleByID(property.getStyleId());
-            Propertytypes propertyType = PropertytypesDB.getTypeByID(property.getTypeId());
-            Garagetypes propertyGarage = GaragetypesDB.getGarageByID(property.getGarageId());
-            Vendors propertyVendor = VendorsDB.getVendorByID(property.getVendorId());
-            Agents propertyAgent = AgentsDB.getAgentByID(property.getAgentId());
+            property = PropertiesDB.getPropertyByID(propertyId);
+            stylesList = StylesDB.getAllStyles();
+            typesList = PropertytypesDB.getAllTypes();
+            garageList = GaragetypesDB.getAllGarageTypes();
+            vendorsList = VendorsDB.getAllVendors();
+            agentsList = AgentsDB.getAll();
+            int id = (int) session.getAttribute("userId");
+            role = UserrolesDB.getUserRoleByID(id);
             
             String path = "assets/images/properties/large/%s/";
             String filePath = String.format(path, property.getListingNum());
@@ -78,7 +87,6 @@ public class LoadSingleProperty extends HttpServlet {
                 }
             }
             
-            role = UserrolesDB.getUserRoleByID(id);
             switch(role.getRole()){
                 case "admin":
                     Administrators admin = AdministratorsDB.getAdminByID(id);
@@ -92,14 +100,15 @@ public class LoadSingleProperty extends HttpServlet {
                     break;
             }
             
-            address = "admin/singleProperty.jsp";
+            address = "admin/editProperty.jsp";
+            request.setAttribute("p", property);
+            request.setAttribute("stylesList", stylesList);
+            request.setAttribute("typesList", typesList);
+            request.setAttribute("garageList", garageList);
+            request.setAttribute("vendorsList", vendorsList);
+            request.setAttribute("berRatings", berRatings);
+            request.setAttribute("agentsList", agentsList);
             request.setAttribute("imageList", imgNames);
-            request.setAttribute("property", property);
-            request.setAttribute("propertyStyle", propertyStyle);
-            request.setAttribute("propertyType", propertyType);
-            request.setAttribute("propertyGarage", propertyGarage);
-            request.setAttribute("propertyVendor", propertyVendor);
-            request.setAttribute("propertyAgent", propertyAgent);
         } catch (Exception ex) {
             address = "error.jsp";
         }

@@ -130,7 +130,7 @@
                                                                     <a href="LoadSingleProperty?propertyId=${property.id}">
                                                                         <i class="fa fa-eye"></i>
                                                                     </a>
-                                                                    <a href="EditProperty?propertyId=${property.id}">
+                                                                    <a href="LoadEditProperty?propertyId=${property.id}">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </a>
                                                                     <a href="#">

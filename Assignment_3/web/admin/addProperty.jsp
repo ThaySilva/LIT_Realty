@@ -255,7 +255,7 @@
                                                 </div>
                                             </shiro:hasRole>
                                             <shiro:hasRole name="agent">
-                                                <input type="hidden" name="agent" value="sessionScope.userId">
+                                                <input type="hidden" name="agent" value="${sessionScope.userId}">
                                             </shiro:hasRole>
                                             <shiro:hasRole name="admin">
                                                 <div class="form-group">
@@ -296,7 +296,7 @@
                                             <div class="form-group">
                                                 <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
                                                     <a href="LoadAdminProperties">
-                                                        <button class="btn btn-reset" type="submit">Cancel</button>
+                                                        <button class="btn btn-reset" type="button">Cancel</button>
                                                     </a>
                                                     <button class="btn btn-reset" type="reset">Reset</button>
                                                     <button class="btn btn-submit" type="submit">Submit</button>
