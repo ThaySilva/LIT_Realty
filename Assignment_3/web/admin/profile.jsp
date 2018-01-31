@@ -177,7 +177,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <input id="phone" name="phone" class="form-control" placeholder="${user.phone}" value="${user.phone}" onfocus="if(this.value === '${user.phone}'){this.value=''}" onblur="if(this.value === ''){this.value='${user.phone}'}" type="text">
+                                                            <input id="phone" name="phone" class="form-control" placeholder="${user.phone}" value="${user.phone}" onfocus="if(this.value === '${user.phone}'){this.value=''}" onblur="if(this.value === ''){this.value='${user.phone}'}" pattern="^[0-9]{3}-[0-9]{3}$" title="Please enter a valid phone number! e.g.: 555-555" type="text">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -189,7 +189,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Fax</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <input id="fax" name="fax" class="form-control" placeholder="${user.fax}" value="${user.fax}" onfocus="if(this.value === '${user.fax}'){this.value=''}" onblur="if(this.value === ''){this.value='${user.fax}'}" type="text">
+                                                            <input id="fax" name="fax" class="form-control" placeholder="${user.fax}" value="${user.fax}" onfocus="if(this.value === '${user.fax}'){this.value=''}" onblur="if(this.value === ''){this.value='${user.fax}'}" type="text" pattern="^[0-9]{3}-[0-9]{3}$" title="Please enter a valid fax number! e.g.: 555-555">
                                                             <input type="hidden" name="id" value="${sessionScope.userId}">
                                                         </div>
                                                     </div>

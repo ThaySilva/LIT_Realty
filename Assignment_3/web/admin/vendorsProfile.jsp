@@ -177,7 +177,7 @@
                                                     <div class="form-group">
                                                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Phone</label>
                                                         <div class="col-md-9 col-sm-9 col-xs-12">
-                                                            <input id="phone" name="phone" class="form-control" placeholder="${vendor.phone}" value="${vendor.phone}" onfocus="if(this.value === '${vendor.phone}'){this.value=''}" onblur="if(this.value === ''){this.value='${vendor.phone}'}" type="text">
+                                                            <input id="phone" name="phone" class="form-control" placeholder="${vendor.phone}" value="${vendor.phone}" onfocus="if(this.value === '${vendor.phone}'){this.value=''}" onblur="if(this.value === ''){this.value='${vendor.phone}'}" type="text" pattern="^[0-9]{3}-[0-9]{7}$" title="Please enter a valid phone number! e.g.: 083-1234567">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">

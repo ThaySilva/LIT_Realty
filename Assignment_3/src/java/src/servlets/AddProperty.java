@@ -108,8 +108,7 @@ public class AddProperty extends HttpServlet {
             address = "error.jsp";
         }
         
-        RequestDispatcher dispatcher = request.getRequestDispatcher(address);
-        dispatcher.forward(request, response);
+        response.sendRedirect(address);
     }
     
     protected Properties setPropertyDetails(Properties property, String name, String value){

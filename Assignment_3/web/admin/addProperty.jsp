@@ -119,7 +119,7 @@
                                     </div>
                                     <div class="x_content">
                                         <br>
-                                        <form action="AddProperty" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
+                                        <form name="addForm" action="AddProperty" method="post" enctype="multipart/form-data" class="form-horizontal form-label-left">
                                             <div class="form-group">
                                                 <label class="big-label col-md-3 col-sm-3 col-xs-12" for="street">
                                                     Street
@@ -141,7 +141,7 @@
                                                     Price
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="price" id="price" class="big-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="price" id="price" class="big-control col-md-7 col-xs-12" required="required" type="text" pattern="[0-9]+([\.][0-9]+)?" step="0.01" title="Please enter a valid price! e.g.: 2456.98">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -149,7 +149,7 @@
                                                     Description
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <textarea name="description" id="description" class="textarea"></textarea>
+                                                    <textarea name="description" id="description" class="textarea" required="required"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -181,7 +181,7 @@
                                                     Bedrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="bedrooms" id="beds" class="left-form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="bedrooms" id="beds" class="left-form-control col-md-7 col-xs-12" pattern="[0-9]*" title="Please enter a valid number of bedrooms! e.g.: 2" required="required" type="text">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -189,7 +189,7 @@
                                                     Bathrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="bathrooms" id="baths" class="right-form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="bathrooms" id="baths" class="right-form-control col-md-7 col-xs-12" required="required" type="text" pattern="[0-9]+([\.][5]+)?" step="0.1" title="Please enter a valid number of bathrooms! e.g.: 3 or 1.5">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -209,7 +209,7 @@
                                                     Garage Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="garageSize" id="garageSize" class="right-form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="garageSize" id="garageSize" class="right-form-control col-md-7 col-xs-12" required="required" type="text" pattern="[0-9]*" title="Please enter a valid garage size! e.g.: 4">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -217,7 +217,7 @@
                                                     Square Feet
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="squareFeet" id="squareFeet" class="left-form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="squareFeet" id="squareFeet" class="left-form-control col-md-7 col-xs-12" required="required" type="text" pattern="[0-9]*" title="Please enter a valid square feet size! e.g.: 975">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -225,7 +225,7 @@
                                                     Lot Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="lotSize" id="lotSize" class="right-form-control col-md-7 col-xs-12" required="required" type="text">
+                                                    <input name="lotSize" id="lotSize" class="right-form-control col-md-7 col-xs-12" required="required" type="text" pattern="^[0-9]{1,3}x[0-9]{1,3}$" title="Plese enter a valid lot size! e.g.: 120x80">
                                                 </div>
                                             </div>
                                             <div class="form-group">

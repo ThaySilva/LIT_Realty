@@ -141,7 +141,7 @@
                                                     Price
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="price" id="price" class="big-control col-md-7 col-xs-12" placeholder="${p.price}" value="${p.price}" onfocus="if(this.value==='${p.price}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.price}'}" required="required" type="text">
+                                                    <input name="price" id="price" class="big-control col-md-7 col-xs-12" placeholder="${p.price}" value="${p.price}" onfocus="if(this.value==='${p.price}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.price}'}" required="required" type="text" pattern="[0-9]+([\.][0-9]+)?" step="0.01" title="Please enter a valid price! e.g.: 2456.98">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -149,7 +149,7 @@
                                                     Description
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="description" id="description" class="textarea" placeholder="${p.description}" value="${p.description}" onfocus="if(this.value==='${p.description}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.description}'}" required="required" type="text">
+                                                    <textarea name="description" id="description" class="textarea" placeholder="${p.description}" value="${p.description}" onfocus="if(this.value==='${p.description}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.description}'}" required="required" type="text"></textarea>
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -195,7 +195,7 @@
                                                     Bedrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="bedrooms" id="beds" class="left-form-control col-md-7 col-xs-12" placeholder="${p.bedrooms}" value="${p.bedrooms}" onfocus="if(this.value==='${p.bedrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bedrooms}'}" required="required" type="text">
+                                                    <input name="bedrooms" id="beds" class="left-form-control col-md-7 col-xs-12" placeholder="${p.bedrooms}" value="${p.bedrooms}" onfocus="if(this.value==='${p.bedrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bedrooms}'}" required="required" type="text" pattern="[0-9]*" title="Please enter a valid number of bedrooms! e.g.: 2">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -203,7 +203,7 @@
                                                     Bathrooms
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="bathrooms" id="baths" class="right-form-control col-md-7 col-xs-12" placeholder="${p.bathrooms}" value="${p.bathrooms}" onfocus="if(this.value==='${p.bathrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bathrooms}'}" required="required" type="text">
+                                                    <input name="bathrooms" id="baths" class="right-form-control col-md-7 col-xs-12" placeholder="${p.bathrooms}" value="${p.bathrooms}" onfocus="if(this.value==='${p.bathrooms}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.bathrooms}'}" required="required" type="text" pattern="[0-9]+([\.][5]+)?" step="0.1" title="Please enter a valid number of bathrooms! e.g.: 3 or 1.5">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -230,7 +230,7 @@
                                                     Garage Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="garageSize" id="garageSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.garagesize}" value="${p.garagesize}" onfocus="if(this.value==='${p.garagesize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.garagesize}'}" required="required" type="text">
+                                                    <input name="garageSize" id="garageSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.garagesize}" value="${p.garagesize}" onfocus="if(this.value==='${p.garagesize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.garagesize}'}" required="required" type="text"  pattern="[0-9]*" title="Please enter a valid garage size! e.g.: 4">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -238,7 +238,7 @@
                                                     Square Feet
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="squareFeet" id="squareFeet" class="left-form-control col-md-7 col-xs-12" placeholder="${p.squarefeet}" value="${p.squarefeet}" onfocus="if(this.value==='${p.squarefeet}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.squarefeet}'}" required="required" type="text">
+                                                    <input name="squareFeet" id="squareFeet" class="left-form-control col-md-7 col-xs-12" placeholder="${p.squarefeet}" value="${p.squarefeet}" onfocus="if(this.value==='${p.squarefeet}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.squarefeet}'}" required="required" type="text" pattern="[0-9]*" title="Please enter a valid square feet size! e.g.: 975">
                                                 </div>
                                             </div>
                                             <div class="form-group">
@@ -246,7 +246,7 @@
                                                     Lot Size
                                                 </label>
                                                 <div class="col-md-6 col-sm-6 col-xs-12">
-                                                    <input name="lotSize" id="lotSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.lotsize}" value="${p.lotsize}" onfocus="if(this.value==='${p.lotsize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.lotsize}'}" required="required" type="text">
+                                                    <input name="lotSize" id="lotSize" class="right-form-control col-md-7 col-xs-12" placeholder="${p.lotsize}" value="${p.lotsize}" onfocus="if(this.value==='${p.lotsize}'){this.value=''}" onblur="if(this.value === ''){this.value='${p.lotsize}'}" required="required" type="text" pattern="^[0-9]{1,3}x[0-9]{1,3}$" title="Plese enter a valid lot size! e.g.: 120x80">
                                                 </div>
                                             </div>
                                             <div class="form-group">
