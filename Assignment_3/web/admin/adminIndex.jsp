@@ -163,11 +163,11 @@
                                     <div class="x_content">
                                         <c:forEach items="${vendors}" var="vendor">
                                             <article class="media event">
-                                                <a href="admin/vendorsProfile.jsp" class="pull-left date">
+                                                <a href="LoadVendors" class="pull-left date">
                                                     <img src="assets/images/vendors/${vendor.vendorID}.jpg" style="width: 70px; height: 70px;">
                                                 </a>
                                                 <div class="media-body">
-                                                    <a class="title" href="admin/vendorsProfile.jsp">${vendor.name}</a>
+                                                    <a class="title" href="LoadVendors">${vendor.name}</a>
                                                     <p><i class="fa fa-phone"></i> ${vendor.phone}<br>
                                                     <i class="fa fa-envelope"></i> ${vendor.email}</p>
                                                 </div>

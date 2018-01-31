@@ -27,7 +27,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findByPropertyId", query = "SELECT p FROM PropertiesHasVendorsAndAgents p WHERE p.propertyId = :propertyId")
     , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findByAgentId", query = "SELECT p FROM PropertiesHasVendorsAndAgents p WHERE p.agentId = :agentId")
     , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findByVendorId", query = "SELECT p FROM PropertiesHasVendorsAndAgents p WHERE p.vendorId = :vendorId")
-    , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findUniqueVendors", query = "SELECT DISTINCT p From PropertiesHasVendorsAndAgents p WHERE p.agentId = :agentId")})
+    , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findUniqueVendors", query = "SELECT DISTINCT p From PropertiesHasVendorsAndAgents p WHERE p.agentId = :agentId")
+    , @NamedQuery(name = "PropertiesHasVendorsAndAgents.findRelation", query = "SELECT p FROM PropertiesHasVendorsAndAgents p WHERE p.propertyId = :propertyId AND p.agentId = :agentId AND p.vendorId = :vendorId")})
 public class PropertiesHasVendorsAndAgents implements Serializable {
 
     private static final long serialVersionUID = 1L;

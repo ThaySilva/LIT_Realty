@@ -8,6 +8,7 @@ package src.db;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.PropertiesHasVendorsAndAgents;
 
@@ -87,5 +88,61 @@ public class PropertiesHasVendorsAndAgentsDB {
         }
         
         return idList;
+    }
+    
+    public static void addRelation(int propertyId, int agentId, int vendorId){
+        EntityManager em = null;
+        EntityTransaction trans = null;
+        PropertiesHasVendorsAndAgents relation = new PropertiesHasVendorsAndAgents(propertyId,agentId,vendorId);
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.persist(relation);
+            trans.commit();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static PropertiesHasVendorsAndAgents getRelation(int propertyId, int agentId, int vendorId){
+        EntityManager em = null;
+        TypedQuery query = null;
+        PropertiesHasVendorsAndAgents relation = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("PropertiesHasVendorsAndAgents.findRelation", PropertiesHasVendorsAndAgents.class);
+            query.setParameter("propertyId", propertyId);
+            query.setParameter("agentId", agentId);
+            query.setParameter("vendorId", vendorId);
+            relation = (PropertiesHasVendorsAndAgents) query.getSingleResult();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return relation;
+    }
+    
+    public static void deleteRelation(PropertiesHasVendorsAndAgents relation){
+        EntityManager em = null;
+        EntityTransaction trans = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.remove(em.merge(relation));
+            trans.commit();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
     }
 }

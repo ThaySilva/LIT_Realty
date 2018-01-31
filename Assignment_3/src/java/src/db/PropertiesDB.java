@@ -15,6 +15,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 import src.entities.Properties;
+import src.entities.PropertiesHasVendorsAndAgents;
 
 /**
  *
@@ -554,6 +555,7 @@ public class PropertiesDB {
             trans.begin();
             em.persist(property);
             trans.commit();
+            PropertiesHasVendorsAndAgentsDB.addRelation(property.getId(), property.getAgentId(), property.getVendorId());
         } catch (Exception ex) {
             System.out.println(ex);
         } finally {
@@ -572,6 +574,25 @@ public class PropertiesDB {
             trans.begin();
             em.merge(property);
             trans.commit();
+        } catch (Exception ex){
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+    }
+    
+    public static void deleteProperty(Properties property){
+        EntityManager em = null;
+        EntityTransaction trans = null;
+        PropertiesHasVendorsAndAgents relation = PropertiesHasVendorsAndAgentsDB.getRelation(property.getId(),property.getAgentId(), property.getVendorId());
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            trans = em.getTransaction();
+            trans.begin();
+            em.remove(em.merge(property));
+            trans.commit();
+            PropertiesHasVendorsAndAgentsDB.deleteRelation(relation);
         } catch (Exception ex){
             System.out.println(ex);
         } finally {

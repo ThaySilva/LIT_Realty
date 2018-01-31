@@ -133,7 +133,7 @@
                                                                     <a href="LoadEditProperty?propertyId=${property.id}">
                                                                         <i class="fa fa-pencil"></i>
                                                                     </a>
-                                                                    <a href="#">
+                                                                    <a href="DeleteProperty?propertyId=${property.id}" onclick="return confirmEdit()">
                                                                         <i class="fa fa-times"></i>
                                                                     </a>
                                                                 </div>
@@ -154,5 +154,14 @@
                 </div>
             </div>
         </div>
+        <script>
+            function confirmEdit(){
+                if(confirm("Are you sure you want to edit these details?")) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        </script>
     </body>
 </html>

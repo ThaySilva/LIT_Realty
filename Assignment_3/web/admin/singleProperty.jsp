@@ -143,8 +143,9 @@
                                                 <a href="LoadEditProperty?propertyId=${property.id}">
                                                     <button class="btn btn-submit" type="button">Edit</button>
                                                 </a>
-
-                                                <butoon class="btn btn-submit" type="button">Delete</butoon>
+                                                <a href="DeleteProperty?propertyId=${property.id}" onclick="return confirmEdit()">
+                                                    <butoon class="btn btn-submit" type="button">Delete</butoon>
+                                                </a>
                                             </div>
                                             <h2>Description</h2>
                                             <p>${property.description}</p>
@@ -230,6 +231,15 @@
             function onClick(element) {
               document.getElementById("img01").src = element.src;
               document.getElementById("modal01").style.display = "block";
+            }
+        </script>
+        <script>
+            function confirmEdit(){
+                if(confirm("Are you sure you want to edit these details?")) {
+                    return true;
+                } else {
+                    return false;
+                }
             }
         </script>
     </body>
