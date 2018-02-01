@@ -81,12 +81,12 @@ public class EditVendorProfile extends HttpServlet {
                     request.setAttribute("vendorName", vendor.getName());
                     break;
                 default:
-                    address = "error.jsp";
+                    address = "/500.jsp";
                     break;
             }
 
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

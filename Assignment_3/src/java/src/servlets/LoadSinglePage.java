@@ -86,7 +86,7 @@ public class LoadSinglePage extends HttpServlet {
             request.setAttribute("propertyAddress", propertyAddress);
             address = "/single.jsp";
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

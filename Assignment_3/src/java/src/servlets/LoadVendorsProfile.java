@@ -73,7 +73,7 @@ public class LoadVendorsProfile extends HttpServlet {
             request.setAttribute("vendor", vendor);
             address = "admin/vendorsProfile.jsp";
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

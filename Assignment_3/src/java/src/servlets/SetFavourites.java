@@ -47,7 +47,7 @@ public class SetFavourites extends HttpServlet {
             address = "LoadSinglePage?propertyId="+id;
             request.setAttribute("message", true);
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

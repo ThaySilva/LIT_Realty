@@ -61,7 +61,7 @@ public class LoadAddVendors extends HttpServlet {
             
             address = "admin/addVendor.jsp";
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
        RequestDispatcher dispatcher = request.getRequestDispatcher(address);

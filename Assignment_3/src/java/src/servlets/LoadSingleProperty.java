@@ -101,7 +101,7 @@ public class LoadSingleProperty extends HttpServlet {
             request.setAttribute("propertyVendor", propertyVendor);
             request.setAttribute("propertyAgent", propertyAgent);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

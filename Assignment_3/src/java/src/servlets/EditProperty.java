@@ -118,7 +118,7 @@ public class EditProperty extends HttpServlet {
             
             address = "LoadSingleProperty?propertyId="+propertyId;
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
 
         response.sendRedirect(address);

@@ -110,7 +110,7 @@ public class LoadEditProperty extends HttpServlet {
             request.setAttribute("agentsList", agentsList);
             request.setAttribute("imageList", imgNames);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

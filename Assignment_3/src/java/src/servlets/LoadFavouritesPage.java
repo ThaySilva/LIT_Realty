@@ -64,7 +64,7 @@ public class LoadFavouritesPage extends HttpServlet {
             }
             request.setAttribute("agents", agents);
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

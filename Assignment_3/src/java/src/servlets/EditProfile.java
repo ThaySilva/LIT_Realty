@@ -77,7 +77,7 @@ public class EditProfile extends HttpServlet {
             
             address = "LoadProfile?edit=false";
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

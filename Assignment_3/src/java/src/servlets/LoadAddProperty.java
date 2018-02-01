@@ -89,7 +89,7 @@ public class LoadAddProperty extends HttpServlet {
             request.setAttribute("agentsList", agentsList);
             request.setAttribute("berRatings", berRatings);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
        RequestDispatcher dispatcher = request.getRequestDispatcher(address);

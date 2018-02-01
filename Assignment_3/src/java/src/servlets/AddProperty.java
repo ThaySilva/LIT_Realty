@@ -105,7 +105,7 @@ public class AddProperty extends HttpServlet {
             
             address = "LoadAdminProperties";
         } catch (Exception ex){
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         response.sendRedirect(address);

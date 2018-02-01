@@ -68,7 +68,7 @@ public class LoadAdminProperties extends HttpServlet {
             address = "admin/allProperties.jsp";
             request.setAttribute("propertyList", propertiesList);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

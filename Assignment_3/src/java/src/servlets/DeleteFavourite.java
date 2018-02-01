@@ -47,7 +47,7 @@ public class DeleteFavourite extends HttpServlet {
             
             address = "LoadFavouritesPage";
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

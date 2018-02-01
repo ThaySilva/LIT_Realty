@@ -15,6 +15,9 @@
         <dispatcher>INCLUDE</dispatcher>
         <dispatcher>ERROR</dispatcher>
     </filter-mapping>
+    <error-page>
+        <location>/404.jsp</location>
+    </error-page>
     <servlet>
         <servlet-name>LoadIndexPage</servlet-name>
         <servlet-class>src.servlets.LoadIndexPage</servlet-class>
@@ -238,7 +241,6 @@
     <servlet-mapping>
         <servlet-name>AddVendors</servlet-name>
         <url-pattern>/AddVendors</url-pattern>
-        <servlet-class>net.codejava.upload.FileUploadServlet</servlet-class>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoadAddProperty</servlet-name>

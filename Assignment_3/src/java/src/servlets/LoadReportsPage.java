@@ -97,7 +97,7 @@ public class LoadReportsPage extends HttpServlet {
             request.setAttribute("vendorsList", vendorsList);
             request.setAttribute("oldestProperties", oldestProperties);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
        RequestDispatcher dispatcher = request.getRequestDispatcher(address);

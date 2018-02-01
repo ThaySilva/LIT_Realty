@@ -60,7 +60,7 @@ public class LoadIndexPage extends HttpServlet {
             request.setAttribute("propertyList", propertyList);
             request.setAttribute("agents", agentsList);
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

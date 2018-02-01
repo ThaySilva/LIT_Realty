@@ -75,7 +75,7 @@ public class SendEmail extends HttpServlet {
             request.setAttribute("message", true);
         } catch (MessagingException mex) {
             System.out.println(mex);
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

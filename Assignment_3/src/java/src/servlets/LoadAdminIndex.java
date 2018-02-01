@@ -76,7 +76,7 @@ public class LoadAdminIndex extends HttpServlet {
             request.setAttribute("properties", properties);
             request.setAttribute("vendors", vendors);
         } catch (Exception ex) {
-            address = "error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);

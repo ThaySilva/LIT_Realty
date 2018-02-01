@@ -51,7 +51,7 @@ public class LoadGalleryPage extends HttpServlet {
             request.setAttribute("mostPopular", mostPopular);
             request.setAttribute("propertyList", propertyList);
         } catch (Exception ex) {
-            address = "/error.jsp";
+            address = "/500.jsp";
         }
         
         RequestDispatcher dispatcher = request.getRequestDispatcher(address);
