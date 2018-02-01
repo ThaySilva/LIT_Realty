@@ -599,4 +599,22 @@ public class PropertiesDB {
             em.close();
         }
     }
+    
+    public static List<Properties> getOldestProperties(){
+        EntityManager em = null;
+        TypedQuery query = null;
+        List<Properties> propertyList = null;
+        
+        try {
+            em = DBUtil.getEmf().createEntityManager();
+            query = em.createNamedQuery("Properties.findOldest", Properties.class);
+            propertyList = query.setMaxResults(10).getResultList();
+        } catch (Exception ex) {
+            System.out.println(ex);
+        } finally {
+            em.close();
+        }
+        
+        return propertyList;
+    }
 }

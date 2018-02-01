@@ -51,7 +51,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Properties.findRecentlyAdded", query = "SELECT p FROM Properties p WHERE p.dateAdded >= :dateAdded")
     , @NamedQuery(name = "Properties.findMostPopular", query = "SELECT p FROM Properties p ORDER BY p.views DESC")
     , @NamedQuery(name = "Properties.findSimilar", query = "SELECT p FROM Properties p WHERE p.city = :city AND p.id <> :id")
-    , @NamedQuery(name = "Properties.findLastID", query = "SELECT p FROM Properties p ORDER BY p.id DESC")})
+    , @NamedQuery(name = "Properties.findLastID", query = "SELECT p FROM Properties p ORDER BY p.id DESC")
+    , @NamedQuery(name = "Properties.findOldest", query = "SELECT p FROM Properties p ORDER BY p.dateAdded ASC")})
 public class Properties implements Serializable {
 
     private static final long serialVersionUID = 1L;
