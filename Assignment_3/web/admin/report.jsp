@@ -113,7 +113,7 @@
                                         <h2>Report</h2>
                                         <ul class="nav navbar-right panel_toolbox">
                                             <li>
-                                                <a>
+                                                <a href="GenerateReport">
                                                     <i class="fa fa-download"></i>
                                                 </a>
                                             </li>
@@ -246,6 +246,11 @@
                                                 </table>
                                             </div>
                                         </section>
+                                        <div class="col-md-9 col-sm-9 col-xs-12 col-md-offset-3">
+                                            <a href="GenerateReport">
+                                                <button class="btn btn-submit" type="button">Download PDF</button>
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
