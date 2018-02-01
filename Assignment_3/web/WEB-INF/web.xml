@@ -63,10 +63,6 @@
         </init-param>
     </servlet>
     <servlet>
-        <servlet-name>SendEmail</servlet-name>
-        <servlet-class>src.servlets.SendEmail</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>LoadProfile</servlet-name>
         <servlet-class>src.servlets.LoadProfile</servlet-class>
     </servlet>
@@ -162,6 +158,10 @@
         <servlet-name>GenerateReport</servlet-name>
         <servlet-class>src.servlets.GenerateReport</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SendEmail</servlet-name>
+        <servlet-class>src.servlets.SendEmail</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>LoadIndexPage</servlet-name>
         <url-pattern>/LoadIndexPage</url-pattern>
@@ -193,10 +193,6 @@
     <servlet-mapping>
         <servlet-name>DeleteFavourite</servlet-name>
         <url-pattern>/DeleteFavourite</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SendEmail</servlet-name>
-        <url-pattern>/SendEmail</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoadProfile</servlet-name>
@@ -241,6 +237,7 @@
     <servlet-mapping>
         <servlet-name>AddVendors</servlet-name>
         <url-pattern>/AddVendors</url-pattern>
+        <servlet-class>net.codejava.upload.FileUploadServlet</servlet-class>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>LoadAddProperty</servlet-name>
@@ -265,6 +262,10 @@
     <servlet-mapping>
         <servlet-name>GenerateReport</servlet-name>
         <url-pattern>/GenerateReport</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SendEmail</servlet-name>
+        <url-pattern>/SendEmail</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

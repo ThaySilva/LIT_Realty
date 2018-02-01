@@ -7,15 +7,14 @@ package src.servlets;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.*;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
-import javax.servlet.RequestDispatcher;
+import org.apache.commons.mail.DefaultAuthenticator;
+import org.apache.commons.mail.Email;
+import org.apache.commons.mail.SimpleEmail;
 
 /**
  *
@@ -40,41 +39,28 @@ public class SendEmail extends HttpServlet {
         String name = request.getParameter("firstName");
         String lastName = request.getParameter("lastName");
         String to = request.getParameter("email");
-        String from = "example@gmail.com";
+        String from = "litrealty@email.com";
         String subject = request.getParameter("subject");
         String msg = request.getParameter("message");
-        String host = "localhost";
-        Properties properties = System.getProperties();
-        properties.setProperty("mail.smtp.host", host);
-        properties.setProperty("mail.smtp.port", "80");
-        properties.setProperty("mail.smtp.socketFactory.port", "80");
-        Session session = Session.getDefaultInstance(properties);
-        response.setContentType("text/html");
-        PrintWriter out = response.getWriter();
+        
+        Email email = new SimpleEmail();
         
         try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject(subject);
-            message.setContent("<img src=\"assets/images/logo.gif\" alt=\"\"> <br><br>"
-                    + "Dear " + name + " " + lastName
-                    + "<br><br>"
-                    + "<p>We successfully received your email as per following:<br><br>"
-                    + "To: " + from + "<br>"
-                    + "From: " + to + "<br>"
-                    + "Subject: " + subject + "<br>"
-                    + "Message: <br>"
-                    + "<p>" + msg + "<br><br><br>" 
-                    + " And we'll contact you shortly.</p><br>" 
-                    + "Regards,<br>"
-                    + "Staff of LIT Realty.", "text/html");
-            Transport.send(message);
+            email.setHostName("smtp.googlemail.com");
+            email.setSmtpPort(465);
+            email.setAuthenticator(new DefaultAuthenticator(from,"Testingpass"));
+            email.setSSLOnConnect(true);
+            email.addTo(to, name+" "+lastName);
+            email.setFrom("litrealty@email.com","LIT Realty");
+            email.setSubject(subject);
             
-            address = "contactUs";
+            email.setMsg("Dear "+name+" "+lastName+"\t We successfully received your email as per following: \t\t To: "+from+"\t From: "+to+"\t Subject: "+subject+"\t Message:\t "+msg+"\t\t\t And we'll contact you shortly.\t Regards,\t Staff of LIT Realty.");
+            email.send();
+            
+            address = "contactUs.jsp";
             request.setAttribute("message", true);
-        } catch (MessagingException mex) {
-            System.out.println(mex);
+        } catch (Exception ex){
+            System.out.println(ex);
             address = "/500.jsp";
         }
         
